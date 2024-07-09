@@ -125,7 +125,7 @@ $html .= '          <tr style="line-height: 30px;">
                     </tr>
                     
                     <tr style="line-height: 60px; font-size: 14px; text-align: left;">
-                        <td style="padding-left: 0px">Cedrick James</td>
+                        <td style="padding-left: 0px">Elaine</td>
                         <td></td>
                         <td></td>
                         <td></td>
