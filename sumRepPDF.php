@@ -12,6 +12,7 @@ $y = $_SESSION['dateCount'] - 1;
 $fromDate = date_create($_SESSION['period'][0]);
 $toDate = date_create($_SESSION['period'][$y]);
 
+$grandOverallTotal  = 0;
 $html = '   <!DOCTYPE html>
             <html lang="en">
             <head>
@@ -97,6 +98,7 @@ $html = '   <!DOCTYPE html>
                         $totalPayment = $amountGlory + $amountMaxim + $amountNippi + $amountPL + $amountSP;
 
                         $totalManpower += $totalPayment;
+                       
 
 $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.date_format($pDate,"F d, Y").'</td>
@@ -109,6 +111,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.($totalPayment/35).'</td>
                         </tr>';
                     }  
+                    $grandOverallTotal  += $totalManpower;
 $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
@@ -127,20 +130,11 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalNippi, 2, '.', ',').'</td>
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalPL, 2, '.', ',').'</td>
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalSP, 2, '.', ',').'</td>
-                            <td style="border: 1px solid black; line-height: 23px;"></td>
+                            <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalManpower, 2, '.', ',').'</td>
                             <td style="border: 1px solid black; line-height: 23px;">'.($totalManpower/35).'</td>
                         </tr>
 
-                        <tr style="font-size: 14px; line-height: 20px">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td style="font-weight: bold;">GRAND TOTAL</td>
-                            <td>'.number_format($totalManpower, 2, '.', ',').'</td>
-                            <td></td>
-                        </tr>
+                        
                         </tbody>
                     </table>
 
@@ -150,6 +144,9 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <th rowspan="2" style="width: 12.5%; border: 1px solid black;">Date</th>
                             <th colspan="6" style="border: 1px solid black; font-size: 12px;">GPI 8 (Direct)</th>
                             <th rowspan="2" style="width: 12.5%; border: 1px solid black; font-size: 12px;">TOTAL</th>
+
+                            <th rowspan="2" style="width: 12.5%; border: 1px solid black; font-size: 12px;">TOTAL MANPOWER</th>
+
                         </tr>
                         <tr style="font-size: 12px; border: 1px solid black;">
                             <th style="border: 1px solid black;">Moulding</th>
@@ -226,6 +223,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
 
                         $totalManpower += $totalPayment;
 
+
 $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.date_format($pDate,"F d, Y").'</td>
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountMoulding, 2, '.', ',').'</td>
@@ -235,8 +233,13 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountProdsupport, 2, '.', ',').'</td>
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountPI, 2, '.', ',').'</td>
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($totalPayment, 2, '.', ',').'</td>
+                            <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.($totalPayment/35).'</td>
+
+
                         </tr>';
                     }  
+                    $grandOverallTotal  += $totalManpower;
+
 $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
@@ -246,6 +249,8 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
+                            <td style="border: 1px solid black; line-height: 23px;">-</td>
+
                         </tr>
 
                         <tr style="font-size: 12px; border: 1px solid black;">
@@ -256,28 +261,22 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalQAdmin, 2, '.', ',').'</td>
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalProdsupport, 2, '.', ',').'</td>
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalPI, 2, '.', ',').'</td>
-                            <td style="border: 1px solid black; line-height: 23px;">'.($totalManpower/35).'</td>
+                           
+                            <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalManpower, 2, '.', ',').'</td>
+                             <td style="border: 1px solid black; line-height: 23px;">'.($totalManpower/35).'</td>
+
                         </tr>
 
-                        <tr style="font-size: 14px; line-height: 20px">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td style="font-weight: bold;">GRAND TOTAL</td>
-                            <td>'.number_format($totalManpower, 2, '.', ',').'</td>
-                            <td></td>
-                        </tr>
                         </tbody>
                     </table>
-
+<div style="page-break-before: always; "></div>
                     <table style="margin-top: 20px; width: 100%; text-align: center; border-collapse: collapse;">
                     <thead>
                         <tr style="font-size: 11px; border: 1px solid black; font-size: 12px;">
                             <th rowspan="2" style="width: 12.5%; border: 1px solid black;">Date</th>
                             <th colspan="6" style="border: 1px solid black; font-size: 12px;">GPI 8 (Agency)</th>
                             <th rowspan="2" style="width: 12.5%; border: 1px solid black; font-size: 12px;">TOTAL</th>
+                          <th rowspan="2" style="width: 12.5%; border: 1px solid black; font-size: 12px;">TOTAL MANPOWER</th>
                         </tr>
                         <tr style="font-size: 12px; border: 1px solid black;">
                             <th style="border: 1px solid black;">Moulding</th>
@@ -363,8 +362,11 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountProdsupport, 2, '.', ',').'</td>
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountPI, 2, '.', ',').'</td>
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($totalPayment, 2, '.', ',').'</td>
+                          <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.($totalPayment/35).'</td>
                         </tr>';
                     }  
+                    $grandOverallTotal  += $totalManpower;
+                    
 $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
@@ -374,6 +376,8 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
+                            <td style="border: 1px solid black; line-height: 23px;">-</td>
+
                         </tr>
 
                         <tr style="font-size: 12px; border: 1px solid black;">
@@ -384,19 +388,26 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalQAdmin, 2, '.', ',').'</td>
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalProdsupport, 2, '.', ',').'</td>
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalPI, 2, '.', ',').'</td>
-                            <td style="border: 1px solid black; line-height: 23px;">'.($totalManpower/35).'</td>
+                            <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalManpower, 2, '.', ',').'</td>
+
+                                                 <td style="border: 1px solid black; line-height: 23px;">'.($totalManpower/35).'</td>
+
                         </tr>
 
+                        
                         <tr style="font-size: 14px; line-height: 20px">
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td style="font-weight: bold;">GRAND TOTAL</td>
-                            <td>'.number_format($totalManpower, 2, '.', ',').'</td>
                             <td></td>
+
+                            <td style="font-weight: bold;">GRAND TOTAL</td>
+                            <td>'.number_format($grandOverallTotal, 2, '.', ',').'</td>
+                            <td>'.($grandOverallTotal/35).'</td>
                         </tr>
+
                         </tbody>
                     </table>
 
