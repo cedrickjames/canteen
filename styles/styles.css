@@ -1,7 +1,28 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial, "Helvetica", sans-serif;
+}
+
+.select2 {
+  width: 100% !important;
+  height: 90% !important;
+}
+
+.select2-selection {
+  width: 100% !important;
+  height: 90% !important;
+}
+
+.selection {
+  width: 100% !important;
+  height: 90% !important;
+  display: block;
+}
+
+.select2-selection__rendered {
+  width: 100% !important;
+  height: 90% !important;
 }
 
 body {
@@ -10,23 +31,17 @@ body {
   width: 100vw;
   overflow: hidden;
 }
-
-select[name="employeeList_length"] {
-  width: 73px;
-}
 body #head {
   color: #000000;
   text-align: center;
   font-size: 10vh;
   padding: 0.5%;
 }
-
 body form span {
   display: inline-block;
   height: auto;
   width: 100%;
 }
-
 body form span #tapInput {
   width: 15%;
   font-size: 3vh;
@@ -35,7 +50,6 @@ body form span #tapInput {
   border-radius: 10px;
   padding-left: 10px;
 }
-
 body form span .dte {
   display: inline;
   float: right;
@@ -43,29 +57,21 @@ body form span .dte {
   font-size: 3.5vh;
   color: #000000;
 }
-
 body form #inputSubmit {
   position: absolute;
   left: -300px;
 }
-
 body .grid-container {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 34% 34% 30.5%;
-      grid-template-columns: 34% 34% 30.5%;
-  -ms-grid-rows: 20% 20% 18% 18% 18%;
-      grid-template-rows: 20% 20% 18% 18% 18%;
+  grid-template-columns: 34% 34% 30.5%;
+  grid-template-rows: 20% 20% 18% 18% 18%;
   min-height: 78.5vh;
   max-height: 90vh;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   margin: 0 auto;
   gap: 15px;
   padding: 0 1% 1% 1%;
 }
-
 body .grid-container .grid-item {
   background-color: #3CECC9;
   border-radius: 20px;
@@ -73,168 +79,114 @@ body .grid-container .grid-item {
   overflow: hidden;
   border: 2px solid black;
 }
-
 body .grid-container .item1 {
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
-  grid-column: 1 / span 2;
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
-  grid-row: 1 / span 2;
+  grid-column: 1/span 2;
+  grid-row: 1/span 2;
   text-align: center;
   overflow: hidden;
 }
-
 body .grid-container .item1 h1 {
   color: #000;
   padding-top: 6%;
   font-size: 55px;
 }
-
 body .grid-container .item1 h2 {
   color: #e63232;
   padding-top: 5%;
   font-size: 80px;
   padding-top: 30px;
 }
-
 body .grid-container .item1 h3 {
   color: #e63232;
   padding-top: 5%;
   font-size: 65px;
   padding-top: 30px;
 }
-
 body .grid-container .item1 .anim {
-  -webkit-animation: fcolor infinite 1300ms;
-          animation: fcolor infinite 1300ms;
+  animation: fcolor infinite 1300ms;
 }
-
 body .grid-container .item1 .anim2 {
-  -webkit-animation: fcolor2 infinite 1300ms;
-          animation: fcolor2 infinite 1300ms;
+  animation: fcolor2 infinite 1300ms;
 }
-
 body .grid-container .item2 {
-  -ms-grid-column: 3;
   grid-column: 3;
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 5;
-  grid-row: 1 / span 5;
+  grid-row: 1/span 5;
   text-align: center;
   overflow: hidden;
 }
-
 body .grid-container .item2 #rTrans {
   font-size: 40px;
   padding-top: 30px;
   padding-bottom: 25px;
   color: #0c1224;
 }
-
 body .grid-container .item2 table {
   width: 100%;
   font-size: 30px;
   color: #000;
 }
-
 body .grid-container .item2 table tr td {
   text-align: center;
   padding: 23px 0;
 }
-
 body .grid-container .item3 {
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
-  grid-column: 1 / span 2;
-  -ms-grid-row: 3;
-  -ms-grid-row-span: 3;
-  grid-row: 3 / span 3;
+  grid-column: 1/span 2;
+  grid-row: 3/span 3;
 }
-
 body .grid-container .item3 .empTable {
   width: 95%;
   margin: 20px auto 0 auto;
 }
-
 body .grid-container .item3 .empTable th {
   width: 25%;
-  color: 000;
+  color: 0;
   font-weight: 700;
   font-size: 25px;
 }
-
 body .grid-container .item3 .chart {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   margin: 0;
   margin-top: 60px;
   padding: 0;
   height: 100%;
 }
-
 body .grid-container .item3 .chart #effect-example-2 {
   height: 65%;
   max-width: 95%;
   margin: 0 auto;
 }
-
 body .grid-container .item3 .chart #effect-example-2 tbody td {
-  -webkit-margin-start: 10px;
-          margin-inline-start: 10px;
-  -webkit-margin-end: 20px;
-          margin-inline-end: 20px;
+  margin-inline-start: 10px;
+  margin-inline-end: 20px;
 }
-
 body .grid-container .item3 .chart #effect-example-2 tbody td:before {
-  content: '';
+  content: "";
   position: absolute;
   top: -10px;
   right: -10px;
   width: 100%;
   height: 10px;
-  -webkit-transform: skewX(-45deg);
-          transform: skewX(-45deg);
-  -webkit-transform-origin: top;
-          transform-origin: top;
+  transform: skewX(-45deg);
+  transform-origin: top;
   background-color: lightgrey;
 }
-
 body .grid-container .item3 .chart #effect-example-2 tbody td:after {
-  content: '';
+  content: "";
   position: absolute;
   top: -4px;
   right: -10px;
   width: 10px;
   height: 100%;
-  -webkit-transform: skewY(-45deg);
-          transform: skewY(-45deg);
-  -webkit-transform-origin: top;
-          transform-origin: top;
+  transform: skewY(-45deg);
+  transform-origin: top;
   background-color: lightgrey;
 }
-
 body .grid-container .item3 .chart .data {
   color: black;
   font-size: 1.3vw;
   font-weight: bold;
   margin-top: 1vh;
-}
-
-@-webkit-keyframes fcolor {
-  0% {
-    color: #ff6161;
-  }
-  50% {
-    color: #ff0000;
-  }
-  100% {
-    color: #ff6161;
-  }
 }
 
 @keyframes fcolor {
@@ -248,19 +200,6 @@ body .grid-container .item3 .chart .data {
     color: #ff6161;
   }
 }
-
-@-webkit-keyframes fcolor2 {
-  0% {
-    color: #5db85e;
-  }
-  50% {
-    color: #3f7540;
-  }
-  100% {
-    color: #5db85e;
-  }
-}
-
 @keyframes fcolor2 {
   0% {
     color: #5db85e;
@@ -272,22 +211,18 @@ body .grid-container .item3 .chart .data {
     color: #5db85e;
   }
 }
-
 #login-body {
   background-color: #1bbc9d;
 }
-
 #login-body .line {
   position: absolute;
   top: 65%;
   left: 0;
   width: 100%;
   height: 1px;
-  background-color: #5c5c5c;
-  -webkit-box-shadow: 1px 0px 4px rgba(0, 0, 0, 0.5);
-          box-shadow: 1px 0px 4px rgba(0, 0, 0, 0.5);
+  background-color: rgb(92, 92, 92);
+  box-shadow: 1px 0px 4px rgba(0, 0, 0, 0.5);
 }
-
 #login-body .login-container {
   background: #eceeee;
   border-radius: 6px;
@@ -297,81 +232,59 @@ body .grid-container .item3 .chart .data {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  -webkit-box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
 }
-
 #login-body .login-container .login-text {
   margin-top: 40px;
   margin-bottom: 10px;
   padding-left: 20px;
   text-align: center;
   letter-spacing: 20px;
-  color: #2e2e2e;
+  color: rgb(46, 46, 46);
 }
-
 #login-body .login-container .userName {
   height: 50px;
   margin: 35px 0 0 50px;
 }
-
 #login-body .login-container .userName .imgUser {
   margin: 7px 0 0 7px;
   position: absolute;
 }
-
 #login-body .login-container .userName #user_name {
   border: 1px solid #a1a3a3;
   border-radius: 4px;
-  -webkit-box-shadow: 0 1px #fff;
-          box-shadow: 0 1px #fff;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-shadow: 0 1px #fff;
+  box-sizing: border-box;
   color: #696969;
   height: 40px;
-  -webkit-transition: -webkit-box-shadow 0.3s;
-  transition: -webkit-box-shadow 0.3s;
   transition: box-shadow 0.3s;
-  transition: box-shadow 0.3s, -webkit-box-shadow 0.3s;
   width: 300px;
   padding-left: 40px;
 }
-
 #login-body .login-container .userPass {
   height: 50px;
   margin: 35px 0 0 50px;
 }
-
 #login-body .login-container .userPass .imgPass {
   margin: 7px 0 0 7px;
   position: absolute;
 }
-
 #login-body .login-container .userPass #user_pass {
   border: 1px solid #a1a3a3;
   border-radius: 4px;
-  -webkit-box-shadow: 0 1px #fff;
-          box-shadow: 0 1px #fff;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-shadow: 0 1px #fff;
+  box-sizing: border-box;
   color: #696969;
   height: 40px;
-  -webkit-transition: -webkit-box-shadow 0.3s;
-  transition: -webkit-box-shadow 0.3s;
   transition: box-shadow 0.3s;
-  transition: box-shadow 0.3s, -webkit-box-shadow 0.3s;
   width: 300px;
   padding-left: 40px;
 }
-
 #login-body .login-container #user_name:focus, #login-body .login-container #user_pass:focus {
-  -webkit-box-shadow: 0 0 4px 1px rgba(55, 166, 155, 0.3);
-          box-shadow: 0 0 4px 1px rgba(55, 166, 155, 0.3);
+  box-shadow: 0 0 4px 1px rgba(55, 166, 155, 0.3);
   outline: 0;
 }
-
 #login-body .login-container #loginBtn_submit {
   width: 300px;
   height: 35px;
@@ -391,42 +304,34 @@ body .grid-container .item3 .chart .data {
   cursor: pointer;
   border: none;
   background-color: #37a69b;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#3db0a6), to(#3111));
-  background-image: linear-gradient(top, #3db0a6, #3111);
+  background-image: linear-gradient(top, #3db0a6, rgba(51, 17, 17, 0.0666666667));
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
 }
-
 #login-body .login-container #loginBtn_submit:hover {
   width: 310px;
   height: 41px;
   font-size: 19px;
   margin: 44px 0 0 45px;
 }
-
 #login-body .login-container #loginBtn_submit:active {
   width: 300px;
   height: 35px;
   font-size: 16px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
   margin: 53px 0 0 50px;
 }
-
 #login-body .shadow {
   position: absolute;
   bottom: 7vh;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   background: #000;
   border-radius: 12px 12px 4px 4px;
-  -webkit-box-shadow: 0 0 20px 8px #000;
-          box-shadow: 0 0 20px 8px #000;
+  box-shadow: 0 0 20px 8px #000;
   height: 12px;
   margin: 130px auto;
   opacity: 0.2;
@@ -459,7 +364,6 @@ body .grid-container .item3 .chart .data {
     bottom: -55px;
   }
 }
-
 @media only screen and (min-width: 1025px) and (max-width: 1280px) {
   #login-body .login-container {
     height: 370px;
@@ -486,7 +390,6 @@ body .grid-container .item3 .chart .data {
     bottom: -55px;
   }
 }
-
 #sideBar {
   z-index: 95;
   position: fixed;
@@ -497,44 +400,32 @@ body .grid-container .item3 .chart .data {
   height: 100vh;
   overflow: hidden;
   padding: 10px 10px;
-  -webkit-box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.5);
-          box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.5);
-  -webkit-transition: all 0.4s ease;
+  box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.5);
   transition: all 0.4s ease;
 }
-
 #sideBar:hover {
   width: 300px;
 }
-
 #sideBar .topTitle {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   height: 70px;
   width: 100%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 #sideBar .topTitle .imgUser {
   margin: 0 10px 0 5px;
   height: 50px;
   width: 50px;
 }
-
 #sideBar .topTitle .topText {
   margin-left: 10px;
   font-size: 1.7em;
   font-weight: 700;
   letter-spacing: 8px;
 }
-
 #sideBar .contentContainer ul {
   margin-top: 70px;
 }
-
 #sideBar .contentContainer ul li {
   position: relative;
   list-style: none;
@@ -544,29 +435,20 @@ body .grid-container .item3 .chart .data {
   margin-bottom: 10px;
   cursor: pointer;
 }
-
 #sideBar .contentContainer ul li .dDown {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-transition: all 0.4s ease;
+  align-items: center;
   transition: all 0.4s ease;
   border-radius: 12px;
   height: 60px;
   width: auto;
 }
-
 #sideBar .contentContainer ul li .dDown:hover {
   background-color: #3cecc9;
 }
-
 #sideBar .contentContainer ul li .dDown:hover .dDownContent {
   display: block;
 }
-
 #sideBar .contentContainer ul li .dDown .repImg {
   display: block;
   padding: 10px 10px;
@@ -574,7 +456,6 @@ body .grid-container .item3 .chart .data {
   min-width: 40px;
   border-radius: 12px;
 }
-
 #sideBar .contentContainer ul li .dDown .dropBtn {
   display: block;
   position: relative;
@@ -584,13 +465,11 @@ body .grid-container .item3 .chart .data {
   margin-left: 10px;
   min-width: 135px;
 }
-
 #sideBar .contentContainer ul li .dDown .arrow {
   height: 15px;
   width: 15px;
   padding: 15px 15px 15px 10px;
 }
-
 #sideBar .contentContainer ul li .dDown .dDownContent {
   display: none;
   position: absolute;
@@ -599,17 +478,14 @@ body .grid-container .item3 .chart .data {
   font-size: 18px;
   line-height: 60px;
   width: 260px;
-  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   background-color: #36dab9;
   z-index: 1;
   border-radius: 10px;
 }
-
 #sideBar .contentContainer ul li .dDown .dDownContent .activeReport {
   background-color: #3cecc9;
 }
-
 #sideBar .contentContainer ul li .dDown .dDownContent a {
   float: none;
   color: black;
@@ -619,26 +495,18 @@ body .grid-container .item3 .chart .data {
   text-align: left;
   border-radius: 10px;
 }
-
 #sideBar .contentContainer ul li a {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   text-decoration: none;
-  -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   border-radius: 12px;
   height: 60px;
   width: auto;
 }
-
 #sideBar .contentContainer ul li a:hover {
   background-color: #3cecc9;
 }
-
 #sideBar .contentContainer ul li a img {
   padding: 0 10px;
   height: 40px;
@@ -646,18 +514,15 @@ body .grid-container .item3 .chart .data {
   line-height: 50px;
   border-radius: 12px;
 }
-
 #sideBar .contentContainer ul li a .nav-name {
   font-size: 20px;
   color: black;
   margin-left: 10px;
   min-width: 300px;
 }
-
 #sideBar .contentContainer ul li .active {
   background-color: #3cecc9;
 }
-
 #sideBar .logOut {
   position: absolute;
   bottom: 30px;
@@ -665,7 +530,6 @@ body .grid-container .item3 .chart .data {
   width: 300px;
   padding: 0 10px;
 }
-
 #sideBar .logOut .btn-logOut {
   position: relative;
   list-style: none;
@@ -673,7 +537,6 @@ body .grid-container .item3 .chart .data {
   width: 100%;
   line-height: 60px;
 }
-
 #sideBar .logOut .btn-logOut li {
   position: relative;
   list-style: none;
@@ -682,26 +545,18 @@ body .grid-container .item3 .chart .data {
   line-height: 50px;
   margin-bottom: 10px;
 }
-
 #sideBar .logOut .btn-logOut a {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   text-decoration: none;
-  -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   border-radius: 12px;
   height: 60px;
   width: auto;
 }
-
 #sideBar .logOut .btn-logOut a:hover {
   background-color: #32bba0;
 }
-
 #sideBar .logOut .btn-logOut a img {
   padding: 0 10px;
   height: 40px;
@@ -709,7 +564,6 @@ body .grid-container .item3 .chart .data {
   line-height: 50px;
   border-radius: 12px;
 }
-
 #sideBar .logOut .btn-logOut a .lbl-logOut {
   font-size: 20px;
   color: black;
@@ -728,23 +582,17 @@ body .grid-container .item3 .chart .data {
     height: 100vh;
     overflow: hidden;
     padding: 10px 10px;
-    -webkit-box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.5);
-            box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.5);
-    -webkit-transition: all 0.4s ease;
+    box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.5);
     transition: all 0.4s ease;
   }
   #sideBar:hover {
     width: 300px;
   }
   #sideBar .topTitle {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     height: 70px;
     width: 100%;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    align-items: center;
   }
   #sideBar .topTitle .imgUser {
     margin: 0 10px 0 5px;
@@ -770,13 +618,8 @@ body .grid-container .item3 .chart .data {
     cursor: pointer;
   }
   #sideBar .contentContainer ul li .dDown {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-transition: all 0.4s ease;
+    align-items: center;
     transition: all 0.4s ease;
     border-radius: 12px;
     height: 60px;
@@ -817,8 +660,7 @@ body .grid-container .item3 .chart .data {
     font-size: 18px;
     line-height: 60px;
     width: 260px;
-    -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     background-color: #36dab9;
     z-index: 1;
     border-radius: 10px;
@@ -836,14 +678,9 @@ body .grid-container .item3 .chart .data {
     border-radius: 10px;
   }
   #sideBar .contentContainer ul li a {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    align-items: center;
     text-decoration: none;
-    -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease;
     border-radius: 12px;
     height: 60px;
@@ -891,14 +728,9 @@ body .grid-container .item3 .chart .data {
     margin-bottom: 10px;
   }
   #sideBar .logOut .btn-logOut a {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    align-items: center;
     text-decoration: none;
-    -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease;
     border-radius: 12px;
     height: 60px;
@@ -921,24 +753,21 @@ body .grid-container .item3 .chart .data {
     min-width: 300px;
   }
 }
-
 #db-body {
   margin: 0;
   padding: 0;
   width: calc(100% - 80px);
   margin-left: 80px;
-  background-color: #e9e5e5;
+  background-color: rgb(233, 229, 229);
   width: calc(100vw - 80px);
   height: 100vh;
   font-family: Arial, "Helvetica", sans-serif;
 }
-
 #db-body .db-container {
   width: 100%;
   height: 100%;
   background-color: #f1f3f8;
 }
-
 #db-body .db-container .pageTitle {
   width: 100%;
   height: 10vh;
@@ -948,48 +777,40 @@ body .grid-container .item3 .chart .data {
   font-weight: 600;
   letter-spacing: 10px;
 }
-
 #db-body .db-container .weekly {
   width: 100%;
   height: 45vh;
   overflow: hidden;
 }
-
 #db-body .db-container .weekly .mInside {
   width: calc(100% - 40px);
   height: calc(100% - 30px);
   background-color: #ffffff;
   margin: 0 20px;
   border-radius: 30px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-
 #db-body .db-container .weekly .mInside #weeklyChart {
   max-width: 100%;
   max-height: 100%;
   padding: 0 50px;
 }
-
 #db-body .db-container .daily {
   width: 100%;
   height: 45vh;
   overflow: hidden;
 }
-
 #db-body .db-container .daily .dInside {
   position: relative;
-  width: calc(69vw);
+  width: 69vw;
   height: calc(100% - 30px);
   background-color: #ffffff;
   margin: 0px 20px 10px 20px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: inline-block;
   overflow: hidden;
   border-radius: 30px;
 }
-
 #db-body .db-container .daily .dInside .diTitle {
   position: absolute;
   width: 100%;
@@ -1000,9 +821,8 @@ body .grid-container .item3 .chart .data {
   font-weight: 700;
   letter-spacing: 5px;
 }
-
 #db-body .db-container .daily .dInside .dEmp {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1/1;
   width: calc(22vw - 105px);
   background-color: #ffffff;
   margin-left: 10px;
@@ -1011,7 +831,6 @@ body .grid-container .item3 .chart .data {
   overflow: hidden;
   margin-top: 60px;
 }
-
 #db-body .db-container .daily .dInside .dEmp .dTitle {
   width: 100%;
   height: 50px;
@@ -1020,28 +839,19 @@ body .grid-container .item3 .chart .data {
   font-size: 25px;
   font-weight: 700;
 }
-
 #db-body .db-container .daily .dInside .dEmp .totalPercent {
   width: 100%;
   height: calc(100% - 50px);
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   position: relative;
 }
-
 #db-body .db-container .daily .dInside .dEmp .totalPercent svg {
   position: relative;
   width: 90%;
   height: 90%;
 }
-
 #db-body .db-container .daily .dInside .dEmp .totalPercent svg circle {
   fill: none;
   stroke-width: 30;
@@ -1049,39 +859,31 @@ body .grid-container .item3 .chart .data {
   stroke-dasharray: 630;
   stroke-dashoffset: 630;
 }
-
 #db-body .db-container .daily .dInside .dEmp .totalPercent svg circle:nth-child(1) {
   stroke-dashoffset: 0;
   stroke: #f3f3f3;
 }
-
 #db-body .db-container .daily .dInside .dEmp .totalPercent svg circle:nth-child(2) {
   stroke: #09CA78;
-  -webkit-animation: progBar1 600ms linear forwards;
-          animation: progBar1 600ms linear forwards;
+  animation: progBar1 600ms linear forwards;
 }
-
 #db-body .db-container .daily .dInside .dEmp .totalPercent .percentNumber {
   position: absolute;
   left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   font-size: 35px;
 }
-
 #db-body .db-container .daily .dTotal {
-  width: calc(22vw);
+  width: 22vw;
   height: 93%;
   background-color: #ffffff;
   margin: 10px 20px;
   border-radius: 30px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: inline-block;
   overflow: hidden;
 }
-
 #db-body .db-container .daily .dTotal .dTitle {
   width: 100%;
   height: 50px;
@@ -1090,28 +892,19 @@ body .grid-container .item3 .chart .data {
   font-size: 35px;
   font-weight: 700;
 }
-
 #db-body .db-container .daily .dTotal .totalPercent {
   width: 100%;
   height: calc(100% - 50px);
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   position: relative;
 }
-
 #db-body .db-container .daily .dTotal .totalPercent svg {
   position: relative;
   width: 90%;
   height: 90%;
 }
-
 #db-body .db-container .daily .dTotal .totalPercent svg circle {
   fill: none;
   stroke-width: 40;
@@ -1119,31 +912,20 @@ body .grid-container .item3 .chart .data {
   stroke-dasharray: 760;
   stroke-dashoffset: 760;
 }
-
 #db-body .db-container .daily .dTotal .totalPercent svg circle:nth-child(1) {
   stroke-dashoffset: 0;
   stroke: #f3f3f3;
 }
-
 #db-body .db-container .daily .dTotal .totalPercent svg circle:nth-child(2) {
   stroke: #09CA78;
-  -webkit-animation: progBar2 600ms linear forwards;
-          animation: progBar2 600ms linear forwards;
+  animation: progBar2 600ms linear forwards;
 }
-
 #db-body .db-container .daily .dTotal .totalPercent .percentNumber {
   position: absolute;
   left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   font-size: 35px;
-}
-
-@-webkit-keyframes progBar2 {
-  0% {
-    stroke-dashoffset: 760;
-  }
 }
 
 @keyframes progBar2 {
@@ -1151,19 +933,11 @@ body .grid-container .item3 .chart .data {
     stroke-dashoffset: 760;
   }
 }
-
-@-webkit-keyframes progBar1 {
-  0% {
-    stroke-dashoffset: 630;
-  }
-}
-
 @keyframes progBar1 {
   0% {
     stroke-dashoffset: 630;
   }
 }
-
 @media only screen and (min-width: 1601px) and (max-width: 1680px) {
   #db-body .db-container .weekly {
     height: 50vh;
@@ -1175,7 +949,7 @@ body .grid-container .item3 .chart .data {
     height: 38vh;
   }
   #db-body .db-container .daily .dInside {
-    width: calc(69vw);
+    width: 69vw;
     height: 95%;
   }
   #db-body .db-container .daily .dInside .dEmp {
@@ -1205,7 +979,7 @@ body .grid-container .item3 .chart .data {
   }
   #db-body .db-container .daily .dTotal {
     height: 95%;
-    width: calc(21vw);
+    width: 21vw;
   }
   #db-body .db-container .daily .dTotal .totalPercent svg circle {
     stroke-width: 40;
@@ -1216,19 +990,9 @@ body .grid-container .item3 .chart .data {
     font-size: 28px;
     top: 50%;
   }
-  @-webkit-keyframes progBar2 {
-    0% {
-      stroke-dashoffset: 760;
-    }
-  }
   @keyframes progBar2 {
     0% {
       stroke-dashoffset: 760;
-    }
-  }
-  @-webkit-keyframes progBar1 {
-    0% {
-      stroke-dashoffset: 630;
     }
   }
   @keyframes progBar1 {
@@ -1237,7 +1001,6 @@ body .grid-container .item3 .chart .data {
     }
   }
 }
-
 @media only screen and (min-width: 1536px) and (max-width: 1600px) {
   #db-body .db-container .weekly {
     height: 45vh;
@@ -1249,7 +1012,7 @@ body .grid-container .item3 .chart .data {
     height: 40vh;
   }
   #db-body .db-container .daily .dInside {
-    width: calc(68vw);
+    width: 68vw;
     height: 95%;
   }
   #db-body .db-container .daily .dInside .dEmp {
@@ -1279,7 +1042,7 @@ body .grid-container .item3 .chart .data {
   }
   #db-body .db-container .daily .dTotal {
     height: 95%;
-    width: calc(21vw);
+    width: 21vw;
   }
   #db-body .db-container .daily .dTotal .totalPercent svg circle {
     stroke-width: 30;
@@ -1290,19 +1053,9 @@ body .grid-container .item3 .chart .data {
     font-size: 28px;
     top: 50%;
   }
-  @-webkit-keyframes progBar2 {
-    0% {
-      stroke-dashoffset: 510;
-    }
-  }
   @keyframes progBar2 {
     0% {
       stroke-dashoffset: 510;
-    }
-  }
-  @-webkit-keyframes progBar1 {
-    0% {
-      stroke-dashoffset: 440;
     }
   }
   @keyframes progBar1 {
@@ -1311,7 +1064,6 @@ body .grid-container .item3 .chart .data {
     }
   }
 }
-
 @media only screen and (min-width: 1367px) and (max-width: 1440px) {
   #db-body .db-container .weekly {
     height: 43vh;
@@ -1353,7 +1105,7 @@ body .grid-container .item3 .chart .data {
   }
   #db-body .db-container .daily .dTotal {
     height: 95%;
-    width: calc(21vw);
+    width: 21vw;
   }
   #db-body .db-container .daily .dTotal .totalPercent svg circle {
     stroke-width: 35;
@@ -1364,19 +1116,9 @@ body .grid-container .item3 .chart .data {
     font-size: 28px;
     top: 50%;
   }
-  @-webkit-keyframes progBar2 {
-    0% {
-      stroke-dashoffset: 520;
-    }
-  }
   @keyframes progBar2 {
     0% {
       stroke-dashoffset: 520;
-    }
-  }
-  @-webkit-keyframes progBar1 {
-    0% {
-      stroke-dashoffset: 440;
     }
   }
   @keyframes progBar1 {
@@ -1385,7 +1127,6 @@ body .grid-container .item3 .chart .data {
     }
   }
 }
-
 @media only screen and (min-width: 1281px) and (max-width: 1366px) {
   #db-body .db-container .weekly {
     height: 43vh;
@@ -1424,7 +1165,7 @@ body .grid-container .item3 .chart .data {
   }
   #db-body .db-container .daily .dTotal {
     height: 95%;
-    width: calc(24vw);
+    width: 24vw;
   }
   #db-body .db-container .daily .dTotal .totalPercent svg circle {
     stroke-width: 35;
@@ -1435,19 +1176,9 @@ body .grid-container .item3 .chart .data {
     font-size: 28px;
     top: 50%;
   }
-  @-webkit-keyframes progBar2 {
-    0% {
-      stroke-dashoffset: 520;
-    }
-  }
   @keyframes progBar2 {
     0% {
       stroke-dashoffset: 520;
-    }
-  }
-  @-webkit-keyframes progBar1 {
-    0% {
-      stroke-dashoffset: 440;
     }
   }
   @keyframes progBar1 {
@@ -1456,7 +1187,6 @@ body .grid-container .item3 .chart .data {
     }
   }
 }
-
 @media only screen and (min-width: 1025px) and (max-width: 1280px) {
   #db-body .db-container .weekly {
     height: 45vh;
@@ -1508,19 +1238,9 @@ body .grid-container .item3 .chart .data {
     font-size: 28px;
     top: 50%;
   }
-  @-webkit-keyframes progBar2 {
-    0% {
-      stroke-dashoffset: 440;
-    }
-  }
   @keyframes progBar2 {
     0% {
       stroke-dashoffset: 440;
-    }
-  }
-  @-webkit-keyframes progBar1 {
-    0% {
-      stroke-dashoffset: 410;
     }
   }
   @keyframes progBar1 {
@@ -1529,63 +1249,50 @@ body .grid-container .item3 .chart .data {
     }
   }
 }
-
 #export-body {
   width: calc(100% - 80px);
   margin-left: 80px;
   background-color: #F7F7F7;
 }
-
 #export-body .exportTitle {
-  color: #242424;
+  color: rgb(36, 36, 36);
   text-align: center;
   font-size: 2.5em;
   padding-top: 20px;
 }
-
 #export-body .export-container {
   padding-top: 10px;
   height: 85%;
 }
-
 #export-body .export-container #search-container {
   height: 35px;
   margin-top: 20px;
   text-align: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   color: black;
 }
-
 #export-body .export-container #search-container span {
   display: inline;
   margin: 0 20px;
 }
-
 #export-body .export-container #search-container input {
   width: 180px;
 }
-
 #export-body .export-container #search-container .btnSearchBox {
   margin: auto;
   position: relative;
   max-width: 500px;
   min-width: 150px;
-  -webkit-box-flex: 20%;
-      -ms-flex: 20%;
-          flex: 20%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  flex: 20%;
+  box-sizing: border-box;
 }
-
 #export-body .export-container #search-container .btnSearchBox #btnSearch {
   width: 500px;
   height: 35px;
   position: relative;
   background: rgba(85, 85, 85, 0.27);
   text-transform: uppercase;
-  color: #242424;
+  color: rgb(36, 36, 36);
   font-weight: 700;
   letter-spacing: 5px;
   border: none;
@@ -1595,14 +1302,11 @@ body .grid-container .item3 .chart .data {
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   cursor: pointer;
 }
-
 #export-body .export-container #search-container .btnSearchBox .border {
   position: absolute;
   background: none;
-  -webkit-transition: all .5s ease-in-out;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
-
 #export-body .export-container #search-container .btnSearchBox .border:nth-of-type(1) {
   top: 10px;
   left: 0;
@@ -1610,7 +1314,6 @@ body .grid-container .item3 .chart .data {
   height: 0;
   border-top: 2px solid #000;
 }
-
 #export-body .export-container #search-container .btnSearchBox .border:nth-of-type(2) {
   top: 10px;
   left: 500px;
@@ -1618,7 +1321,6 @@ body .grid-container .item3 .chart .data {
   height: 0;
   border-right: 2px solid #000;
 }
-
 #export-body .export-container #search-container .btnSearchBox .border:nth-of-type(3) {
   bottom: 0;
   right: 0px;
@@ -1626,7 +1328,6 @@ body .grid-container .item3 .chart .data {
   height: 0;
   border-bottom: 2px solid #000;
 }
-
 #export-body .export-container #search-container .btnSearchBox .border:nth-of-type(4) {
   bottom: 0;
   left: 0px;
@@ -1634,23 +1335,18 @@ body .grid-container .item3 .chart .data {
   height: 0;
   border-left: 2px solid #000;
 }
-
 #export-body .export-container #search-container .btnSearchBox:hover .border:nth-of-type(1) {
   width: 500px;
 }
-
 #export-body .export-container #search-container .btnSearchBox:hover .border:nth-of-type(2) {
   height: 35px;
 }
-
 #export-body .export-container #search-container .btnSearchBox:hover .border:nth-of-type(3) {
   width: 500px;
 }
-
 #export-body .export-container #search-container .btnSearchBox:hover .border:nth-of-type(4) {
   height: 35px;
 }
-
 #export-body .export-container .exportTable {
   position: relative;
   top: 50px;
@@ -1660,76 +1356,61 @@ body .grid-container .item3 .chart .data {
   overflow: auto;
   font-size: 20px;
   border: 2px solid #dddddd;
-  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-          box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   border-bottom: 4px solid #009879;
   border-radius: 12px;
   overflow-x: hidden;
 }
-
 #export-body .export-container .exportTable table {
   margin: auto;
   border-collapse: collapse;
   width: 100%;
   max-height: 100%;
 }
-
 #export-body .export-container .exportTable table thead {
   width: 100%;
 }
-
 #export-body .export-container .exportTable table thead tr {
   background-color: #009879;
   color: #fff;
 }
-
 #export-body .export-container .exportTable table thead th {
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   font-weight: bold;
   background-color: #009879;
 }
-
 #export-body .export-container .exportTable table th, #export-body .export-container .exportTable table td {
   padding: 12px 15px;
 }
-
 #export-body .export-container .exportTable table tbody tr {
   border-bottom: 2px solid #dddddd;
   font-weight: 100;
   text-align: center;
   background-color: #e9e5e5;
 }
-
 #export-body .export-container .exportTable table tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
-
 #export-body .export-container #exportBtn {
   margin-top: 60px;
   width: 100%;
 }
-
 #export-body .export-container #exportBtn .btnExportBox {
   margin: auto;
   position: relative;
   max-width: 500px;
   min-width: 150px;
-  -webkit-box-flex: 20%;
-      -ms-flex: 20%;
-          flex: 20%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  flex: 20%;
+  box-sizing: border-box;
 }
-
 #export-body .export-container #exportBtn .btnExportBox #btnExport {
   width: 500px;
   height: 35px;
   position: relative;
   background: rgba(85, 85, 85, 0.27);
   text-transform: uppercase;
-  color: #242424;
+  color: rgb(36, 36, 36);
   font-weight: 700;
   letter-spacing: 5px;
   border: none;
@@ -1739,14 +1420,11 @@ body .grid-container .item3 .chart .data {
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   cursor: pointer;
 }
-
 #export-body .export-container #exportBtn .btnExportBox .border {
   position: absolute;
   background: none;
-  -webkit-transition: all .5s ease-in-out;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
-
 #export-body .export-container #exportBtn .btnExportBox .border:nth-of-type(1) {
   top: 10px;
   left: 0;
@@ -1754,7 +1432,6 @@ body .grid-container .item3 .chart .data {
   height: 0;
   border-top: 2px solid #000;
 }
-
 #export-body .export-container #exportBtn .btnExportBox .border:nth-of-type(2) {
   top: 10px;
   left: 500px;
@@ -1762,7 +1439,6 @@ body .grid-container .item3 .chart .data {
   height: 0;
   border-right: 2px solid #000;
 }
-
 #export-body .export-container #exportBtn .btnExportBox .border:nth-of-type(3) {
   bottom: 0;
   right: 0px;
@@ -1770,7 +1446,6 @@ body .grid-container .item3 .chart .data {
   height: 0;
   border-bottom: 2px solid #000;
 }
-
 #export-body .export-container #exportBtn .btnExportBox .border:nth-of-type(4) {
   bottom: 0;
   left: 0px;
@@ -1778,23 +1453,18 @@ body .grid-container .item3 .chart .data {
   height: 0;
   border-left: 2px solid #000;
 }
-
 #export-body .export-container #exportBtn .btnExportBox:hover .border:nth-of-type(1) {
   width: 500px;
 }
-
 #export-body .export-container #exportBtn .btnExportBox:hover .border:nth-of-type(2) {
   height: 35px;
 }
-
 #export-body .export-container #exportBtn .btnExportBox:hover .border:nth-of-type(3) {
   width: 500px;
 }
-
 #export-body .export-container #exportBtn .btnExportBox:hover .border:nth-of-type(4) {
   height: 35px;
 }
-
 #export-body .export-container #errorMsg {
   padding-top: 50px;
   text-align: center;
@@ -1807,8 +1477,7 @@ body .grid-container .item3 .chart .data {
 ::-webkit-scrollbar-track {
   margin-top: 50px;
   border-radius: 8px;
-  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-          box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -1832,7 +1501,6 @@ body .grid-container .item3 .chart .data {
     margin-top: 60px;
   }
 }
-
 @media only screen and (min-width: 1536px) and (max-width: 1600px) {
   #export-body .exportTitle {
     padding-top: 10px;
@@ -1849,7 +1517,6 @@ body .grid-container .item3 .chart .data {
     margin-top: 60px;
   }
 }
-
 @media only screen and (min-width: 1401px) and (max-width: 1440px) {
   #export-body .exportTitle {
     padding-top: 10px;
@@ -1866,7 +1533,6 @@ body .grid-container .item3 .chart .data {
     margin-top: 60px;
   }
 }
-
 @media only screen and (min-width: 1367px) and (max-width: 1400px) {
   #export-body .exportTitle {
     padding-top: 10px;
@@ -1883,7 +1549,6 @@ body .grid-container .item3 .chart .data {
     margin-top: 60px;
   }
 }
-
 @media only screen and (min-width: 1281px) and (max-width: 1366px) {
   #export-body .exportTitle {
     padding-top: 10px;
@@ -1901,7 +1566,6 @@ body .grid-container .item3 .chart .data {
     margin-top: 60px;
   }
 }
-
 @media only screen and (max-device-width: 1280px) {
   #export-body .exportTitle {
     padding-top: 10px;
@@ -1918,41 +1582,34 @@ body .grid-container .item3 .chart .data {
     margin-top: 55px;
   }
 }
-
 #emp-body {
   margin-left: 80px;
-  background-color: #f7f7f7;
+  background-color: rgb(247, 247, 247);
   overflow: hidden;
   height: 100vh;
   width: calc(100% - 80px);
 }
-
 #emp-body .emp-container {
   height: 100%;
   width: 100%;
 }
-
 #emp-body .emp-container .topPage {
   position: relative;
   height: 15vh;
   width: 100%;
 }
-
 #emp-body .emp-container .topPage .empTitle {
   text-align: center;
   padding-top: 20px;
 }
-
 #emp-body .emp-container .topPage .toolBar {
   position: absolute;
   height: 40px;
   width: 80vw;
   bottom: 10px;
   left: 50%;
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
 }
-
 #emp-body .emp-container .topPage .toolBar .searchBox {
   margin-left: 100px;
   padding-left: 36px;
@@ -1962,7 +1619,6 @@ body .grid-container .item3 .chart .data {
   font-size: 16px;
   letter-spacing: 2px;
 }
-
 #emp-body .emp-container .topPage .toolBar #createUser {
   position: absolute;
   top: -5px;
@@ -1984,16 +1640,13 @@ body .grid-container .item3 .chart .data {
   cursor: pointer;
   border: none;
   background-color: #37a69b;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#3db0a6), to(#3111));
-  background-image: linear-gradient(top, #3db0a6, #3111);
+  background-image: linear-gradient(top, #3db0a6, rgba(51, 17, 17, 0.0666666667));
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
 }
-
 #emp-body .emp-container .topPage .toolBar #createUser:hover {
   width: 256px;
   height: 42px;
@@ -2001,23 +1654,19 @@ body .grid-container .item3 .chart .data {
   right: 97px;
   font-size: 19px;
 }
-
 #emp-body .emp-container .topPage .toolBar #createUser:active {
   width: 250px;
   height: 40px;
   top: -3px;
   right: 100px;
   font-size: 19px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
 }
-
 #emp-body .emp-container .empTable-container {
   height: 85vh;
   width: 100%;
-  background-color: #f7f7f7;
+  background-color: rgb(247, 247, 247);
 }
-
 #emp-body .emp-container .empTable-container .table-container {
   position: relative;
   top: 10px;
@@ -2027,42 +1676,34 @@ body .grid-container .item3 .chart .data {
   overflow: auto;
   font-size: 20px;
   border: 2px solid #dddddd;
-  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-          box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   border-bottom: 4px solid #009879;
   border-radius: 12px;
   overflow-x: hidden;
 }
-
 #emp-body .emp-container .empTable-container .table-container table {
   margin: auto;
   border-collapse: collapse;
   width: 100%;
   max-height: 100%;
 }
-
 #emp-body .emp-container .empTable-container .table-container table thead {
   width: 100%;
 }
-
 #emp-body .emp-container .empTable-container .table-container table thead tr {
   background-color: #009879;
   color: #fff;
 }
-
 #emp-body .emp-container .empTable-container .table-container table thead tr th {
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   font-weight: bold;
   z-index: 50;
   background-color: #009879;
 }
-
 #emp-body .emp-container .empTable-container .table-container table th, #emp-body .emp-container .empTable-container .table-container table td {
   padding: 12px 15px;
 }
-
 #emp-body .emp-container .empTable-container .table-container table tbody tr {
   border-bottom: 2px solid #dddddd;
   font-size: 20px;
@@ -2070,16 +1711,13 @@ body .grid-container .item3 .chart .data {
   text-align: center;
   background-color: #e9e5e5;
 }
-
 #emp-body .emp-container .empTable-container .table-container table tbody tr:nth-of-type(odd) {
   background-color: #f3f3f3;
 }
-
 #emp-body .emp-container .empTable-container .table-container table tbody tr .actionTab {
   position: relative;
   width: 400px;
 }
-
 #emp-body .emp-container .empTable-container .table-container table tbody tr .actionTab .btnEdit {
   position: absolute;
   width: 110px;
@@ -2101,16 +1739,13 @@ body .grid-container .item3 .chart .data {
   cursor: pointer;
   border: none;
   background-color: #188FF7;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#1b8ff5), to(#3111));
-  background-image: linear-gradient(top, #1b8ff5, #3111);
+  background-image: linear-gradient(top, #1b8ff5, rgba(51, 17, 17, 0.0666666667));
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #1765aa, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #1765aa, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #1765aa, 0px 10px 5px #999;
 }
-
 #emp-body .emp-container .empTable-container .table-container table tbody tr .actionTab .btnEdit:hover {
   width: 112px;
   height: 25px;
@@ -2118,17 +1753,14 @@ body .grid-container .item3 .chart .data {
   left: 69px;
   font-size: 15px;
 }
-
 #emp-body .emp-container .empTable-container .table-container table tbody tr .actionTab .btnEdit:active {
   width: 110px;
   height: 23px;
   top: 7px;
   left: 70px;
   font-size: 14px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
 }
-
 #emp-body .emp-container .empTable-container .table-container table tbody tr .actionTab .btnDelete {
   position: absolute;
   width: 110px;
@@ -2150,16 +1782,13 @@ body .grid-container .item3 .chart .data {
   cursor: pointer;
   border: none;
   background-color: #E15963;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#e0565f), to(#3111));
-  background-image: linear-gradient(top, #e0565f, #3111);
+  background-image: linear-gradient(top, #e0565f, rgba(51, 17, 17, 0.0666666667));
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  -webkit-box-shadow: inset 0px 1px 0px #ec2a2a, 0px 5px 0px 0px #ac444b, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #ec2a2a, 0px 5px 0px 0px #ac444b, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #ec2a2a, 0px 5px 0px 0px #ac444b, 0px 10px 5px #999;
 }
-
 #emp-body .emp-container .empTable-container .table-container table tbody tr .actionTab .btnDelete:hover {
   width: 112px;
   height: 25px;
@@ -2167,17 +1796,14 @@ body .grid-container .item3 .chart .data {
   right: 69px;
   font-size: 15px;
 }
-
 #emp-body .emp-container .empTable-container .table-container table tbody tr .actionTab .btnDelete:active {
   width: 110px;
   height: 23px;
   top: 7px;
   right: 70px;
   font-size: 14px;
-  -webkit-box-shadow: inset 0px 1px 0px #ec2a2a, 0px 2px 0px 0px #ac444b, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #ec2a2a, 0px 2px 0px 0px #ac444b, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #ec2a2a, 0px 2px 0px 0px #ac444b, 0px 10px 5px #999;
 }
-
 #emp-body .emp-container #warning {
   position: absolute;
   width: 500px;
@@ -2185,29 +1811,23 @@ body .grid-container .item3 .chart .data {
   background-color: #e2e2e2;
   top: 50%;
   left: calc(50% + 40px);
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   z-index: 60;
-  border: solid 1px #313131;
-  -webkit-box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
-          box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
+  border: solid 1px rgb(49, 49, 49);
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
 }
-
 #emp-body .emp-container #warning .ques {
   margin-top: 30px;
   margin-left: 60px;
 }
-
 #emp-body .emp-container #warning .delDetails {
   margin-left: 60px;
 }
-
 #emp-body .emp-container #warning .btn-cont {
   position: relative;
   width: 100%;
   margin-top: 20px;
 }
-
 #emp-body .emp-container #warning .btn-cont .deleteRec {
   position: absolute;
   left: 55px;
@@ -2227,16 +1847,13 @@ body .grid-container .item3 .chart .data {
   cursor: pointer;
   border: none;
   background-color: #E15963;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#e0565f), to(#3111));
-  background-image: linear-gradient(top, #e0565f, #3111);
+  background-image: linear-gradient(top, #e0565f, rgba(51, 17, 17, 0.0666666667));
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  -webkit-box-shadow: inset 0px 1px 0px #ec2a2a, 0px 5px 0px 0px #ac444b, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #ec2a2a, 0px 5px 0px 0px #ac444b, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #ec2a2a, 0px 5px 0px 0px #ac444b, 0px 10px 5px #999;
 }
-
 #emp-body .emp-container #warning .btn-cont .deleteRec:hover {
   width: 154px;
   height: 50px;
@@ -2244,17 +1861,14 @@ body .grid-container .item3 .chart .data {
   left: 53px;
   font-size: 18px;
 }
-
 #emp-body .emp-container #warning .btn-cont .deleteRec:active {
   width: 150px;
   height: 48px;
   top: 0px;
   left: 55px;
   font-size: 16px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #ac444b, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #ac444b, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #ac444b, 0px 10px 5px #999;
 }
-
 #emp-body .emp-container #warning .btn-cont .cancelDelete {
   position: absolute;
   right: 55px;
@@ -2274,16 +1888,13 @@ body .grid-container .item3 .chart .data {
   cursor: pointer;
   border: none;
   background-color: #a5a5a5;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#a39c9c), to(#3111));
-  background-image: linear-gradient(top, #a39c9c, #3111);
+  background-image: linear-gradient(top, #a39c9c, rgba(51, 17, 17, 0.0666666667));
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  -webkit-box-shadow: inset 0px 1px 0px #e0e0e0, 0px 5px 0px 0px #797979, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #e0e0e0, 0px 5px 0px 0px #797979, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #e0e0e0, 0px 5px 0px 0px #797979, 0px 10px 5px #999;
 }
-
 #emp-body .emp-container #warning .btn-cont .cancelDelete:hover {
   width: 154px;
   height: 50px;
@@ -2291,17 +1902,14 @@ body .grid-container .item3 .chart .data {
   right: 53px;
   font-size: 18px;
 }
-
 #emp-body .emp-container #warning .btn-cont .cancelDelete:active {
   width: 150px;
   height: 48px;
   top: 0px;
   right: 55px;
   font-size: 16px;
-  -webkit-box-shadow: inset 0px 1px 0px #e0e0e0, 0px 2px 0px 0px #797979, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #e0e0e0, 0px 2px 0px 0px #797979, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #e0e0e0, 0px 2px 0px 0px #797979, 0px 10px 5px #999;
 }
-
 #emp-body .emp-container #dark-bg {
   position: absolute;
   top: 0;
@@ -2312,34 +1920,28 @@ body .grid-container .item3 .chart .data {
   visibility: hidden;
   z-index: 98;
 }
-
 #emp-body .emp-container #dark-bg .empModal {
   position: fixed;
   height: 42vh;
   width: 30vw;
   top: 50%;
   left: calc(50% + 40px);
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  background-color: #e4e4e4;
-  -webkit-box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
-          box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
+  transform: translate(-50%, -50%);
+  background-color: rgb(228, 228, 228);
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
   border-radius: 20px;
 }
-
 #emp-body .emp-container #dark-bg .empModal .frmEmployees {
   height: 90%;
   width: 90%;
   margin: 0 auto;
 }
-
 #emp-body .emp-container #dark-bg .empModal .frmEmployees #frmTitle {
   position: relative;
   height: 10%;
   text-align: center;
   margin: 10px 0;
 }
-
 #emp-body .emp-container #dark-bg .empModal .frmEmployees #frmTitle .txtTitle {
   position: absolute;
   font-size: 30px;
@@ -2347,22 +1949,18 @@ body .grid-container .item3 .chart .data {
   margin-left: 10px;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   font-weight: bold;
 }
-
 #emp-body .emp-container #dark-bg .empModal .frmEmployees .form-group {
   position: relative;
   margin-bottom: 30px;
 }
-
 #emp-body .emp-container #dark-bg .empModal .frmEmployees .form-group label {
   padding-left: 20px;
   font-size: 20px;
   line-height: 40px;
 }
-
 #emp-body .emp-container #dark-bg .empModal .frmEmployees .form-group input {
   position: absolute;
   height: 40px;
@@ -2371,7 +1969,6 @@ body .grid-container .item3 .chart .data {
   width: 54%;
   padding-left: 2%;
 }
-
 #emp-body .emp-container #dark-bg .empModal .frmEmployees .form-group select {
   position: absolute;
   right: 20px;
@@ -2380,13 +1977,11 @@ body .grid-container .item3 .chart .data {
   width: 57%;
   padding-left: 2%;
 }
-
 #emp-body .emp-container #dark-bg .empModal .frmEmployees .modal-btn {
   position: relative;
   width: 100%;
   height: 60px;
 }
-
 #emp-body .emp-container #dark-bg .empModal .frmEmployees .modal-btn #btnSave {
   position: absolute;
   left: 55px;
@@ -2406,16 +2001,13 @@ body .grid-container .item3 .chart .data {
   cursor: pointer;
   border: none;
   background-color: #37a69b;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#3db0a6), to(#3111));
-  background-image: linear-gradient(top, #3db0a6, #3111);
+  background-image: linear-gradient(top, #3db0a6, rgba(51, 17, 17, 0.0666666667));
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
 }
-
 #emp-body .emp-container #dark-bg .empModal .frmEmployees .modal-btn #btnSave:hover {
   width: 154px;
   height: 50px;
@@ -2423,17 +2015,14 @@ body .grid-container .item3 .chart .data {
   left: 53px;
   font-size: 18px;
 }
-
 #emp-body .emp-container #dark-bg .empModal .frmEmployees .modal-btn #btnSave:active {
   width: 150px;
   height: 48px;
   top: 0px;
   left: 55px;
   font-size: 16px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
 }
-
 #emp-body .emp-container #dark-bg .empModal .frmEmployees .modal-btn #btnCancel {
   position: absolute;
   right: 55px;
@@ -2453,16 +2042,13 @@ body .grid-container .item3 .chart .data {
   cursor: pointer;
   border: none;
   background-color: #E15963;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#e0565f), to(#3111));
-  background-image: linear-gradient(top, #e0565f, #3111);
+  background-image: linear-gradient(top, #e0565f, rgba(51, 17, 17, 0.0666666667));
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  -webkit-box-shadow: inset 0px 1px 0px #ec2a2a, 0px 5px 0px 0px #ac444b, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #ec2a2a, 0px 5px 0px 0px #ac444b, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #ec2a2a, 0px 5px 0px 0px #ac444b, 0px 10px 5px #999;
 }
-
 #emp-body .emp-container #dark-bg .empModal .frmEmployees .modal-btn #btnCancel:hover {
   width: 154px;
   height: 50px;
@@ -2470,15 +2056,13 @@ body .grid-container .item3 .chart .data {
   right: 53px;
   font-size: 18px;
 }
-
 #emp-body .emp-container #dark-bg .empModal .frmEmployees .modal-btn #btnCancel:active {
   width: 150px;
   height: 48px;
   top: 0px;
   right: 55px;
   font-size: 16px;
-  -webkit-box-shadow: inset 0px 1px 0px #ec2a2a, 0px 2px 0px 0px #ac444b, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #ec2a2a, 0px 2px 0px 0px #ac444b, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #ec2a2a, 0px 2px 0px 0px #ac444b, 0px 10px 5px #999;
 }
 
 #errorMsg {
@@ -2492,13 +2076,11 @@ body .grid-container .item3 .chart .data {
   height: 60px;
   width: 600px;
   left: calc(50% + 40px);
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
   text-align: center;
   border-radius: 20px;
   z-index: 99;
-  -webkit-animation: notif ease-out 3000ms;
-          animation: notif ease-out 3000ms;
+  animation: notif ease-out 3000ms;
   font-size: 25px;
   line-height: 60px;
   opacity: 0;
@@ -2510,13 +2092,11 @@ body .grid-container .item3 .chart .data {
   height: 60px;
   width: 600px;
   left: calc(50% + 40px);
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
   text-align: center;
   border-radius: 20px;
   z-index: 99;
-  -webkit-animation: notif ease-out 3000ms;
-          animation: notif ease-out 3000ms;
+  animation: notif ease-out 3000ms;
   background-color: #db555e;
   font-size: 25px;
   line-height: 60px;
@@ -2525,25 +2105,6 @@ body .grid-container .item3 .chart .data {
 
 #sbmtCreate, #sbmtEdit {
   opacity: 0;
-}
-
-@-webkit-keyframes notif {
-  0% {
-    top: 50px;
-    opacity: 0%;
-  }
-  30% {
-    top: 90px;
-    opacity: 99%;
-  }
-  80% {
-    top: 90px;
-    opacity: 99%;
-  }
-  100% {
-    top: 70px;
-    opacity: 0;
-  }
 }
 
 @keyframes notif {
@@ -2564,7 +2125,6 @@ body .grid-container .item3 .chart .data {
     opacity: 0;
   }
 }
-
 ::-webkit-scrollbar {
   width: 16px;
 }
@@ -2572,8 +2132,7 @@ body .grid-container .item3 .chart .data {
 ::-webkit-scrollbar-track {
   margin-top: 50px;
   border-radius: 8px;
-  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-          box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -2629,7 +2188,6 @@ body .grid-container .item3 .chart .data {
     margin-top: 40px;
   }
 }
-
 @media only screen and (min-width: 1536px) and (max-width: 1600px) {
   #emp-body .emp-container .topPage .empTitle {
     font-size: 25px;
@@ -2678,7 +2236,6 @@ body .grid-container .item3 .chart .data {
     margin-top: 40px;
   }
 }
-
 @media only screen and (min-width: 1401px) and (max-width: 1440px) {
   #emp-body .emp-container .topPage .empTitle {
     font-size: 25px;
@@ -2727,7 +2284,6 @@ body .grid-container .item3 .chart .data {
     margin-top: 40px;
   }
 }
-
 @media only screen and (min-width: 1367px) and (max-width: 1400px) {
   #emp-body .emp-container .topPage .empTitle {
     font-size: 25px;
@@ -2776,7 +2332,6 @@ body .grid-container .item3 .chart .data {
     margin-top: 40px;
   }
 }
-
 @media only screen and (min-width: 1281px) and (max-width: 1366px) {
   #emp-body .emp-container .topPage .empTitle {
     font-size: 25px;
@@ -2831,7 +2386,6 @@ body .grid-container .item3 .chart .data {
     margin-top: 40px;
   }
 }
-
 @media only screen and (min-width: 1025px) and (max-width: 1280px) {
   #emp-body .emp-container .topPage .empTitle {
     font-size: 25px;
@@ -2889,7 +2443,6 @@ body .grid-container .item3 .chart .data {
     margin-top: 40px;
   }
 }
-
 @media only screen and (max-device-width: 1024px) {
   #emp-body .emp-container .topPage .empTitle {
     font-size: 25px;
@@ -2939,7 +2492,6 @@ body .grid-container .item3 .chart .data {
     margin-top: 40px;
   }
 }
-
 @media only screen and (min-width: 1441px) and (max-width: 1600px) {
   body #head {
     font-size: 5rem;
@@ -2950,8 +2502,7 @@ body .grid-container .item3 .chart .data {
   body .grid-container {
     min-height: 75vh;
     height: 75vh;
-    -ms-grid-rows: 28% 20% 18% 18% 10%;
-        grid-template-rows: 28% 20% 18% 18% 10%;
+    grid-template-rows: 28% 20% 18% 18% 10%;
   }
   body .grid-container .item1 h2 {
     font-size: 70px;
@@ -2969,24 +2520,19 @@ body .grid-container .item3 .chart .data {
   }
   body .grid-container .item3 .empTable th {
     width: 25%;
-    color: 000;
+    color: 0;
     font-weight: 700;
     font-size: 25px;
   }
   body .grid-container .item3 .chart {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    justify-content: center;
     margin: 0;
     margin-top: 60px;
     padding: 0;
     height: 79%;
   }
 }
-
 @media only screen and (min-width: 1367px) and (max-width: 1440px) {
   body #head {
     font-size: 4rem;
@@ -2997,8 +2543,7 @@ body .grid-container .item3 .chart .data {
   body .grid-container {
     min-height: 75vh;
     height: 75vh;
-    -ms-grid-rows: 28% 20% 18% 18% 10%;
-        grid-template-rows: 28% 20% 18% 18% 10%;
+    grid-template-rows: 28% 20% 18% 18% 10%;
   }
   body .grid-container .item1 h2 {
     font-size: 70px;
@@ -3022,7 +2567,6 @@ body .grid-container .item3 .chart .data {
     height: 80%;
   }
 }
-
 @media only screen and (min-width: 1281px) and (max-width: 1366px) {
   body #head {
     font-size: 55px;
@@ -3033,8 +2577,7 @@ body .grid-container .item3 .chart .data {
   body .grid-container {
     min-height: 75vh;
     height: 75vh;
-    -ms-grid-rows: 28% 20% 18% 18% 10%;
-        grid-template-rows: 28% 20% 18% 18% 10%;
+    grid-template-rows: 28% 20% 18% 18% 10%;
   }
   body .grid-container .item1 h1 {
     font-size: 45px;
@@ -3061,7 +2604,6 @@ body .grid-container .item3 .chart .data {
     height: 70%;
   }
 }
-
 @media only screen and (min-width: 1025px) and (max-width: 1280px) {
   body #head {
     font-size: 50px;
@@ -3072,8 +2614,7 @@ body .grid-container .item3 .chart .data {
   body .grid-container {
     min-height: 75vh;
     height: 75vh;
-    -ms-grid-rows: 23% 20% 18% 18% 15%;
-        grid-template-rows: 23% 20% 18% 18% 15%;
+    grid-template-rows: 23% 20% 18% 18% 15%;
   }
   body .grid-container .item1 h1 {
     font-size: 35px;
@@ -3100,7 +2641,6 @@ body .grid-container .item3 .chart .data {
     height: 73%;
   }
 }
-
 @media only screen and (max-device-width: 1024px) {
   body #head {
     font-size: 45px;
@@ -3111,10 +2651,8 @@ body .grid-container .item3 .chart .data {
   body .grid-container {
     min-height: 75vh;
     height: 75vh;
-    -ms-grid-columns: 34% 34% 29%;
-        grid-template-columns: 34% 34% 29%;
-    -ms-grid-rows: 23% 20% 18% 18% 15%;
-        grid-template-rows: 23% 20% 18% 18% 15%;
+    grid-template-columns: 34% 34% 29%;
+    grid-template-rows: 23% 20% 18% 18% 15%;
   }
   body .grid-container .item1 h1 {
     font-size: 35px;
@@ -3142,29 +2680,24 @@ body .grid-container .item3 .chart .data {
     height: 69%;
   }
 }
-
 #logbookBody {
   margin-left: 80px;
-  background-color: #f7f7f7;
+  background-color: rgb(247, 247, 247);
   overflow: hidden;
   height: 100vh;
   width: calc(100% - 80px);
 }
-
 #logbookBody h1 {
   text-align: center;
   margin: 30px 0;
   font-size: 35px;
 }
-
 #logbookBody .lbkCon {
   padding: 0 100px;
 }
-
 #logbookBody .lbkCon .lbkToolBar {
   margin-bottom: 15px;
 }
-
 #logbookBody .lbkCon .lbkToolBar .lbkSearch {
   margin-left: 50px;
   padding-left: 16px;
@@ -3174,7 +2707,6 @@ body .grid-container .item3 .chart .data {
   font-size: 16px;
   letter-spacing: 2px;
 }
-
 #logbookBody .lbkCon .lbkToolBar .lbkAdd {
   float: right;
   margin-right: 50px;
@@ -3198,16 +2730,13 @@ body .grid-container .item3 .chart .data {
   cursor: pointer;
   border: none;
   background-color: #37a69b;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#3db0a6), to(#3111));
-  background-image: linear-gradient(top, #3db0a6, #3111);
+  background-image: linear-gradient(top, #3db0a6, rgba(51, 17, 17, 0.0666666667));
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
 }
-
 #logbookBody .lbkCon .lbkToolBar .lbkAdd:hover {
   width: 256px;
   height: 42px;
@@ -3215,56 +2744,45 @@ body .grid-container .item3 .chart .data {
   left: 3px;
   font-size: 19px;
 }
-
 #logbookBody .lbkCon .lbkToolBar .lbkAdd:active {
   width: 250px;
   height: 40px;
   top: 2px;
   left: 0;
   font-size: 19px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
 }
-
 #logbookBody .lbkCon .contentCon {
   width: 100%;
   z-index: 50;
 }
-
 #logbookBody .lbkCon .contentCon .lbkTableCon {
   position: relative;
   width: 100%;
   height: calc(100vh - 180px);
   border: 2px solid #dddddd;
-  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-          box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   border-bottom: 4px solid #009879;
   border-radius: 12px;
   font-size: 20px;
   overflow-x: hidden;
 }
-
 #logbookBody .lbkCon .contentCon .lbkTableCon .noRecord {
   position: absolute;
   top: 50px;
   left: 50%;
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
   font-size: 50px;
 }
-
 #logbookBody .lbkCon .contentCon .lbkTableCon .lbkTable {
   width: 100%;
   border-collapse: collapse;
   overflow-x: hidden;
 }
-
 #logbookBody .lbkCon .contentCon .lbkTableCon .lbkTable thead tr {
   color: #fff;
 }
-
 #logbookBody .lbkCon .contentCon .lbkTableCon .lbkTable thead tr th {
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   font-weight: bold;
@@ -3273,27 +2791,22 @@ body .grid-container .item3 .chart .data {
   background-color: #009879;
   padding: 12px 15px;
 }
-
 #logbookBody .lbkCon .contentCon .lbkTableCon .lbkTable tbody tr {
   border-bottom: 2px solid #dddddd;
   font-weight: 100;
   text-align: center;
   background-color: #e9e5e5;
 }
-
 #logbookBody .lbkCon .contentCon .lbkTableCon .lbkTable tbody tr:nth-of-type(odd) {
   background-color: #f3f3f3;
 }
-
 #logbookBody .lbkCon .contentCon .lbkTableCon .lbkTable tbody tr td {
   padding: 12px 15px;
 }
-
 #logbookBody .lbkCon .contentCon .lbkTableCon .lbkTable tbody tr .lgbkAction {
   position: relative;
   width: 400px;
 }
-
 #logbookBody .lbkCon .contentCon .lbkTableCon .lbkTable tbody tr .lgbkAction .lgbkEdit {
   position: absolute;
   width: 110px;
@@ -3315,16 +2828,13 @@ body .grid-container .item3 .chart .data {
   cursor: pointer;
   border: none;
   background-color: #188FF7;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#1b8ff5), to(#3111));
-  background-image: linear-gradient(top, #1b8ff5, #3111);
+  background-image: linear-gradient(top, #1b8ff5, rgba(51, 17, 17, 0.0666666667));
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #1765aa, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #1765aa, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #1765aa, 0px 10px 5px #999;
 }
-
 #logbookBody .lbkCon .contentCon .lbkTableCon .lbkTable tbody tr .lgbkAction .lgbkEdit:hover {
   width: 112px;
   height: 25px;
@@ -3332,17 +2842,14 @@ body .grid-container .item3 .chart .data {
   left: 69px;
   font-size: 15px;
 }
-
 #logbookBody .lbkCon .contentCon .lbkTableCon .lbkTable tbody tr .lgbkAction .lgbkEdit:active {
   width: 110px;
   height: 23px;
   top: 7px;
   left: 70px;
   font-size: 14px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
 }
-
 #logbookBody .lbkCon .contentCon .lbkTableCon .lbkTable tbody tr .lgbkAction .lgbkDelete {
   position: absolute;
   width: 110px;
@@ -3364,16 +2871,13 @@ body .grid-container .item3 .chart .data {
   cursor: pointer;
   border: none;
   background-color: #E15963;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#e0565f), to(#3111));
-  background-image: linear-gradient(top, #e0565f, #3111);
+  background-image: linear-gradient(top, #e0565f, rgba(51, 17, 17, 0.0666666667));
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  -webkit-box-shadow: inset 0px 1px 0px #ec2a2a, 0px 5px 0px 0px #ac444b, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #ec2a2a, 0px 5px 0px 0px #ac444b, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #ec2a2a, 0px 5px 0px 0px #ac444b, 0px 10px 5px #999;
 }
-
 #logbookBody .lbkCon .contentCon .lbkTableCon .lbkTable tbody tr .lgbkAction .lgbkDelete:hover {
   width: 112px;
   height: 25px;
@@ -3381,17 +2885,14 @@ body .grid-container .item3 .chart .data {
   right: 69px;
   font-size: 15px;
 }
-
 #logbookBody .lbkCon .contentCon .lbkTableCon .lbkTable tbody tr .lgbkAction .lgbkDelete:active {
   width: 110px;
   height: 23px;
   top: 7px;
   right: 70px;
   font-size: 14px;
-  -webkit-box-shadow: inset 0px 1px 0px #ec2a2a, 0px 2px 0px 0px #ac444b, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #ec2a2a, 0px 2px 0px 0px #ac444b, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #ec2a2a, 0px 2px 0px 0px #ac444b, 0px 10px 5px #999;
 }
-
 #logbookBody .lgbkBG {
   width: 100vw;
   height: 100vh;
@@ -3401,57 +2902,46 @@ body .grid-container .item3 .chart .data {
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 98;
 }
-
 #logbookBody .lgbkBG .lgbkModal {
   position: absolute;
   left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   width: 550px;
-  height: 350px;
-  background-color: #e4e4e4;
-  -webkit-box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
-          box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
+  height: auto;
+  background-color: rgb(228, 228, 228);
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
   border-radius: 20px;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm {
   height: calc(100% - 50px);
   margin-top: 25px;
   padding: 0 30px;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkFormTitle {
   margin: 0;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkFormTable {
   width: 100%;
   font-size: 20px;
   border-collapse: collapse;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkFormTable tr {
   width: 100%;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkFormTable tr td {
   height: 40px;
   width: 50%;
   padding: 10px 0;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkFormTable tr td:nth-child(1) {
   width: 40%;
   padding-left: 15px;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkFormTable tr td:nth-child(2) {
   width: 60%;
   padding-right: 15px;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkFormTable tr td:nth-child(2) input {
   height: 35px;
   width: 280px;
@@ -3460,7 +2950,6 @@ body .grid-container .item3 .chart .data {
   border-style: solid;
   padding: 0 10px;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkFormTable tr td:nth-child(2) select {
   height: 35px;
   width: 300px;
@@ -3469,7 +2958,6 @@ body .grid-container .item3 .chart .data {
   padding-left: 10px;
   background-color: white;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkFormTable tr td:nth-child(2) .suggList {
   background-color: #f0f0f0;
   position: absolute;
@@ -3486,11 +2974,9 @@ body .grid-container .item3 .chart .data {
   overflow-x: hidden;
   overflow-y: scroll;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkFormTable tr td:nth-child(2) .suggList::-webkit-scrollbar {
   display: none;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkFormTable tr td:nth-child(2) .suggList li {
   display: block;
   width: 100%;
@@ -3498,15 +2984,12 @@ body .grid-container .item3 .chart .data {
   line-height: 30px;
   font-size: 18px;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkFormTable tr td:nth-child(2) .suggList li:nth-child(1) {
   border-bottom: 1px solid black;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkFormTable tr td:nth-child(2) .suggList li:nth-child(2) {
   border-bottom: 1px solid black;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkFormTable tr td:nth-child(2) .suggList li a {
   display: block;
   width: 100%;
@@ -3515,23 +2998,22 @@ body .grid-container .item3 .chart .data {
   text-decoration: none;
   color: black;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkFormTable tr td:nth-child(2) .suggList li a:hover {
   background-color: #d6d6d6;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkModalBtn {
   position: relative;
   width: 100%;
   top: 20px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  grid-gap: 10px;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkModalBtn #lgbkAdd, #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkModalBtn #lgbkEdit {
   opacity: 0;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkModalBtn .lgbkSaveBtn {
-  position: absolute;
   left: 55px;
   width: 150px;
   height: 48px;
@@ -3549,16 +3031,13 @@ body .grid-container .item3 .chart .data {
   cursor: pointer;
   border: none;
   background-color: #37a69b;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#3db0a6), to(#3111));
-  background-image: linear-gradient(top, #3db0a6, #3111);
+  background-image: linear-gradient(top, #3db0a6, rgba(51, 17, 17, 0.0666666667));
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkModalBtn .lgbkSaveBtn:hover {
   width: 154px;
   height: 50px;
@@ -3566,19 +3045,15 @@ body .grid-container .item3 .chart .data {
   left: 53px;
   font-size: 18px;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkModalBtn .lgbkSaveBtn:active {
   width: 150px;
   height: 48px;
   top: 0px;
   left: 55px;
   font-size: 16px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkModalBtn .lgbkCloseModal {
-  position: absolute;
   right: 55px;
   width: 150px;
   height: 48px;
@@ -3596,16 +3071,13 @@ body .grid-container .item3 .chart .data {
   cursor: pointer;
   border: none;
   background-color: #E15963;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#e0565f), to(#3111));
-  background-image: linear-gradient(top, #e0565f, #3111);
+  background-image: linear-gradient(top, #e0565f, rgba(51, 17, 17, 0.0666666667));
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  -webkit-box-shadow: inset 0px 1px 0px #ec2a2a, 0px 5px 0px 0px #ac444b, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #ec2a2a, 0px 5px 0px 0px #ac444b, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #ec2a2a, 0px 5px 0px 0px #ac444b, 0px 10px 5px #999;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkModalBtn .lgbkCloseModal:hover {
   width: 154px;
   height: 50px;
@@ -3613,15 +3085,13 @@ body .grid-container .item3 .chart .data {
   right: 53px;
   font-size: 18px;
 }
-
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkModalBtn .lgbkCloseModal:active {
   width: 150px;
   height: 48px;
   top: 0px;
   right: 55px;
   font-size: 16px;
-  -webkit-box-shadow: inset 0px 1px 0px #ec2a2a, 0px 2px 0px 0px #ac444b, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #ec2a2a, 0px 2px 0px 0px #ac444b, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #ec2a2a, 0px 2px 0px 0px #ac444b, 0px 10px 5px #999;
 }
 
 @media only screen and (min-width: 1281px) and (max-width: 1366px) {
@@ -3632,7 +3102,6 @@ body .grid-container .item3 .chart .data {
     font-size: 15px;
   }
 }
-
 @media only screen and (max-device-width: 1280px) {
   #logbookBody h1 {
     font-size: 25px;
@@ -3641,62 +3110,52 @@ body .grid-container .item3 .chart .data {
     font-size: 15px;
   }
 }
-
 #totalSalesBody {
   margin-left: 80px;
-  background-color: #f7f7f7;
+  background-color: rgb(247, 247, 247);
   overflow: hidden;
   height: 100vh;
   width: calc(100% - 80px);
   position: relative;
 }
-
 #totalSalesBody h1 {
   margin-top: 50px;
   text-align: center;
   font-size: 40px;
 }
-
 #totalSalesBody .totalSalesContainer {
   position: absolute;
   height: 150px;
   width: 100%;
   top: 40%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   font-size: 18px;
 }
-
 #totalSalesBody .totalSalesContainer form {
   width: 100%;
   text-align: center;
 }
-
 #totalSalesBody .totalSalesContainer form .totalSalesControl {
   width: 100%;
   padding-bottom: 25px;
 }
-
 #totalSalesBody .totalSalesContainer form .totalSalesControl span {
   display: inline;
   margin: 0 25px;
   font-size: 25px;
 }
-
 #totalSalesBody .totalSalesContainer form .totalSalesControl span input {
   font-size: 25px;
   width: 200px;
 }
-
 #totalSalesBody .totalSalesContainer form .btnPrint {
   position: absolute;
   width: 500px;
   height: 50px;
   top: 50px;
   left: 50%;
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
   letter-spacing: 10px;
   display: inline;
   font-family: Arial, "Helvetica", sans-serif;
@@ -3712,87 +3171,73 @@ body .grid-container .item3 .chart .data {
   cursor: pointer;
   border: none;
   background-color: #37a69b;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#3db0a6), to(#3111));
-  background-image: linear-gradient(top, #3db0a6, #3111);
+  background-image: linear-gradient(top, #3db0a6, rgba(51, 17, 17, 0.0666666667));
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
 }
-
 #totalSalesBody .totalSalesContainer form .btnPrint:hover {
   top: 48px;
   width: 504px;
   height: 52px;
   font-size: 19px;
 }
-
 #totalSalesBody .totalSalesContainer form .btnPrint:active {
   top: 52px;
   width: 500px;
   height: 50px;
   font-size: 19px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
 }
 
 #sumRepBody {
   margin-left: 80px;
-  background-color: #f7f7f7;
+  background-color: rgb(247, 247, 247);
   overflow: hidden;
   height: 100vh;
   width: calc(100% - 80px);
   position: relative;
 }
-
 #sumRepBody h1 {
   margin-top: 50px;
   text-align: center;
   font-size: 40px;
 }
-
 #sumRepBody .totalSalesContainer {
   position: absolute;
   height: 150px;
   width: 100%;
   top: 40%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   font-size: 18px;
 }
-
 #sumRepBody .totalSalesContainer form {
   width: 100%;
   text-align: center;
 }
-
 #sumRepBody .totalSalesContainer form .totalSalesControl {
   width: 100%;
   padding-bottom: 25px;
 }
-
 #sumRepBody .totalSalesContainer form .totalSalesControl span {
   display: inline;
   margin: 0 25px;
   font-size: 25px;
 }
-
 #sumRepBody .totalSalesContainer form .totalSalesControl span input {
   font-size: 25px;
   width: 200px;
 }
-
 #sumRepBody .totalSalesContainer form .btnPrint {
   position: absolute;
   width: 500px;
   height: 50px;
   top: 50px;
   left: 50%;
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
   letter-spacing: 10px;
   display: inline;
   font-family: Arial, "Helvetica", sans-serif;
@@ -3808,87 +3253,73 @@ body .grid-container .item3 .chart .data {
   cursor: pointer;
   border: none;
   background-color: #37a69b;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#3db0a6), to(#3111));
-  background-image: linear-gradient(top, #3db0a6, #3111);
+  background-image: linear-gradient(top, #3db0a6, rgba(51, 17, 17, 0.0666666667));
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
 }
-
 #sumRepBody .totalSalesContainer form .btnPrint:hover {
   top: 48px;
   width: 504px;
   height: 52px;
   font-size: 19px;
 }
-
 #sumRepBody .totalSalesContainer form .btnPrint:active {
   top: 52px;
   width: 500px;
   height: 50px;
   font-size: 19px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
 }
 
 #reqForPaymentBody {
   margin-left: 80px;
-  background-color: #f7f7f7;
+  background-color: rgb(247, 247, 247);
   overflow: hidden;
   height: 100vh;
   width: calc(100% - 80px);
   position: relative;
 }
-
 #reqForPaymentBody h1 {
   margin-top: 50px;
   text-align: center;
   font-size: 40px;
 }
-
 #reqForPaymentBody .totalSalesContainer {
   position: absolute;
   height: 150px;
   width: 100%;
   top: 40%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   font-size: 18px;
 }
-
 #reqForPaymentBody .totalSalesContainer form {
   width: 100%;
   text-align: center;
 }
-
 #reqForPaymentBody .totalSalesContainer form .totalSalesControl {
   width: 100%;
   padding-bottom: 25px;
 }
-
 #reqForPaymentBody .totalSalesContainer form .totalSalesControl span {
   display: inline;
   margin: 0 25px;
   font-size: 25px;
 }
-
 #reqForPaymentBody .totalSalesContainer form .totalSalesControl span input {
   font-size: 25px;
   width: 200px;
 }
-
 #reqForPaymentBody .totalSalesContainer form .btnPrint {
   position: absolute;
   width: 500px;
   height: 50px;
   top: 50px;
   left: 50%;
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
   letter-spacing: 10px;
   display: inline;
   font-family: Arial, "Helvetica", sans-serif;
@@ -3904,30 +3335,25 @@ body .grid-container .item3 .chart .data {
   cursor: pointer;
   border: none;
   background-color: #37a69b;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#3db0a6), to(#3111));
-  background-image: linear-gradient(top, #3db0a6, #3111);
+  background-image: linear-gradient(top, #3db0a6, rgba(51, 17, 17, 0.0666666667));
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
 }
-
 #reqForPaymentBody .totalSalesContainer form .btnPrint:hover {
   top: 48px;
   width: 504px;
   height: 52px;
   font-size: 19px;
 }
-
 #reqForPaymentBody .totalSalesContainer form .btnPrint:active {
   top: 52px;
   width: 500px;
   height: 50px;
   font-size: 19px;
-  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
-          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
 }
 
 #TSReportBody {
@@ -3935,23 +3361,18 @@ body .grid-container .item3 .chart .data {
   overflow-y: auto;
   font-family: sans-serif;
 }
-
 #TSReportBody .TSRContainer {
   padding: 0 7vw;
 }
-
 #TSReportBody .TSRContainer .TSRHeader {
   margin-top: 33px;
   text-align: center;
 }
-
 #TSReportBody .TSRContainer .TSRTable {
   margin-top: 50px;
   width: 86vw;
   text-align: center;
 }
-
 #TSReportBody .TSRContainer .TSRTable thead tr td {
   width: 25%;
-}
-/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.css.map */

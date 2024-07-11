@@ -2,7 +2,7 @@
 
 $dbhost = "localhost";
 $dbuser = "root";
-$dbpass = "Gpi242$$$";
+$dbpass = "";
 $dbname = "canteen_transactions";
 
 if(!$con = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname)){

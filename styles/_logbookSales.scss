@@ -259,7 +259,7 @@
             top: 50%;
             transform: translate(-50%, -50%);
             width: 550px;
-            height: 350px;
+            height: auto;
             background-color: rgb(228, 228, 228);
             box-shadow: 0 0 10px 3px rgba(0,0,0,0.4);
             border-radius: 20px;
@@ -374,13 +374,17 @@
                     position: relative;
                     width: 100%;
                     top: 20px;
-
+                    margin: auto;
+                    display: flex;
+                
+                    justify-content: center;
+                    grid-gap: 10px;
                     #lgbkAdd, #lgbkEdit{
                         opacity: 0;
                     }
                     
                     .lgbkSaveBtn{
-                        position: absolute;
+                        
                         left: 55px;
                         width: 150px;
                         height:48px;
@@ -424,7 +428,7 @@
                     }
 
                     .lgbkCloseModal{
-                        position: absolute;
+                     
                         right: 55px;
                         width: 150px;
                         height:48px;

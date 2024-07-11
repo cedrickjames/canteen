@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="./styles/styles.css">
     <link rel="icon" href="./obj/canteen.png">
     <title>Logbook Sales</title>
-
+    <link href="node_modules/select2/dist/css/select2.min.css" rel="stylesheet" />
     <script src="./sweetalert.min.js"></script>
     <script src="./jquery.min.js"></script>
 </head>
@@ -48,6 +48,14 @@
             $lgbkDate = $_REQUEST['lgbkInputDate'];
             $lgbkName = strtoupper($_REQUEST['lgbkInputName']);
             $lgbkEmp = strtoupper($_REQUEST['lgbkOption']);
+            $lgbkEmpId = strtoupper($_REQUEST['lgbkEmpId']);
+            $lgbkEmpDept = strtoupper($_REQUEST['lgbkDepartment']);
+            $lgbkEmpSection = strtoupper($_REQUEST['lgbkSection']);
+            $lgbkGPI8 = strtoupper($_REQUEST['lgbkGPI8']);
+
+
+            
+            
 
             $queryLgbkSales = "SELECT lgbk_date, lgbk_name FROM `logbooksales` WHERE lgbk_date = '$lgbkDate' AND lgbk_name = '$lgbkName' UNION SELECT tran_date, emp_name FROM `tbl_trans_logs` WHERE tran_date = '$lgbkDate' AND emp_name = '$lgbkName'";
 
@@ -70,7 +78,7 @@
                 }
                 ?> <script>swal ( "Oops" ,  "Employee is already in logs!" ,  "error" ).then((value) => { $('#lgbkInputName').focus(); });</script> <?php
             }else{
-                $insLgbkEmp = "INSERT INTO `logbooksales`(`logbook_ID`, `lgbk_date`, `lgbk_name`, `lgbk_employer`) VALUES (null, '$lgbkDate', '$lgbkName', '$lgbkEmp')";
+                $insLgbkEmp = "INSERT INTO `logbooksales`(`logbook_ID`,  `emp_id`, `lgbk_date`, `lgbk_name`, `lgbk_employer`, `department`, `section`, `gpi8`) VALUES (null, '$lgbkEmpId', '$lgbkDate', '$lgbkName', '$lgbkEmp', '$lgbkEmpDept','$lgbkEmpSection', '$lgbkGPI8')";
                 mysqli_query($con, $insLgbkEmp);
 
                 $_SESSION['recentDate'] = $lgbkDate;
@@ -237,47 +245,87 @@
                     </tr>
                     <tr>
                         <td>Full Name</td>
-                        <td><input type="text" name="lgbkInputName" class="lgbkInputName"  id="lgbkInputName" autocomplete="off" autofocus onkeyup="lgbkUpName()" value="<?php if($_SESSION['lgbkEditTitle'] == 1){ echo $lgbkEditName; } ?>">
-                            <ul class="suggList" id="suggList">
-                                <?php
-                                    $queryEmp = "SELECT * FROM `emp_list` ORDER BY `employer` ASC";
-                                    $resultEmp = mysqli_query($con, $queryEmp);
-                                    if(mysqli_num_rows($resultEmp) > 0){
-                                        while($emp_row = mysqli_fetch_assoc($resultEmp)){
-                                            ?>
-                                            <li class="suggEach"><a href="#" class="suggA" data-name="<?php echo $emp_row['emp_name']; ?>" data-emp="<?php echo $emp_row['employer']; ?>"><?php echo $emp_row['emp_name']; ?></a></li>
-                                            <?php
-                                        }
-                                    }
-                                ?>
-                            </ul>
+                        <td>
+                        <select name="lgbkInputName"   id="lgbkInputName" autocomplete="off" autofocus onkeyup="lgbkUpName()" value="<?php if($_SESSION['lgbkEditTitle'] == 1){ echo $lgbkEditName; } ?>" class="js-fullname  lgbkInputName bg-gray-50 border border-gray-300 text-gray-900 text-[12px] 2xl:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+          <option selected disabled>Select Name</option>
+          <?php
+          $sql1 = "SELECT * FROM `emp_list` ORDER BY `employer` ASC";
+          $result = mysqli_query($con, $sql1);
+          while ($emp_row = mysqli_fetch_assoc($result)) {
+          ?>
+            <option data-empid="<?php echo $emp_row['emp_idNum']; ?>" data-gpi8="<?php echo $emp_row['gpi8']; ?>"  data-empsection="<?php echo $emp_row['section']; ?>" data-name="<?php echo $emp_row['emp_name']; ?>" data-department="<?php echo $emp_row['department']; ?>" data-emp="<?php echo $emp_row['employer']; ?>" ><?php echo $emp_row['emp_name']; ?></option>
+          <?php
+
+            //  echo "<option value='$diagnosis' >$diagnosis</option>";
+
+          }
+          ?>
+        </select>
                         </td>
+                    </tr>
+                    <tr>
+                        <td>Emp ID</td>
+                        <td><input type="text" name="lgbkEmpId"  id="lgbkEmpId" ></td>
+                    </tr>
+                    <tr>
+                        <td>Department</td>
+                        <td><input type="text" name="lgbkDepartment"  id="lgbkDepartment" ></td>
+                    </tr>
+                    <tr>
+                        <td>Section</td>
+                        <td><input type="text" name="lgbkSection"  id="lgbkSection" ></td>
+                        <td style="display:none"><input type="text" name="lgbkGPI8"  id="lgbkGPI8" ></td>
+
                     </tr>
                     <tr>
                         <td>Employer</td>
                         <td>
                             <select id="lgbkOption" name="lgbkOption" change onchange="lgbkUp()">
                             <option value="" disabled hidden <?php if(!isset($_SESSION['selEmp']) || $_SESSION['selEmp'] == '0'){ echo 'selected'; }?>>Select your option</option>
-                            <option value="glory" <?php if($_SESSION['selEmp'] == '1'){ echo 'selected'; }?>>GLORY</option>
-                            <option value="maxim" <?php if($_SESSION['selEmp'] == '2'){ echo 'selected'; }?>>MAXIM</option>
-                            <option value="nippi" <?php if($_SESSION['selEmp'] == '3'){ echo 'selected'; }?>>NIPPI</option>
-                            <option value="powerlane" <?php if($_SESSION['selEmp'] == '4'){ echo 'selected'; }?>>POWERLANE</option>
-                            <option value="service provider" <?php if($_SESSION['selEmp'] == '5'){ echo 'selected'; }?>>SERVICE PROVIDER</option>
+                            <option value="GLORY" <?php if($_SESSION['selEmp'] == '1'){ echo 'selected'; }?>>GLORY</option>
+                            <option value="MAXIM" <?php if($_SESSION['selEmp'] == '2'){ echo 'selected'; }?>>MAXIM</option>
+                            <option value="NIPPI" <?php if($_SESSION['selEmp'] == '3'){ echo 'selected'; }?>>NIPPI</option>
+                            <option value="POWERLANE" <?php if($_SESSION['selEmp'] == '4'){ echo 'selected'; }?>>POWERLANE</option>
+                            <option value="SERVICE PROVIDER" <?php if($_SESSION['selEmp'] == '5'){ echo 'selected'; }?>>SERVICE PROVIDER</option>
                         </td>
                     </tr>
                 </table>
                 <div class="lgbkModalBtn">
-                    <input type="submit" tabindex="-1" name="lgbkAdd" id="lgbkAdd" value="Add" disabled>
-                    <input type="submit" tabindex="-1" name="lgbkEditCon" id="lgbkEdit" value="Edit" <?php if($_SESSION['lgbkEditTitle'] == "0"){ echo "disabled"; } ?>>
-                    <input type="submit" tabindex="-1" name="lgbkCancel" id="lgbkCancel" value="Cancel">
+                    <input type="submit" tabindex="-1" name="lgbkAdd" id="lgbkAdd"  style="display: none" value="Add" disabled>
+                    <input type="submit" tabindex="-1" name="lgbkEditCon" id="lgbkEdit"  style="display: none" value="Edit" <?php if($_SESSION['lgbkEditTitle'] == "0"){ echo "disabled"; } ?>>
+                    <input type="submit" tabindex="-1" name="lgbkCancel" id="lgbkCancel" value="Cancel" style="display: none">
                     <input type="button" name="lgbkSaveBtn" class="lgbkSaveBtn" id="lgbkSaveBtn" value="Save" onclick="lgbkSav3Btn()">
                     <input type="button" name="lgbkCloseModal" class="lgbkCloseModal" id="lgbkCloseModal" value="Cancel" onclick="lgbkCloseM0dal()">
                 </div>
             </form>
         </div>
     </div>
-    
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/select2/dist/js/select2.min.js"></script>
     <script>
+      $('#lgbkInputName').change(function() {
+            var selectedNameEmpId = $(this).find('option:selected').data('empid');
+            var selectedNameDepartment = $(this).find('option:selected').data('department');
+            var selectedSection = $(this).find('option:selected').data('empsection');
+            var selectedGpi8 = $(this).find('option:selected').data('gpi8');
+
+
+            var employer = $(this).find('option:selected').data('emp');
+            
+
+            $('#lgbkEmpId').val(selectedNameEmpId);
+            $('#lgbkDepartment').val(selectedNameDepartment);
+            $('#lgbkSection').val(selectedSection);
+            $('#lgbkGPI8').val(selectedGpi8);
+
+            $('#lgbkOption').val(employer).change();
+            console.log(employer);
+
+        });
+
+
+$('.js-fullname').select2();
+
         function navFuntion(){
             var wRep = document.getElementById("wkRep");
             wRep.classList.add("active");

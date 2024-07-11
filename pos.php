@@ -29,7 +29,7 @@
     <title>Canteen POS</title>
 </head>
 <body onload="onloadFunction()">
-    <h1 id="head">CANTEEN</h1>
+    <h1 id="head">CANTEEN (GPI 1)</h1>
 
     <form method="POST">
         <span>
@@ -55,6 +55,11 @@
                         $empName = $emp_row['emp_name'];
                         $empCardNum = $emp_row['emp_cardNum'];
                         $empEmployer = $emp_row['employer'];
+                        $department = $emp_row['department'];
+                        $section = $emp_row['section'];
+                        $gpi8 = $emp_row['gpi8'];
+
+                        
                         $timeNow = date("h:i:s a");
 
                         $query_tran = "SELECT * from tbl_trans_logs WHERE emp_cardNum = '$cardNum' AND tran_date = '$dateNow' LIMIT 1";
@@ -69,12 +74,12 @@
                             }
                         }else{
 
-                            $tran_insert = "INSERT INTO `tbl_trans_logs`(`transaction_id`, `emp_id`, `emp_name`, `emp_cardNum`, `employer`, `tran_date`, `tran_time`) VALUES (null ,'$empID','$empName','$empCardNum','$empEmployer','$dateNow','$timeNow')";
+                            $tran_insert = "INSERT INTO `tbl_trans_logs`(`transaction_id`, `emp_id`, `emp_name`, `emp_cardNum`, `employer`, `tran_date`, `tran_time`, `department`,`section`,`gpi8`) VALUES (null ,'$empID','$empName','$empCardNum','$empEmployer','$dateNow','$timeNow', '$department','$section','$gpi8')";
                             mysqli_query($con, $tran_insert);
-
+// echo
                             
                             ?>
-                                <h1 class="tapName"><?php echo $empName?></h1>
+                                  <h1 class="tapName"><?php echo $empName?></h1>
                                 <h3 class="anim2">Thank you!</h3>
                             <?php
                         }
