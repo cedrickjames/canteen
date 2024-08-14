@@ -65,7 +65,7 @@ $html = '   <!DOCTYPE html>
                         $qDate = $_SESSION['period'][$d];
                         $pDate = date_create($qDate);
 
-                        $queryGlory = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND gpi8='0' AND tran_date = '$qDate' UNION SELECT `lgbk_date`, `lgbk_name`, `lgbk_employer` FROM `logbooksales` WHERE lgbk_employer = 'GLORY' AND gpi8='0' AND lgbk_date = '$qDate'";
+                        $queryGlory = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND gpi8=0 AND tran_date = '$qDate' UNION SELECT `lgbk_date`, `lgbk_name`, `lgbk_employer` FROM `logbooksales` WHERE lgbk_employer = 'GLORY' AND gpi8=0 AND lgbk_date = '$qDate'";
                         $resultGlory = mysqli_query($con, $queryGlory);
                         $countGlory = mysqli_num_rows($resultGlory);
                         $amountGlory = $countGlory * 35.00;
@@ -201,7 +201,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                         $amountFabrication = $countFabrication * 35.00;
                         $totalFabrication += $amountFabrication;
                         
-                        $queryQAdmin = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND (section = 'QA' OR section = 'Administration') AND gpi8=1 AND tran_date = '$qDate' UNION SELECT `lgbk_date`, `lgbk_name`, `lgbk_employer` FROM `logbooksales` WHERE lgbk_employer = 'GLORY' AND (section = 'QA' OR section = 'Administration') AND gpi8=1 AND lgbk_date = '$qDate'";
+                        $queryQAdmin = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND (department = 'QA' OR department = 'Administration') AND gpi8=1 AND tran_date = '$qDate' UNION SELECT `lgbk_date`, `lgbk_name`, `lgbk_employer` FROM `logbooksales` WHERE lgbk_employer = 'GLORY' AND (department = 'QA' OR department = 'Administration') AND gpi8=1 AND lgbk_date = '$qDate'";
                         $resultQAdmin = mysqli_query($con, $queryQAdmin);
                         $countQAdmin = mysqli_num_rows($resultQAdmin);
                         $amountQAdmin = $countQAdmin * 35.00;
@@ -213,7 +213,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                         $amountProdsupport = $countProdsupport * 35.00;
                         $totalProdsupport += $amountProdsupport;
                              
-                        $queryPI = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND section = 'Parts Inspection' AND gpi8=1 AND tran_date = '$qDate' UNION SELECT `lgbk_date`, `lgbk_name`, `lgbk_employer` FROM `logbooksales` WHERE lgbk_employer = 'GLORY' AND section = 'Parts Inspection' AND gpi8=1 AND lgbk_date = '$qDate'";
+                        $queryPI = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND department = 'Parts Inspection' AND gpi8=1 AND tran_date = '$qDate' UNION SELECT `lgbk_date`, `lgbk_name`, `lgbk_employer` FROM `logbooksales` WHERE lgbk_employer = 'GLORY' AND department = 'Parts Inspection' AND gpi8=1 AND lgbk_date = '$qDate'";
                         $resultPI = mysqli_query($con, $queryPI);
                         $countPI = mysqli_num_rows($resultPI);
                         $amountPI = $countPI * 35.00;
