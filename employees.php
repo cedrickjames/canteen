@@ -47,6 +47,10 @@
     <link rel="stylesheet" href="DataTables/datatables.min.css">
     <link rel="stylesheet" type="text/css" href="DataTables/Responsive-2.3.0/css/responsive.dataTables.min.css"/>
     <style>
+        .radio-group {
+            margin: 10px 0;
+        }
+
         .btnDelete {
   
   width: 110px;
@@ -135,6 +139,8 @@
             global $crudCard;
             global $editTitle;
 
+            $section = null;
+            $department = null;
             // CREATE USER
             if(isset($_POST['sbmtCreate'])){
 
@@ -143,6 +149,16 @@
                 $crudName = strtoupper($_POST['txtName']);
                 $crudCard = $_POST['txtNumber'];
                 $crudEmp = strtoupper($_POST['empOption']);
+                $optionGpi8 = $_POST['optionGpi8'];
+      if (isset($_POST['section'])) {
+            $section = $_POST['section'];
+        }
+
+        // Check if 'department' is set in the POST array
+        if (isset($_POST['department'])) {
+            $department = $_POST['department'];
+        }
+
 
                 $query_Emp = "SELECT * from emp_list WHERE emp_cardNum = '$crudCard' LIMIT 1";
                 $result_Emp = mysqli_query($con, $query_Emp);
@@ -167,7 +183,7 @@
 
                 }else{
 
-                    $ins_Emp = "INSERT INTO `emp_list`(`emp_id`, `emp_idNum`, `emp_name`, `emp_cardNum`, `employer`) VALUES (null ,'$crudIdNum','$crudName','$crudCard','$crudEmp')";
+                    $ins_Emp = "INSERT INTO `emp_list`(`emp_id`, `emp_idNum`, `emp_name`, `emp_cardNum`, `employer`, `department`, `section`, `gpi8`) VALUES (null ,'$crudIdNum','$crudName','$crudCard','$crudEmp','$department','$section','$optionGpi8')";
                     mysqli_query($con, $ins_Emp);
 
                     ?>
@@ -194,7 +210,7 @@
                     $crudName = "";
                     $crudCard = "";
 
-                    header("location: employees.php");
+                    // header("location: employees.php");
 
                 }
             }
@@ -431,7 +447,8 @@
         <div id="dark-bg" style="visibility:<?php if($_SESSION['modalStat'] == '0' || !isset($_SESSION['modalStat'])){ echo 'hidden'; }else{ echo 'visible;'; } ?>;">   
             <div class="empModal" id="empModal">
                 <form method="POST" class="frmEmployees" id="form-id">
-                    <div id="frmTitle"><span id="txtTitle" class="txtTitle" name="txtTitle"><?php if($editTitle == "1"){ echo "EDIT"; }else{ echo "CREATE"; } ?></span></div>
+               
+                    <h1 style="text-align: center; margin-bottom: 10px"><span id="txtTitle" class="txtTitle" name="txtTitle"><?php if($editTitle == "1"){ echo "EDIT"; }else{ echo "CREATE"; } ?></span></h1>
                     <div class="form-group">
                         <label>Employee ID</label>
                         <input type="text" name="txtid" id="txtid" class="form-control" autocomplete="off" onkeyup="FkeyDown()" autofocus value="<?php if($_SESSION['modalStat'] == "0"){}else{ echo $crudIdNum; } ?>">
@@ -455,6 +472,61 @@
                             <option value="service provider" <?php if($_SESSION['modalStat'] == "5"){ echo 'selected'; }?>>SERVICE PROVIDER</option>
                         </select>
                     </div>
+                   <div style="width: 100%; display: flex">
+                    <div style="width: 50%"><label style="padding-left: 20px;font-size: 20px;
+    line-height: 40px;">GPI 8</label></div>
+                    <div style="width: 50%">
+                    <input type="radio" name="optionGpi8" style="position:relative; width: 20px;height: 30px; width: 30px; padding-left: 20px;font-size: 20px;
+    line-height: 40px;" value="1"> <label style="padding-left: 10px;font-size: 20px;
+    line-height: 40px;">Yes</label>
+                    <input type="radio" checked name="optionGpi8" style="position:relative; width: 20px;height: 30px; width: 30px; padding-left: 20px;font-size: 20px;
+    line-height: 40px;" value="0"> <label style="padding-left: 10px;font-size: 20px;
+    line-height: 40px;">No</label>
+                    </div>
+                 
+                   </div>
+                <div id="gpi8options" class="hidden">
+
+                <div class="form-group">
+                        <label>Department</label>
+                        <select name="department">
+                        <option disabled selected value="">Select Department</option>
+                        <?php
+                         $querydept = "SELECT DISTINCT `department` FROM `emp_list` WHERE `department` != ''"; //added LIMIT 10 para di bumagal ang pagencode ni Alien
+                         $resultDept = mysqli_query($con, $querydept);
+                    
+                        while($emp_row = mysqli_fetch_assoc($resultDept)){
+                            ?>
+                               <option value="<?php echo $emp_row['department']; ?>"><?php echo $emp_row['department']; ?></option>
+                            <?php
+                          
+                        }
+                        ?>
+                        <option  value="">n/a</option>
+                           
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Section</label>
+                        <select name="section">
+                        <option disabled selected value="">Select Section</option>
+                        <?php
+                         $querydept = "SELECT DISTINCT `section` FROM `emp_list` WHERE `section` != ''"; //added LIMIT 10 para di bumagal ang pagencode ni Alien
+                         $resultDept = mysqli_query($con, $querydept);
+                    
+                        while($emp_row = mysqli_fetch_assoc($resultDept)){
+                            ?>
+                               <option value="<?php echo $emp_row['section']; ?>"><?php echo $emp_row['section']; ?></option>
+                            <?php
+                          
+                        }
+                        ?>
+                        <option  value="">n/a</option>
+                           
+                        </select>
+                    </div>
+                </div>
+                   
                     <div class="modal-btn">
                         <input type="submit" tabindex="-1" name="sbmtCreate" id="sbmtCreate" value="Create" disabled>
                         <input type="submit" tabindex="-1" name="sbmtEdit" id="sbmtEdit" value="Edit" <?php if($editTitle == "0"){ echo "disabled"; } ?>>
@@ -470,6 +542,28 @@
     <script type="text/javascript" src="DataTables/datatables.min.js"></script>
     <script type="text/javascript" src="DataTables/Responsive-2.3.0/js/dataTables.responsive.min.js"></script>
     <script type="text/javascript">
+
+
+$(document).ready(function() {
+            // Function to toggle the div based on the selected radio button
+            function toggleDiv() {
+                if ($('input[name="optionGpi8"]:checked').val() === "1") {
+            $('#gpi8options').css('display', 'block'); // Show the div
+        } else {
+            $('#gpi8options').css('display', 'none'); // Hide the div
+        }
+            }
+
+            // Call toggleDiv on page load to apply the default selection logic
+            toggleDiv();
+
+            // Event listener for radio button change
+            $('input[name="optionGpi8"]').change(function() {
+                toggleDiv(); // Call toggleDiv when the selection changes
+            });
+        });
+
+
           $(document).ready(function () {
   
             $('#employeeList').DataTable(  {

@@ -1922,7 +1922,7 @@ body .grid-container .item3 .chart .data {
 }
 #emp-body .emp-container #dark-bg .empModal {
   position: fixed;
-  height: 42vh;
+  height: auto;
   width: 30vw;
   top: 50%;
   left: calc(50% + 40px);
@@ -1935,6 +1935,7 @@ body .grid-container .item3 .chart .data {
   height: 90%;
   width: 90%;
   margin: 0 auto;
+  padding-top: 20px;
 }
 #emp-body .emp-container #dark-bg .empModal .frmEmployees #frmTitle {
   position: relative;
