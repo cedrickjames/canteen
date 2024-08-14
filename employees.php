@@ -138,6 +138,10 @@
             global $crudName;
             global $crudCard;
             global $editTitle;
+            global $department;
+            global $section;
+            global $optionGpi8;
+
 
             $section = null;
             $department = null;
@@ -223,36 +227,25 @@
                 $crudCard = $_POST['txtNumber'];
                 $crudEmp = strtoupper($_POST['empOption']);
 
+                $optionGpi8 = $_POST['optionGpi8'];
+                if (isset($_POST['section'])) {
+                      $section = $_POST['section'];
+                  }
+          
+                  // Check if 'department' is set in the POST array
+                  if (isset($_POST['department'])) {
+                      $department = $_POST['department'];
+                  }
+
                 $query_Emp_Edit = "SELECT * from emp_list WHERE emp_cardNum = '$crudCard' LIMIT 1";
                 $result_Emp_Edit = mysqli_query($con, $query_Emp_Edit);
 
                 if(mysqli_num_rows($result_Emp_Edit) > 0){
                     while($roweEdit = mysqli_fetch_assoc($result_Emp_Edit)){
 
-                        if($crudIdNum == $roweEdit['emp_idNum'] && $crudName == $roweEdit['emp_name'] && $crudCard == $roweEdit['emp_cardNum'] && $crudEmp == $roweEdit['employer']){
-                            ?>
-                                <div class="E-Notif">Card Number is Already Registered!</div>
-                            <?php
+                        
 
-                            if($crudEmp == "GLORY"){
-                                $_SESSION['modalStat'] = "1";
-                            }else if($crudEmp == "MAXIM"){
-                                $_SESSION['modalStat'] = "2";
-                            }else if($crudEmp == "NIPPI"){
-                                $_SESSION['modalStat'] = "3";
-                            }else if($crudEmp == "POWERLANE"){
-                                $_SESSION['modalStat'] = "4";
-                            }else if($crudEmp == "SERVICE PROVIDER"){
-                                $_SESSION['modalStat'] = "5";
-                            }else{
-                                $_SESSION['modalStat'] = "0";
-                            }
-
-                            $_SESSION['sUpdate'] = false;
-
-                        }else{
-
-                            $ins_Emp = "UPDATE `emp_list` SET `emp_idNum`='$crudIdNum',`emp_name`='$crudName',`emp_cardNum`='$crudCard',`employer`='$crudEmp' WHERE emp_id = '$crudId'";
+                            $ins_Emp = "UPDATE `emp_list` SET `emp_idNum`='$crudIdNum',`emp_name`='$crudName',`emp_cardNum`='$crudCard',`employer`='$crudEmp',`department`='$department',`section`='$section',`gpi8`='$optionGpi8' WHERE emp_id = '$crudId'";
                             mysqli_query($con, $ins_Emp);
 
                             $_SESSION['modalStat'] = "0";
@@ -264,12 +257,12 @@
                             $_SESSION['sUpdate'] = true;
 
                             header("location: employees.php");
-                        }
+                        
                     }
 
                 }else{
 
-                    $ins_Emp = "UPDATE `emp_list` SET `emp_idNum`='$crudIdNum',`emp_name`='$crudName',`emp_cardNum`='$crudCard',`employer`='$crudEmp' WHERE emp_id = '$crudId'";
+                    $ins_Emp = "UPDATE `emp_list` SET `emp_idNum`='$crudIdNum',`emp_name`='$crudName',`emp_cardNum`='$crudCard',`employer`='$crudEmp',`department`='$department',`section`='$section',`gpi8`='$optionGpi8' WHERE emp_id = '$crudId'";
                     mysqli_query($con, $ins_Emp);
 
                     $_SESSION['modalStat'] = "0";
@@ -295,6 +288,9 @@
                     $crudName = strtoupper($rowEdit['emp_name']);
                     $crudCard = $rowEdit['emp_cardNum'];
                     $crudEmp = strtoupper($rowEdit['employer']);
+                    $department = $rowEdit['department'];
+                    $section = $rowEdit['section'];
+                    $optionGpi8 = $rowEdit['gpi8'];
 
                     if($crudEmp == "GLORY"){
                         $_SESSION['modalStat'] = "1";
@@ -476,10 +472,10 @@
                     <div style="width: 50%"><label style="padding-left: 20px;font-size: 20px;
     line-height: 40px;">GPI 8</label></div>
                     <div style="width: 50%">
-                    <input type="radio" name="optionGpi8" style="position:relative; width: 20px;height: 30px; width: 30px; padding-left: 20px;font-size: 20px;
+                    <input type="radio" <?php if($optionGpi8=='1'){echo "checked";}?> name="optionGpi8" style="position:relative; width: 20px;height: 30px; width: 30px; padding-left: 20px;font-size: 20px;
     line-height: 40px;" value="1"> <label style="padding-left: 10px;font-size: 20px;
     line-height: 40px;">Yes</label>
-                    <input type="radio" checked name="optionGpi8" style="position:relative; width: 20px;height: 30px; width: 30px; padding-left: 20px;font-size: 20px;
+                    <input type="radio" <?php if($optionGpi8 !='1'){echo "checked";}?>  name="optionGpi8" style="position:relative; width: 20px;height: 30px; width: 30px; padding-left: 20px;font-size: 20px;
     line-height: 40px;" value="0"> <label style="padding-left: 10px;font-size: 20px;
     line-height: 40px;">No</label>
                     </div>
@@ -497,7 +493,7 @@
                     
                         while($emp_row = mysqli_fetch_assoc($resultDept)){
                             ?>
-                               <option value="<?php echo $emp_row['department']; ?>"><?php echo $emp_row['department']; ?></option>
+                               <option <?php if($department ==  $emp_row['department']){ echo "selected";} ?> value="<?php echo $emp_row['department']; ?>"><?php echo $emp_row['department']; ?></option>
                             <?php
                           
                         }
@@ -516,7 +512,7 @@
                     
                         while($emp_row = mysqli_fetch_assoc($resultDept)){
                             ?>
-                               <option value="<?php echo $emp_row['section']; ?>"><?php echo $emp_row['section']; ?></option>
+                               <option <?php if($section ==  $emp_row['section']){ echo "selected";} ?> value="<?php echo $emp_row['section']; ?>"><?php echo $emp_row['section']; ?></option>
                             <?php
                           
                         }
