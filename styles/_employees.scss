@@ -377,7 +377,7 @@
 
             .empModal{
                 position: fixed;
-                height: 42vh;
+                height: auto;
                 width: 30vw;
                 top: 50%;
                 left: calc(50% + 40px);
@@ -391,7 +391,7 @@
                     height: 90%;
                     width: 90%;
                     margin: 0 auto;
-    
+                    padding-top: 20px;
     
                     #frmTitle{
                         position: relative;
