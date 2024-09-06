@@ -519,7 +519,9 @@
                         <td style="width: 6%; font-weight: bold; font-size: 11px;">Overall</td>
                         <?php
                     $count_dates_jatot = "SELECT SUM(jatot) as total FROM (select COUNT(tran_date)*35 as jatot from tbl_trans_logs where tran_date BETWEEN '$fromDate' AND '$toDate' UNION SELECT COUNT(lgbk_date)*35 as jatot FROM logbooksales WHERE lgbk_date BETWEEN '$fromDate' AND '$toDate') t group by NULL";
-                    $resultSP = mysqli_query($con, $querySP);
+                    $resultSP = mysqli_query($con, $count_dates_jatot);
+                    // $resultSP = mysqli_query($con, $querySP);
+
                     $countSP = mysqli_num_rows($resultSP);
                     $amountSP = $countSP * 35.00;
                     $totalSP += $amountSP;
