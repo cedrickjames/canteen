@@ -17,14 +17,22 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Total Sales Report</title>
+        <style>
+        @media print {
+            .page-break {
+                page-break-before: always; /* Or page-break-after: always */
+                /* You can use page-break-inside: avoid; for elements to avoid breaking inside */
+            }
+        }
+    </style>
     </head>
     <body style="margin: 0; padding: 0; align-items: center; font-family: sans-serif;">
         <div style="page-break-after: always;">
-            <header style="text-align: center; font-size: 12px;">
+            <!-- <header style="text-align: center; font-size: 12px;">
                 <h3 style="text-align: center;margin: 0; padding: 0;">GLORY PHILIPPINES INC.</h3>
                 <h3 style="text-align: center;margin: 0; padding: 0;">Total Sales Report</h3>
                 <h3 style="text-align: center;margin: 0; padding: 0;">For the Period <?php echo date('M-d',strtotime($fromDate));?> to <?php echo date('M-d',strtotime($toDate))?></h3>
-            </header>
+            </header> -->
             <table style="margin-top: 20px; width: 100%; text-align: center; border-collapse: collapse;">
 <!-- GLORY -->
     <?php
@@ -33,15 +41,25 @@
         $Employee_list_count_glory = mysqli_num_rows($Employee_list_query_glory);
         $Employee_list_array_glory = array();
 
-    ?>      <thead>
+    ?>  
+        <!-- <thead>
             <tr>
-                <td style="width: 6%; font-weight: bold; font-size: 11px;">Glory Philippines Inc.</td>
-            </thead>
+               <td style="width: 6%; font-weight: bold; font-size: 11px;">Glory Philippines Inc.</td>
+            </thead> -->
             <thead>
+            <tr>
+            <th colspan="<?php echo count($arrayDate) +1;?>">Glory Philippines Inc.</th></tr>
+            <tr>
+            <th colspan="<?php echo count($arrayDate) +1;?>">Total Sales Report</th></tr>
+            <tr>
+            <th colspan="<?php echo count($arrayDate) +1;?>">For the Period <?php echo date('M-d',strtotime($fromDate));?> to <?php echo date('M-d',strtotime($toDate))?></th></tr>
+            <tr>
+            <th >Glory Philippines Inc.</th></tr>
+    
                 <tr>
-                    <td style="width: 6%; font-weight: bold; font-size: 11px;">Employee</td>
+                    <th style="width: 6%; font-weight: bold; font-size: 11px;">Employee</th>
                 <?php foreach ($arrayDate as $dates_glory){ ?>
-                    <td style="width: 4%; font-weight: bold; font-size: 11px;"><?php echo date('M-d',strtotime($dates_glory))?></td> <?php } ?>
+                    <th style="width: 4%; font-weight: bold; font-size: 11px;"><?php echo date('M-d',strtotime($dates_glory))?></th> <?php } ?>
                 </tr>
             </thead>
             <tbody>
@@ -102,6 +120,9 @@
                     <td style="font-size: 11px; font-weight: bold;">0</td> <?php } }?>
                 </tr>
                 </table>
+
+                <div class="page-break"></div>
+
                 <table style="margin-top: 20px; width: 100%; text-align: center; border-collapse: collapse;">
 <!-- MAXIM -->
     <?php
@@ -110,16 +131,29 @@
         $Employee_list_count_maxim = mysqli_num_rows($Employee_list_query_maxim);
         $Employee_list_array_maxim = array();
 
-    ?>      <thead>
+    ?>    
+      <!-- <thead>
+        
         <tr>
             <td style="width: 6%; font-weight: bold; font-size: 11px;">Maxim De Humana International Inc.</td>
         </tr>
-                </thead>
+                </thead> -->
                 <thead>
                 <tr>
-                    <td style="width: 9%; font-weight: bold; font-size: 11px;">Employee</td>
+            <th colspan="<?php echo count($arrayDate) +1;?>">Glory Philippines Inc.</th></tr>
+            <tr>
+            <th colspan="<?php echo count($arrayDate) +1;?>">Total Sales Report</th></tr>
+            <tr>
+            <th colspan="<?php echo count($arrayDate) +1;?>">For the Period <?php echo date('M-d',strtotime($fromDate));?> to <?php echo date('M-d',strtotime($toDate))?></th></tr>
+
+            <tr>
+            <th >Maxim De Humana International Inc.</th></tr>
+    
+              
+                <tr>
+                    <th style="width: 9%; font-weight: bold; font-size: 11px;">Employee</th>
                 <?php foreach ($arrayDate as $dates_maxim){ ?>
-                    <td style="width: 4%; font-weight: bold; font-size: 11px;"><?php echo date('M-d',strtotime($dates_maxim))?></td> <?php } ?>
+                    <th style="width: 4%; font-weight: bold; font-size: 11px;"><?php echo date('M-d',strtotime($dates_maxim))?></th> <?php } ?>
                 </tr>
             </thead>
             <tbody>
@@ -180,6 +214,9 @@
                     <td style="font-size: 11px; font-weight: bold;">0</td> <?php } }?>
                 </tr>
                 </table>
+
+                <div class="page-break"></div>
+
                 <table style="margin-top: 20px; width: 100%; text-align: center; border-collapse: collapse;">
 <!-- POWERLANE -->
     <?php
@@ -188,16 +225,28 @@
         $Employee_list_count_powerlane = mysqli_num_rows($Employee_list_query_powerlane);
         $Employee_list_array_powerlane = array();
 
-    ?>      <thead>
+    ?>    
+      <!-- <thead>
         <tr>
             <td style="width: 6%; font-weight: bold; font-size: 11px;">Powerlane</td>
         </tr>
-            </thead>
+            </thead> -->
             <thead>
+            <tr>
+            <th colspan="<?php echo count($arrayDate) +1;?>">Glory Philippines Inc.</th></tr>
+            <tr>
+            <th colspan="<?php echo count($arrayDate) +1;?>">Total Sales Report</th></tr>
+            <tr>
+            <th colspan="<?php echo count($arrayDate) +1;?>">For the Period <?php echo date('M-d',strtotime($fromDate));?> to <?php echo date('M-d',strtotime($toDate))?></th></tr>
+
+            <tr>
+            <th >Powerlane</th></tr>
+    
+              
                 <tr>
-                    <td style="width: 9%; font-weight: bold; font-size: 11px;">Employee</td>
+                    <th style="width: 9%; font-weight: bold; font-size: 11px;">Employee</th>
                 <?php foreach ($arrayDate as $dates_powerlane){ ?>
-                    <td style="width: 4%; font-weight: bold; font-size: 11px;"><?php echo date('M-d',strtotime($dates_powerlane))?></td> <?php } ?>
+                    <th style="width: 4%; font-weight: bold; font-size: 11px;"><?php echo date('M-d',strtotime($dates_powerlane))?></th> <?php } ?>
                 </tr>
             </thead>
             <tbody>
@@ -257,6 +306,11 @@
                     <td style="font-size: 11px; font-weight: bold;">0</td> <?php } }?>
                 </tr>
                 </table>
+
+
+                <div class="page-break"></div>
+
+
                 <table style="margin-top: 20px; width: 100%; text-align: center; border-collapse: collapse;">
 <!-- NIPPI -->
     <?php
@@ -265,16 +319,26 @@
         $Employee_list_count_nippi = mysqli_num_rows($Employee_list_query_nippi);
         $Employee_list_array_nippi = array();
 
-    ?>      <thead>
+    ?>     
+     <!-- <thead>
         <tr>
             <td style="width: 6%; font-weight: bold; font-size: 11px;">NIPPI</td>
         </tr>
-            </thead>
+            </thead> -->
             <thead>
+            <tr>
+            <th colspan="<?php echo count($arrayDate) +1;?>">Glory Philippines Inc.</th></tr>
+            <tr>
+            <th colspan="<?php echo count($arrayDate) +1;?>">Total Sales Report</th></tr>
+            <tr>
+            <th colspan="<?php echo count($arrayDate) +1;?>">For the Period <?php echo date('M-d',strtotime($fromDate));?> to <?php echo date('M-d',strtotime($toDate))?></th></tr>
+
+            <tr>
+            <th >NIPPI</th></tr>
                 <tr>
-                    <td style="width: 9%; font-weight: bold; font-size: 11px;">Employee</td>
+                    <th style="width: 9%; font-weight: bold; font-size: 11px;">Employee</th>
                 <?php foreach ($arrayDate as $dates_nippi){ ?>
-                    <td style="width: 4%; font-weight: bold; font-size: 11px;"><?php echo date('M-d',strtotime($dates_nippi))?></td> <?php } ?>
+                    <th style="width: 4%; font-weight: bold; font-size: 11px;"><?php echo date('M-d',strtotime($dates_nippi))?></th> <?php } ?>
                 </tr>
             </thead>
             <tbody>
@@ -335,6 +399,10 @@
                     <td style="font-size: 11px; font-weight: bold;">0</td> <?php } }?>
                 </tr>
                 </table>
+
+                <div class="page-break"></div>
+
+                
                 <table style="margin-top: 20px; width: 100%; text-align: center; border-collapse: collapse;">
 <!-- SERVICE PROVIDER -->
     <?php
@@ -343,16 +411,28 @@
             $Employee_list_count_service_provider = mysqli_num_rows($Employee_list_query_service_provider);
             $Employee_list_array_service_provider = array();
 
-        ?>      <thead>
+        ?>   
+           <!-- <thead>
         <tr>
             <td style="width: 6%; font-weight: bold; font-size: 11px;">Service Provider</td>
         </tr>
-                </thead>
+                </thead> -->
                 <thead>
+
+                <tr>
+            <th colspan="<?php echo count($arrayDate) +1;?>">Glory Philippines Inc.</th></tr>
+            <tr>
+            <th colspan="<?php echo count($arrayDate) +1;?>">Total Sales Report</th></tr>
+            <tr>
+            <th colspan="<?php echo count($arrayDate) +1;?>">For the Period <?php echo date('M-d',strtotime($fromDate));?> to <?php echo date('M-d',strtotime($toDate))?></th></tr>
+
+            <tr>
+            <th >Service Provider</th></tr>
+
                     <tr>
-                        <td style="width: 9%; font-weight: bold; font-size: 11px;">Employee</td>
+                        <th style="width: 9%; font-weight: bold; font-size: 11px;">Employee</th>
                     <?php foreach ($arrayDate as $dates_service_provider){ ?>
-                        <td style="width: 4%; font-weight: bold; font-size: 11px;"><?php echo date('M-d',strtotime($dates_service_provider))?></td> <?php } ?>
+                        <th style="width: 4%; font-weight: bold; font-size: 11px;"><?php echo date('M-d',strtotime($dates_service_provider))?></th> <?php } ?>
                     </tr>
                 </thead>
                 <tbody>
