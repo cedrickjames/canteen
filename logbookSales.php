@@ -49,11 +49,13 @@
             $lgbkName = strtoupper($_REQUEST['lgbkInputName']);
             $lgbkEmp = strtoupper($_REQUEST['lgbkOption']);
             $lgbkEmpId = strtoupper($_REQUEST['lgbkEmpId']);
+            $lgbkCard = strtoupper($_REQUEST['lgbkCard']);
+
             $lgbkEmpDept = strtoupper($_REQUEST['lgbkDepartment']);
             $lgbkEmpSection = strtoupper($_REQUEST['lgbkSection']);
             $lgbkGPI8 = strtoupper($_REQUEST['lgbkGPI8']);
 
-
+            
             
             
 
@@ -80,6 +82,10 @@
             }else{
                 $insLgbkEmp = "INSERT INTO `logbooksales`(`logbook_ID`,  `emp_id`, `lgbk_date`, `lgbk_name`, `lgbk_employer`, `department`, `section`, `gpi8`) VALUES (null, '$lgbkEmpId', '$lgbkDate', '$lgbkName', '$lgbkEmp', '$lgbkEmpDept','$lgbkEmpSection', '$lgbkGPI8')";
                 mysqli_query($con, $insLgbkEmp);
+
+                $tran_insert = "INSERT INTO `tbl_trans_logs`(`transaction_id`, `emp_id`, `emp_name`, `emp_cardNum`, `employer`, `tran_date`, `department`,`section`,`gpi8`,`logbook`) VALUES (null ,'$lgbkEmpId','$lgbkName','$lgbkCard','$lgbkEmp','$lgbkDate', '$lgbkEmpDept','$lgbkEmpSection','$lgbkGPI8',1)";
+                mysqli_query($con, $tran_insert);
+
 
                 $_SESSION['recentDate'] = $lgbkDate;
 
@@ -253,7 +259,7 @@
           $result = mysqli_query($con, $sql1);
           while ($emp_row = mysqli_fetch_assoc($result)) {
           ?>
-            <option data-empid="<?php echo $emp_row['emp_idNum']; ?>" data-gpi8="<?php echo $emp_row['gpi8']; ?>"  data-empsection="<?php echo $emp_row['section']; ?>" data-name="<?php echo $emp_row['emp_name']; ?>" data-department="<?php echo $emp_row['department']; ?>" data-emp="<?php echo $emp_row['employer']; ?>" ><?php echo $emp_row['emp_name']; ?></option>
+            <option data-empcard="<?php echo $emp_row['emp_cardNum']; ?>" data-empid="<?php echo $emp_row['emp_idNum']; ?>" data-gpi8="<?php echo $emp_row['gpi8']; ?>"  data-empsection="<?php echo $emp_row['section']; ?>" data-name="<?php echo $emp_row['emp_name']; ?>" data-department="<?php echo $emp_row['department']; ?>" data-emp="<?php echo $emp_row['employer']; ?>" ><?php echo $emp_row['emp_name']; ?></option>
           <?php
 
             //  echo "<option value='$diagnosis' >$diagnosis</option>";
@@ -266,6 +272,10 @@
                     <tr>
                         <td>Emp ID</td>
                         <td><input type="text" name="lgbkEmpId"  id="lgbkEmpId" ></td>
+                    </tr>
+                    <tr>
+                        <td>Card Number</td>
+                        <td><input type="text" name="lgbkCard"  id="lgbkCard" ></td>
                     </tr>
                     <tr>
                         <td>Department</td>
@@ -305,15 +315,19 @@
     <script>
       $('#lgbkInputName').change(function() {
             var selectedNameEmpId = $(this).find('option:selected').data('empid');
+            var selectedCard= $(this).find('option:selected').data('empcard');
+
             var selectedNameDepartment = $(this).find('option:selected').data('department');
             var selectedSection = $(this).find('option:selected').data('empsection');
             var selectedGpi8 = $(this).find('option:selected').data('gpi8');
 
-
+            
             var employer = $(this).find('option:selected').data('emp');
             
 
             $('#lgbkEmpId').val(selectedNameEmpId);
+            $('#lgbkCard').val(selectedCard);
+
             $('#lgbkDepartment').val(selectedNameDepartment);
             $('#lgbkSection').val(selectedSection);
             $('#lgbkGPI8').val(selectedGpi8);

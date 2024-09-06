@@ -40,6 +40,8 @@
             ?>
                 <script type="text/javascript">
                     window.open('./TSReportPDF.php', '_blank');
+                    // window.open('./newTSReport.php', '_blank');
+
                 </script>
             <?php
 
