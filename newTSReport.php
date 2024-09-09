@@ -673,6 +673,17 @@ ORDER BY emp_name;
                                         <td><?php echo $overAlltotalCol7; ?></td>
 
                                     </tr>
+                                    <tr style=" font-weight: bold; font-size: 20px;">
+                                        <td>GRAND TOTAL</td>
+                                        <td><?php echo $overAlltotalCol1 +  $overAlltotalCol2 +  $overAlltotalCol3 + $overAlltotalCol4 + $overAlltotalCol5 + $overAlltotalCol6 + $overAlltotalCol7; ?></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                    </tr>
 
                 </table>
 
