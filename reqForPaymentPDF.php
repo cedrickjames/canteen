@@ -94,7 +94,7 @@ $html = '   <!DOCTYPE html>
                 for($d = 1; $d < $dcount; $d++){
                     $fdate = $_SESSION['period'][$d];
                     $cdate = date_create($fdate);
-                    $queryfday = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE tran_date = '$fdate' UNION SELECT `lgbk_date`, `lgbk_name`, `lgbk_employer` FROM `logbooksales` WHERE lgbk_date = '$fdate'";
+                    $queryfday = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE tran_date = '$fdate' ";
                     $resultfday = mysqli_query($con, $queryfday);
                     $countfday = mysqli_num_rows($resultfday);
                     $num += ($countfday*35);
