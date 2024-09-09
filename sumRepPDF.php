@@ -429,7 +429,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                         </tr>
                         <tr>
                             <td><em>Sub - Leader</em></td>
-                            <td><em>Supervisor</em></td>
+                            <td><em>Senior Supervisor</em></td>
                         </tr>
                     </table>
         ';
