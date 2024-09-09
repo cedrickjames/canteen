@@ -55,7 +55,7 @@ $toDate = date_create($_SESSION['period'][$y]);
 $fdate = $_SESSION['period'][0];
 $dcount = $_SESSION['dateCount'];
 
-$queryfday = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE tran_date = '$fdate' UNION SELECT `lgbk_date`, `lgbk_name`, `lgbk_employer` FROM `logbooksales` WHERE lgbk_date = '$fdate'";
+$queryfday = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE tran_date = '$fdate'";
 $resultfday = mysqli_query($con, $queryfday);
 $countfday = mysqli_num_rows($resultfday);
 
