@@ -80,11 +80,11 @@
                 }
                 ?> <script>swal ( "Oops" ,  "Employee is already in logs!" ,  "error" ).then((value) => { $('#lgbkInputName').focus(); });</script> <?php
             }else{
-                $insLgbkEmp = "INSERT INTO `logbooksales`(`logbook_ID`,  `emp_id`, `lgbk_date`, `lgbk_name`, `lgbk_employer`, `department`, `section`, `gpi8`) VALUES (null, '$lgbkEmpId', '$lgbkDate', '$lgbkName', '$lgbkEmp', '$lgbkEmpDept','$lgbkEmpSection', '$lgbkGPI8')";
-                mysqli_query($con, $insLgbkEmp);
-
-                $tran_insert = "INSERT INTO `tbl_trans_logs`(`transaction_id`, `emp_id`, `emp_name`, `emp_cardNum`, `employer`, `tran_date`, `department`,`section`,`gpi8`,`logbook`) VALUES (null ,'$lgbkEmpId','$lgbkName','$lgbkCard','$lgbkEmp','$lgbkDate', '$lgbkEmpDept','$lgbkEmpSection','$lgbkGPI8',1)";
-                mysqli_query($con, $tran_insert);
+                // $insLgbkEmp = "INSERT INTO `logbooksales`(`logbook_ID`,  `emp_id`, `lgbk_date`, `lgbk_name`, `lgbk_employer`, `department`, `section`, `gpi8`) VALUES (null, '$lgbkEmpId', '$lgbkDate', '$lgbkName', '$lgbkEmp', '$lgbkEmpDept','$lgbkEmpSection', '$lgbkGPI8')";
+                // $inserttbl = mysqli_query($con, $insLgbkEmp);
+                
+                $tran_insert = "INSERT INTO `tbl_trans_logs`(`transaction_id`, `emp_id`, `emp_name`, `emp_cardNum`, `employer`, `tran_date`, `department`,`section`,`gpi8`,`logbook`) VALUES (null ,'$lgbkEmpId','$lgbkName','$lgbkCard','$lgbkEmp','$lgbkDate', '$lgbkEmpDept','$lgbkEmpSection','$lgbkGPI8','1')";
+                $inserttbl =  mysqli_query($con, $tran_insert);
 
 
                 $_SESSION['recentDate'] = $lgbkDate;
@@ -102,7 +102,13 @@
                 }else{
                     $_SESSION['selEmp'] = 0;
                 }
+            if($inserttbl){
                 ?> <script language="javascript"> swal ( "Success" ,  "Employee successfully added!" ,  "success" ).then((value) => { $('#lgbkInputName').focus(); }); </script> <?php
+            }
+            else{
+                ?> <script language="javascript"> swal ( "Error" ,  "Theres and error!" ,  "error" ).then((value) => { $('#lgbkInputName').focus(); }); </script> <?php
+
+            }
             }
         }
 
