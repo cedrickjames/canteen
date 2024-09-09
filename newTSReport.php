@@ -83,13 +83,7 @@ $overAlltotalCol7=0;
             </header> -->
             <table style="margin-top: 20px; width: 100%; text-align: center; border-collapse: collapse;">
 <!-- GLORY -->
-    <?php
-        $Employee_list_comp_glory = "SELECT DISTINCT `emp_name` FROM emp_list WHERE employer = 'GLORY' UNION SELECT DISTINCT `emp_name` FROM `tbl_trans_logs` WHERE tran_date BETWEEN '$fromDate' AND '$toDate' AND employer = 'GLORY' UNION SELECT DISTINCT `lgbk_name` FROM `logbooksales` WHERE lgbk_date BETWEEN '$fromDate' AND '$toDate' AND lgbk_employer = 'GLORY'";
-        $Employee_list_query_glory = mysqli_query($con, $Employee_list_comp_glory);
-        $Employee_list_count_glory = mysqli_num_rows($Employee_list_query_glory);
-        $Employee_list_array_glory = array();
-
-    ?>  
+  
         <!-- <thead>
             <tr>
                <td style="width: 6%; font-weight: bold; font-size: 11px;">Glory Philippines Inc.</td>
@@ -205,13 +199,7 @@ ORDER BY emp_name;
 
                 <table style="margin-top: 20px; width: 100%; text-align: center; border-collapse: collapse;">
 <!-- GLORY -->
-    <?php
-        $Employee_list_comp_maxim = "SELECT DISTINCT `emp_name` FROM emp_list WHERE employer = 'MAXIM' UNION SELECT DISTINCT `emp_name` FROM `tbl_trans_logs` WHERE tran_date BETWEEN '$fromDate' AND '$toDate' AND employer = 'MAXIM' UNION SELECT DISTINCT `lgbk_name` FROM `logbooksales` WHERE lgbk_date BETWEEN '$fromDate' AND '$toDate' AND lgbk_employer = 'MAXIM'";
-        $Employee_list_query_maxim = mysqli_query($con, $Employee_list_comp_maxim);
-        $Employee_list_count_maxim = mysqli_num_rows($Employee_list_query_maxim);
-        $Employee_list_array_maxim = array();
-
-    ?>  
+ 
         <!-- <thead>
             <tr>
                <td style="width: 6%; font-weight: bold; font-size: 11px;">Glory Philippines Inc.</td>
@@ -316,13 +304,7 @@ ORDER BY emp_name;
 
                 <table style="margin-top: 20px; width: 100%; text-align: center; border-collapse: collapse;">
 <!-- GLORY -->
-    <?php
-        $Employee_list_comp_glory = "SELECT DISTINCT `emp_name` FROM emp_list WHERE employer = 'POWERLANE' UNION SELECT DISTINCT `emp_name` FROM `tbl_trans_logs` WHERE tran_date BETWEEN '$fromDate' AND '$toDate' AND employer = 'POWERLANE' UNION SELECT DISTINCT `lgbk_name` FROM `logbooksales` WHERE lgbk_date BETWEEN '$fromDate' AND '$toDate' AND lgbk_employer = 'POWERLANE'";
-        $Employee_list_query_glory = mysqli_query($con, $Employee_list_comp_glory);
-        $Employee_list_count_glory = mysqli_num_rows($Employee_list_query_glory);
-        $Employee_list_array_glory = array();
 
-    ?>  
         <!-- <thead>
             <tr>
                <td style="width: 6%; font-weight: bold; font-size: 11px;">Glory Philippines Inc.</td>
@@ -435,13 +417,7 @@ ORDER BY emp_name;
                 
                 <table style="margin-top: 20px; width: 100%; text-align: center; border-collapse: collapse;">
 <!-- GLORY -->
-    <?php
-        $Employee_list_comp_glory = "SELECT DISTINCT `emp_name` FROM emp_list WHERE employer = 'NIPPI' UNION SELECT DISTINCT `emp_name` FROM `tbl_trans_logs` WHERE tran_date BETWEEN '$fromDate' AND '$toDate' AND employer = 'NIPPI' UNION SELECT DISTINCT `lgbk_name` FROM `logbooksales` WHERE lgbk_date BETWEEN '$fromDate' AND '$toDate' AND lgbk_employer = 'NIPPI'";
-        $Employee_list_query_glory = mysqli_query($con, $Employee_list_comp_glory);
-        $Employee_list_count_glory = mysqli_num_rows($Employee_list_query_glory);
-        $Employee_list_array_glory = array();
-
-    ?>  
+ 
         <!-- <thead>
             <tr>
                <td style="width: 6%; font-weight: bold; font-size: 11px;">Glory Philippines Inc.</td>
@@ -550,13 +526,7 @@ ORDER BY emp_name;
 
                 <table style="margin-top: 20px; width: 100%; text-align: center; border-collapse: collapse;">
 <!-- GLORY -->
-    <?php
-        $Employee_list_comp_glory = "SELECT DISTINCT `emp_name` FROM emp_list WHERE employer = 'SERVICE PROVIDER' UNION SELECT DISTINCT `emp_name` FROM `tbl_trans_logs` WHERE tran_date BETWEEN '$fromDate' AND '$toDate' AND employer = 'SERVICE PROVIDER' UNION SELECT DISTINCT `lgbk_name` FROM `logbooksales` WHERE lgbk_date BETWEEN '$fromDate' AND '$toDate' AND lgbk_employer = 'SERVICE PROVIDER'";
-        $Employee_list_query_glory = mysqli_query($con, $Employee_list_comp_glory);
-        $Employee_list_count_glory = mysqli_num_rows($Employee_list_query_glory);
-        $Employee_list_array_glory = array();
 
-    ?>  
         <!-- <thead>
             <tr>
                <td style="width: 6%; font-weight: bold; font-size: 11px;">Glory Philippines Inc.</td>
