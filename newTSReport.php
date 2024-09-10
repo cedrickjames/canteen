@@ -20,21 +20,48 @@
     
     // Loop through the dates
     $dates = [];
+    $days = [];
     $datesArray = [];
 
     foreach ($period as $date) {
         $datesArray[] = $date->format('Y-m-d');
         // echo $date->format('Y-m-d'), '<br>';
-
+        $dayName = strtolower($date->format('l')); // 'l' returns the full day name
+    
+        // Add the day name to the array
+        if (!in_array($dayName, $days)) {
+            $days[] = $dayName;
+        }
     }
 
-    $monday= $datesArray[0] ;
-    $tuesday=  $datesArray[1];
-    $wednesday=  $datesArray[2];
-    $thursday=  $datesArray[3];
-    $friday=  $datesArray[4];
-    $saturday=  $datesArray[5];
-    $sunday=  $datesArray[6];
+
+    // $sqlDynamic = "SELECT emp_name, ";
+
+    // // Loop through the days and build the CASE statements
+    // $num=0;
+    // foreach ($days as $day) {
+    //     $sqlDynamic .= "MAX(CASE WHEN tran_date = '$datesArray[$num]' THEN '35' ELSE '0' END) AS '$day', ";
+    //     $num++;
+    // }
+    
+    // // Remove the last comma and space
+    // $sqlDynamic = rtrim($sqlDynamic, ', ');
+    
+    // // Complete the SQLDynamic query
+    // $sqlDynamic .= " FROM tbl_trans_logs WHERE employer = 'GLORY' GROUP BY emp_name ORDER BY emp_name;";
+    
+    // echo $sqlDynamic;
+
+
+
+
+    // $monday= $datesArray[0] ;
+    // $tuesday=  $datesArray[1];
+    // $wednesday=  $datesArray[2];
+    // $thursday=  $datesArray[3];
+    // $friday=  $datesArray[4];
+    // $saturday=  $datesArray[5];
+    // $sunday=  $datesArray[6];
 
 
 //     echo $monday , '<br>';
@@ -46,15 +73,24 @@
 // echo $sunday, '<br>';
 
 
-$overAlltotalCol1=0;
-$overAlltotalCol2=0;
-$overAlltotalCol3=0;
-$overAlltotalCol4=0;
-$overAlltotalCol5=0;
-$overAlltotalCol6=0;
-$overAlltotalCol7=0;
+// $overAlltotalCol1=0;
+// $overAlltotalCol2=0;
+// $overAlltotalCol3=0;
+// $overAlltotalCol4=0;
+// $overAlltotalCol5=0;
+// $overAlltotalCol6=0;
+// $overAlltotalCol7=0;
 
-
+          
+$overAlltotalCol = [
+    'monday' => 0,
+    'tuesday' => 0,
+    'wednesday' => 0,
+    'thursday' => 0,
+    'friday' => 0,
+    'saturday' => 0,
+    'sunday' => 0,
+];
 
 
 ?>
@@ -107,65 +143,67 @@ $overAlltotalCol7=0;
             <tbody style="font-size: 10px;">
 
             <?php
-             $totalCol1=0;
-             $totalCol2=0;
-             $totalCol3=0;
-             $totalCol4=0;
-             $totalCol5=0;
-             $totalCol6=0;
-             $totalCol7=0;
 
-            $sql = "SELECT 
-    emp_name,
-    MAX(CASE WHEN tran_date = '$monday' THEN '35' ELSE '0' END) AS 'monday',
-    MAX(CASE WHEN tran_date = '$tuesday' THEN '35' ELSE '0' END) AS 'tuesday',
-    MAX(CASE WHEN tran_date = '$wednesday' THEN '35' ELSE '0' END) AS 'wednesday',
-    MAX(CASE WHEN tran_date = '$thursday' THEN '35' ELSE '0' END) AS 'thursday',
-    MAX(CASE WHEN tran_date = '$friday' THEN '35' ELSE '0' END) AS 'friday',
-    MAX(CASE WHEN tran_date = '$saturday' THEN '35' ELSE '0' END) AS 'saturday',
-    MAX(CASE WHEN tran_date = '$sunday' THEN '35' ELSE '0' END) AS 'sunday'
-FROM tbl_trans_logs WHERE employer = 'GLORY'
-GROUP BY emp_name
-ORDER BY emp_name;
-";
+             $totals = [
+                'monday' => 0,
+                'tuesday' => 0,
+                'wednesday' => 0,
+                'thursday' => 0,
+                'friday' => 0,
+                'saturday' => 0,
+                'sunday' => 0,
+            ];
+
+  
 
 
-                            $result = mysqli_query($con, $sql);
+            
+             $sqlDynamic = "SELECT emp_name, ";
+
+             // Loop through the days and build the CASE statements
+             $num=0;
+             foreach ($days as $day) {
+                 $sqlDynamic .= "MAX(CASE WHEN tran_date = '$datesArray[$num]' THEN '35' ELSE '0' END) AS '$day', ";
+                 $num++;
+             }
+             
+             // Remove the last comma and space
+             $sqlDynamic = rtrim($sqlDynamic, ', ');
+             
+             // Complete the SQLDynamic query
+             $sqlDynamic .= " FROM tbl_trans_logs WHERE employer = 'GLORY' GROUP BY emp_name ORDER BY emp_name;";
+             
+             // Now you can use this $sql in your database query
+            //  echo $sqlDynamic;
+
+
+
+
+                            $result = mysqli_query($con, $sqlDynamic);
 
 
 
                             while ($row = mysqli_fetch_assoc($result)) {
-                                $totalCol1 += (int)$row['monday'];
-                                $totalCol2 += (int)$row['tuesday'];
-                                $totalCol3 += (int)$row['wednesday'];
-                                $totalCol4 += (int)$row['thursday'];
-                                $totalCol5 += (int)$row['friday'];
-                                $totalCol6 += (int)$row['saturday'];
-                                $totalCol7 += (int)$row['sunday'];
+                        
+                                
+                                foreach ($days as $day) {
+                                    $totals[$day] += (int)$row[$day];
+                                    $overAlltotalCol[$day] += (int)$row[$day];
 
-
-                                $overAlltotalCol1 += (int)$row['monday'];
-                                $overAlltotalCol2 += (int)$row['tuesday'];
-                                $overAlltotalCol3 += (int)$row['wednesday'];
-                                $overAlltotalCol4 += (int)$row['thursday'];
-                                $overAlltotalCol5 += (int)$row['friday'];
-                                $overAlltotalCol6 += (int)$row['saturday'];
-                                $overAlltotalCol7 += (int)$row['sunday'];
-
-                   
+                                }
+                                
 
 
                                     ?>
                                     <tr>
                                         <td><?php echo $row['emp_name']; ?></td>
-                                        <td><?php echo $row['monday']; ?></td>
-                                        <td><?php echo $row['tuesday']; ?></td>
-                                        <td><?php echo $row['wednesday']; ?></td>
-                                        <td><?php echo $row['thursday']; ?></td>
-                                        <td><?php echo $row['friday']; ?></td>
-                                        <td><?php echo $row['saturday']; ?></td>
-                                        <td><?php echo $row['sunday']; ?></td>
-
+                                        <?php
+                                        foreach ($days as $day) {
+                                           ?>  <td><?php echo $row[$day]; ?></td> <?php
+                                        }
+                                        
+                                        ?>
+                                        
                                     </tr>
 
 <?php
@@ -178,14 +216,12 @@ ORDER BY emp_name;
 
 <tr style=" font-weight: bold; font-size: 15px;">
                                         <td>TOTAL</td>
-                                        <td><?php echo $totalCol1; ?></td>
-                                        <td><?php echo $totalCol2; ?></td>
-                                        <td><?php echo $totalCol3; ?></td>
-                                        <td><?php echo $totalCol4; ?></td>
-                                        <td><?php echo $totalCol5; ?></td>
-                                        <td><?php echo $totalCol6; ?></td>
-                                        <td><?php echo $totalCol7; ?></td>
-
+                                        <?php
+                                        foreach ($days as $day) {
+                                           ?>  <td><?php echo $overAlltotalCol[$day]; ?></td> <?php
+                                        }
+                                        
+                                        ?>
                                     </tr>
 
         
@@ -222,81 +258,90 @@ ORDER BY emp_name;
             </thead>
             <tbody style="font-size: 10px;">
 
-            <?php
-            $totalCol1=0;
-            $totalCol2=0;
-            $totalCol3=0;
-            $totalCol4=0;
-            $totalCol5=0;
-            $totalCol6=0;
-            $totalCol7=0;
-            $sql = "SELECT 
-    emp_name,
-    MAX(CASE WHEN tran_date = '$monday' THEN '35' ELSE '0' END) AS 'col1',
-    MAX(CASE WHEN tran_date = '$tuesday' THEN '35' ELSE '0' END) AS 'col2',
-    MAX(CASE WHEN tran_date = '$wednesday' THEN '35' ELSE '0' END) AS 'col3',
-    MAX(CASE WHEN tran_date = '$thursday' THEN '35' ELSE '0' END) AS 'col4',
-    MAX(CASE WHEN tran_date = '$friday' THEN '35' ELSE '0' END) AS 'col5',
-    MAX(CASE WHEN tran_date = '$saturday' THEN '35' ELSE '0' END) AS 'col6',
-    MAX(CASE WHEN tran_date = '$sunday' THEN '35' ELSE '0' END) AS 'col7'
-FROM tbl_trans_logs WHERE employer = 'MAXIM'
-GROUP BY emp_name
-ORDER BY emp_name;
-";
+<?php
 
-
-                            $result = mysqli_query($con, $sql);
+ $totals = [
+    'monday' => 0,
+    'tuesday' => 0,
+    'wednesday' => 0,
+    'thursday' => 0,
+    'friday' => 0,
+    'saturday' => 0,
+    'sunday' => 0,
+];
 
 
 
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $totalCol1 += (int)$row['col1'];
-                                $totalCol2 += (int)$row['col2'];
-                                $totalCol3 += (int)$row['col3'];
-                                $totalCol4 += (int)$row['col4'];
-                                $totalCol5 += (int)$row['col5'];
-                                $totalCol6 += (int)$row['col6'];
-                                $totalCol7 += (int)$row['col7'];
-                                
 
-                                $overAlltotalCol1 += (int)$row['col1'];
-                                $overAlltotalCol2 += (int)$row['col2'];
-                                $overAlltotalCol3 += (int)$row['col3'];
-                                $overAlltotalCol4 += (int)$row['col4'];
-                                $overAlltotalCol5 += (int)$row['col5'];
-                                $overAlltotalCol6 += (int)$row['col6'];
-                                $overAlltotalCol7 += (int)$row['col7']
 
-                                    ?>
-                                    <tr>
-                                        <td><?php echo $row['emp_name']; ?></td>
-                                        <td><?php echo $row['col1']; ?></td>
-                                        <td><?php echo $row['col2']; ?></td>
-                                        <td><?php echo $row['col3']; ?></td>
-                                        <td><?php echo $row['col4']; ?></td>
-                                        <td><?php echo $row['col5']; ?></td>
-                                        <td><?php echo $row['col6']; ?></td>
-                                        <td><?php echo $row['col7']; ?></td>
+ $sqlDynamic = "SELECT emp_name, ";
 
-                                    </tr>
+ // Loop through the days and build the CASE statements
+ $num=0;
+ foreach ($days as $day) {
+     $sqlDynamic .= "MAX(CASE WHEN tran_date = '$datesArray[$num]' THEN '35' ELSE '0' END) AS '$day', ";
+     $num++;
+ }
+ 
+ // Remove the last comma and space
+ $sqlDynamic = rtrim($sqlDynamic, ', ');
+ 
+ // Complete the SQLDynamic query
+ $sqlDynamic .= " FROM tbl_trans_logs WHERE employer = 'MAXIM' GROUP BY emp_name ORDER BY emp_name;";
+ 
+ // Now you can use this $sql in your database query
+//  echo $sqlDynamic;
 
-                                        <?php
+
+
+
+                $result = mysqli_query($con, $sqlDynamic);
+
+
+
+                while ($row = mysqli_fetch_assoc($result)) {
+            
+                    
+                    foreach ($days as $day) {
+                        $totals[$day] += (int)$row[$day];
+                        $overAlltotalCol[$day] += (int)$row[$day];
+
+                    }
+                    
+
+
+                        ?>
+                        <tr>
+                            <td><?php echo $row['emp_name']; ?></td>
+                            <?php
+                            foreach ($days as $day) {
+                               ?>  <td><?php echo $row[$day]; ?></td> <?php
                             }
-            ?>
-         
-                                    <tr style=" font-weight: bold; font-size: 15px;">
-                                        <td>TOTAL</td>
-                                        <td><?php echo $totalCol1; ?></td>
-                                        <td><?php echo $totalCol2; ?></td>
-                                        <td><?php echo $totalCol3; ?></td>
-                                        <td><?php echo $totalCol4; ?></td>
-                                        <td><?php echo $totalCol5; ?></td>
-                                        <td><?php echo $totalCol6; ?></td>
-                                        <td><?php echo $totalCol7; ?></td>
+                            
+                            ?>
+                            
+                        </tr>
 
-                                    </tr>
+<?php
 
-                </tbody>
+                }
+
+
+
+?>
+
+<tr style=" font-weight: bold; font-size: 15px;">
+                            <td>TOTAL</td>
+                            <?php
+                            foreach ($days as $day) {
+                               ?>  <td><?php echo $totals[$day]; ?></td> <?php
+                            }
+                            
+                            ?>
+                        </tr>
+
+
+    </tbody>
                 </table>
 
 
@@ -328,64 +373,67 @@ ORDER BY emp_name;
             <tbody style="font-size: 10px;">
 
             <?php
-             $totalCol1=0;
-             $totalCol2=0;
-             $totalCol3=0;
-             $totalCol4=0;
-             $totalCol5=0;
-             $totalCol6=0;
-             $totalCol7=0;
 
-            $sql = "SELECT 
-    emp_name,
-    MAX(CASE WHEN tran_date = '$monday' THEN '35' ELSE '0' END) AS 'monday',
-    MAX(CASE WHEN tran_date = '$tuesday' THEN '35' ELSE '0' END) AS 'tuesday',
-    MAX(CASE WHEN tran_date = '$wednesday' THEN '35' ELSE '0' END) AS 'wednesday',
-    MAX(CASE WHEN tran_date = '$thursday' THEN '35' ELSE '0' END) AS 'thursday',
-    MAX(CASE WHEN tran_date = '$friday' THEN '35' ELSE '0' END) AS 'friday',
-    MAX(CASE WHEN tran_date = '$saturday' THEN '35' ELSE '0' END) AS 'saturday',
-    MAX(CASE WHEN tran_date = '$sunday' THEN '35' ELSE '0' END) AS 'sunday'
-FROM tbl_trans_logs WHERE employer = 'POWERLANE'
-GROUP BY emp_name
-ORDER BY emp_name;
-";
+             $totals = [
+                'monday' => 0,
+                'tuesday' => 0,
+                'wednesday' => 0,
+                'thursday' => 0,
+                'friday' => 0,
+                'saturday' => 0,
+                'sunday' => 0,
+            ];
+
+  
 
 
-                            $result = mysqli_query($con, $sql);
+            
+             $sqlDynamic = "SELECT emp_name, ";
+
+             // Loop through the days and build the CASE statements
+             $num=0;
+             foreach ($days as $day) {
+                 $sqlDynamic .= "MAX(CASE WHEN tran_date = '$datesArray[$num]' THEN '35' ELSE '0' END) AS '$day', ";
+                 $num++;
+             }
+             
+             // Remove the last comma and space
+             $sqlDynamic = rtrim($sqlDynamic, ', ');
+             
+             // Complete the SQLDynamic query
+             $sqlDynamic .= " FROM tbl_trans_logs WHERE employer = 'POWERLANE' GROUP BY emp_name ORDER BY emp_name;";
+             
+             // Now you can use this $sql in your database query
+            //  echo $sqlDynamic;
+
+
+
+
+                            $result = mysqli_query($con, $sqlDynamic);
 
 
 
                             while ($row = mysqli_fetch_assoc($result)) {
-                                $totalCol1 += (int)$row['monday'];
-                                $totalCol2 += (int)$row['tuesday'];
-                                $totalCol3 += (int)$row['wednesday'];
-                                $totalCol4 += (int)$row['thursday'];
-                                $totalCol5 += (int)$row['friday'];
-                                $totalCol6 += (int)$row['saturday'];
-                                $totalCol7 += (int)$row['sunday'];
-
-                                $overAlltotalCol1 += (int)$row['monday'];
-                                $overAlltotalCol2 += (int)$row['tuesday'];
-                                $overAlltotalCol3 += (int)$row['wednesday'];
-                                $overAlltotalCol4 += (int)$row['thursday'];
-                                $overAlltotalCol5 += (int)$row['friday'];
-                                $overAlltotalCol6 += (int)$row['saturday'];
-                                $overAlltotalCol7 += (int)$row['sunday'];
-
-
-
+                        
                                 
+                                foreach ($days as $day) {
+                                    $totals[$day] += (int)$row[$day];
+                                    $overAlltotalCol[$day] += (int)$row[$day];
+
+                                }
+                                
+
+
                                     ?>
                                     <tr>
                                         <td><?php echo $row['emp_name']; ?></td>
-                                        <td><?php echo $row['monday']; ?></td>
-                                        <td><?php echo $row['tuesday']; ?></td>
-                                        <td><?php echo $row['wednesday']; ?></td>
-                                        <td><?php echo $row['thursday']; ?></td>
-                                        <td><?php echo $row['friday']; ?></td>
-                                        <td><?php echo $row['saturday']; ?></td>
-                                        <td><?php echo $row['sunday']; ?></td>
-
+                                        <?php
+                                        foreach ($days as $day) {
+                                           ?>  <td><?php echo $row[$day]; ?></td> <?php
+                                        }
+                                        
+                                        ?>
+                                        
                                     </tr>
 
 <?php
@@ -398,14 +446,12 @@ ORDER BY emp_name;
 
 <tr style=" font-weight: bold; font-size: 15px;">
                                         <td>TOTAL</td>
-                                        <td><?php echo $totalCol1; ?></td>
-                                        <td><?php echo $totalCol2; ?></td>
-                                        <td><?php echo $totalCol3; ?></td>
-                                        <td><?php echo $totalCol4; ?></td>
-                                        <td><?php echo $totalCol5; ?></td>
-                                        <td><?php echo $totalCol6; ?></td>
-                                        <td><?php echo $totalCol7; ?></td>
-
+                                        <?php
+                                        foreach ($days as $day) {
+                                           ?>  <td><?php echo $totals[$day]; ?></td> <?php
+                                        }
+                                        
+                                        ?>
                                     </tr>
 
         
@@ -440,87 +486,90 @@ ORDER BY emp_name;
             </thead>
             <tbody style="font-size: 10px;">
 
-            <?php
-             $totalCol1=0;
-             $totalCol2=0;
-             $totalCol3=0;
-             $totalCol4=0;
-             $totalCol5=0;
-             $totalCol6=0;
-             $totalCol7=0;
+<?php
 
-            $sql = "SELECT 
-    emp_name,
-    MAX(CASE WHEN tran_date = '$monday' THEN '35' ELSE '0' END) AS 'monday',
-    MAX(CASE WHEN tran_date = '$tuesday' THEN '35' ELSE '0' END) AS 'tuesday',
-    MAX(CASE WHEN tran_date = '$wednesday' THEN '35' ELSE '0' END) AS 'wednesday',
-    MAX(CASE WHEN tran_date = '$thursday' THEN '35' ELSE '0' END) AS 'thursday',
-    MAX(CASE WHEN tran_date = '$friday' THEN '35' ELSE '0' END) AS 'friday',
-    MAX(CASE WHEN tran_date = '$saturday' THEN '35' ELSE '0' END) AS 'saturday',
-    MAX(CASE WHEN tran_date = '$sunday' THEN '35' ELSE '0' END) AS 'sunday'
-FROM tbl_trans_logs WHERE employer = 'NIPPI'
-GROUP BY emp_name
-ORDER BY emp_name;
-";
-
-
-                            $result = mysqli_query($con, $sql);
+ $totals = [
+    'monday' => 0,
+    'tuesday' => 0,
+    'wednesday' => 0,
+    'thursday' => 0,
+    'friday' => 0,
+    'saturday' => 0,
+    'sunday' => 0,
+];
 
 
 
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $totalCol1 += (int)$row['monday'];
-                                $totalCol2 += (int)$row['tuesday'];
-                                $totalCol3 += (int)$row['wednesday'];
-                                $totalCol4 += (int)$row['thursday'];
-                                $totalCol5 += (int)$row['friday'];
-                                $totalCol6 += (int)$row['saturday'];
-                                $totalCol7 += (int)$row['sunday'];
-
-                                $overAlltotalCol1 += (int)$row['monday'];
-                                $overAlltotalCol2 += (int)$row['tuesday'];
-                                $overAlltotalCol3 += (int)$row['wednesday'];
-                                $overAlltotalCol4 += (int)$row['thursday'];
-                                $overAlltotalCol5 += (int)$row['friday'];
-                                $overAlltotalCol6 += (int)$row['saturday'];
-                                $overAlltotalCol7 += (int)$row['sunday'];
 
 
-                                    ?>
-                                    <tr>
-                                        <td><?php echo $row['emp_name']; ?></td>
-                                        <td><?php echo $row['monday']; ?></td>
-                                        <td><?php echo $row['tuesday']; ?></td>
-                                        <td><?php echo $row['wednesday']; ?></td>
-                                        <td><?php echo $row['thursday']; ?></td>
-                                        <td><?php echo $row['friday']; ?></td>
-                                        <td><?php echo $row['saturday']; ?></td>
-                                        <td><?php echo $row['sunday']; ?></td>
+ $sqlDynamic = "SELECT emp_name, ";
 
-                                    </tr>
+ // Loop through the days and build the CASE statements
+ $num=0;
+ foreach ($days as $day) {
+     $sqlDynamic .= "MAX(CASE WHEN tran_date = '$datesArray[$num]' THEN '35' ELSE '0' END) AS '$day', ";
+     $num++;
+ }
+ 
+ // Remove the last comma and space
+ $sqlDynamic = rtrim($sqlDynamic, ', ');
+ 
+ // Complete the SQLDynamic query
+ $sqlDynamic .= " FROM tbl_trans_logs WHERE employer = 'NIPPI' GROUP BY emp_name ORDER BY emp_name;";
+ 
+ // Now you can use this $sql in your database query
+//  echo $sqlDynamic;
+
+
+
+
+                $result = mysqli_query($con, $sqlDynamic);
+
+
+
+                while ($row = mysqli_fetch_assoc($result)) {
+            
+                    
+                    foreach ($days as $day) {
+                        $totals[$day] += (int)$row[$day];
+                        $overAlltotalCol[$day] += (int)$row[$day];
+
+                    }
+                    
+
+
+                        ?>
+                        <tr>
+                            <td><?php echo $row['emp_name']; ?></td>
+                            <?php
+                            foreach ($days as $day) {
+                               ?>  <td><?php echo $row[$day]; ?></td> <?php
+                            }
+                            
+                            ?>
+                            
+                        </tr>
 
 <?php
 
-                            }
+                }
 
 
 
-            ?>
+?>
 
 <tr style=" font-weight: bold; font-size: 15px;">
-                                        <td>TOTAL</td>
-                                        <td><?php echo $totalCol1; ?></td>
-                                        <td><?php echo $totalCol2; ?></td>
-                                        <td><?php echo $totalCol3; ?></td>
-                                        <td><?php echo $totalCol4; ?></td>
-                                        <td><?php echo $totalCol5; ?></td>
-                                        <td><?php echo $totalCol6; ?></td>
-                                        <td><?php echo $totalCol7; ?></td>
+                            <td>TOTAL</td>
+                            <?php
+                            foreach ($days as $day) {
+                               ?>  <td><?php echo $totals[$day]; ?></td> <?php
+                            }
+                            
+                            ?>
+                        </tr>
 
-                                    </tr>
 
-        
-                </tbody>
+    </tbody>
                 </table>
                 
 
@@ -549,109 +598,114 @@ ORDER BY emp_name;
             </thead>
             <tbody style="font-size: 10px;">
 
-            <?php
-             $totalCol1=0;
-             $totalCol2=0;
-             $totalCol3=0;
-             $totalCol4=0;
-             $totalCol5=0;
-             $totalCol6=0;
-             $totalCol7=0;
+<?php
 
-            $sql = "SELECT 
-    emp_name,
-    MAX(CASE WHEN tran_date = '$monday' THEN '35' ELSE '0' END) AS 'monday',
-    MAX(CASE WHEN tran_date = '$tuesday' THEN '35' ELSE '0' END) AS 'tuesday',
-    MAX(CASE WHEN tran_date = '$wednesday' THEN '35' ELSE '0' END) AS 'wednesday',
-    MAX(CASE WHEN tran_date = '$thursday' THEN '35' ELSE '0' END) AS 'thursday',
-    MAX(CASE WHEN tran_date = '$friday' THEN '35' ELSE '0' END) AS 'friday',
-    MAX(CASE WHEN tran_date = '$saturday' THEN '35' ELSE '0' END) AS 'saturday',
-    MAX(CASE WHEN tran_date = '$sunday' THEN '35' ELSE '0' END) AS 'sunday'
-FROM tbl_trans_logs WHERE employer = 'SERVICE PROVIDER'
-GROUP BY emp_name
-ORDER BY emp_name;
-";
-
-
-                            $result = mysqli_query($con, $sql);
+ $totals = [
+    'monday' => 0,
+    'tuesday' => 0,
+    'wednesday' => 0,
+    'thursday' => 0,
+    'friday' => 0,
+    'saturday' => 0,
+    'sunday' => 0,
+];
 
 
 
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $totalCol1 += (int)$row['monday'];
-                                $totalCol2 += (int)$row['tuesday'];
-                                $totalCol3 += (int)$row['wednesday'];
-                                $totalCol4 += (int)$row['thursday'];
-                                $totalCol5 += (int)$row['friday'];
-                                $totalCol6 += (int)$row['saturday'];
-                                $totalCol7 += (int)$row['sunday'];
 
 
-                                $overAlltotalCol1 += (int)$row['monday'];
-                                $overAlltotalCol2 += (int)$row['tuesday'];
-                                $overAlltotalCol3 += (int)$row['wednesday'];
-                                $overAlltotalCol4 += (int)$row['thursday'];
-                                $overAlltotalCol5 += (int)$row['friday'];
-                                $overAlltotalCol6 += (int)$row['saturday'];
-                                $overAlltotalCol7 += (int)$row['sunday'];
+ $sqlDynamic = "SELECT emp_name, ";
+
+ // Loop through the days and build the CASE statements
+ $num=0;
+ foreach ($days as $day) {
+     $sqlDynamic .= "MAX(CASE WHEN tran_date = '$datesArray[$num]' THEN '35' ELSE '0' END) AS '$day', ";
+     $num++;
+ }
+ 
+ // Remove the last comma and space
+ $sqlDynamic = rtrim($sqlDynamic, ', ');
+ 
+ // Complete the SQLDynamic query
+ $sqlDynamic .= " FROM tbl_trans_logs WHERE employer = 'SERVICE PROVIDER' GROUP BY emp_name ORDER BY emp_name;";
+ 
+ // Now you can use this $sql in your database query
+//  echo $sqlDynamic;
 
 
-                                    ?>
-                                    <tr>
-                                        <td><?php echo $row['emp_name']; ?></td>
-                                        <td><?php echo $row['monday']; ?></td>
-                                        <td><?php echo $row['tuesday']; ?></td>
-                                        <td><?php echo $row['wednesday']; ?></td>
-                                        <td><?php echo $row['thursday']; ?></td>
-                                        <td><?php echo $row['friday']; ?></td>
-                                        <td><?php echo $row['saturday']; ?></td>
-                                        <td><?php echo $row['sunday']; ?></td>
 
-                                    </tr>
+
+                $result = mysqli_query($con, $sqlDynamic);
+
+
+
+                while ($row = mysqli_fetch_assoc($result)) {
+            
+                    
+                    foreach ($days as $day) {
+                        $totals[$day] += (int)$row[$day];
+                        $overAlltotalCol[$day] += (int)$row[$day];
+
+                    }
+                    
+
+
+                        ?>
+                        <tr>
+                            <td><?php echo $row['emp_name']; ?></td>
+                            <?php
+                            foreach ($days as $day) {
+                               ?>  <td><?php echo $row[$day]; ?></td> <?php
+                            }
+                            
+                            ?>
+                            
+                        </tr>
 
 <?php
 
-                            }
+                }
 
 
 
-            ?>
+?>
 
 <tr style=" font-weight: bold; font-size: 15px;">
-                                        <td>TOTAL</td>
-                                        <td><?php echo $totalCol1; ?></td>
-                                        <td><?php echo $totalCol2; ?></td>
-                                        <td><?php echo $totalCol3; ?></td>
-                                        <td><?php echo $totalCol4; ?></td>
-                                        <td><?php echo $totalCol5; ?></td>
-                                        <td><?php echo $totalCol6; ?></td>
-                                        <td><?php echo $totalCol7; ?></td>
+                            <td>TOTAL</td>
+                            <?php
+                            foreach ($days as $day) {
+                               ?>  <td><?php echo $totals[$day]; ?></td> <?php
+                            }
+                            
+                            ?>
+                        </tr>
 
-                                    </tr>
 
-        
-                </tbody>
+    </tbody>
 
                 <tr style=" font-weight: bold; font-size: 20px;">
                                         <td>OVERALL</td>
-                                        <td><?php echo $overAlltotalCol1; ?></td>
-                                        <td><?php echo $overAlltotalCol2; ?></td>
-                                        <td><?php echo $overAlltotalCol3; ?></td>
-                                        <td><?php echo $overAlltotalCol4; ?></td>
-                                        <td><?php echo $overAlltotalCol5; ?></td>
-                                        <td><?php echo $overAlltotalCol6; ?></td>
-                                        <td><?php echo $overAlltotalCol7; ?></td>
+                                        <?php
+                            foreach ($days as $day) {
+                               ?>  <td><?php echo $overAlltotalCol[$day]; ?></td> <?php
+                            }
+                            
+                            ?>
 
                                     </tr>
                                     <tr style=" font-weight: bold; font-size: 20px;">
                                         <td>GRAND TOTAL</td>
-                                        <td><?php echo $overAlltotalCol1 +  $overAlltotalCol2 +  $overAlltotalCol3 + $overAlltotalCol4 + $overAlltotalCol5 + $overAlltotalCol6 + $overAlltotalCol7; ?></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>
+                                        <?php
+                                        $grandTotal = 0;
+                                        foreach ($days as $day) {
+                                            // echo $overAlltotalCol[$day], '<br>'; 
+                                            $grandTotal += $overAlltotalCol[$day]; 
+                                        }
+                                        echo $grandTotal;
+                            ?>
+                                        </td>
+                                   
 
                                     </tr>
 
