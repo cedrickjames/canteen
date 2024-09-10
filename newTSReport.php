@@ -702,7 +702,7 @@ $overAlltotalCol = [
                                             // echo $overAlltotalCol[$day], '<br>'; 
                                             $grandTotal += $overAlltotalCol[$day]; 
                                         }
-                                        echo $grandTotal;
+                                        echo 'P ' . number_format($grandTotal, 2);
                             ?>
                                         </td>
                                    
