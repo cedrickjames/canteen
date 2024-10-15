@@ -142,7 +142,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                     <thead>
                         <tr style="font-size: 11px; border: 1px solid black; font-size: 12px;">
                             <th rowspan="2" style="width: 12.5%; border: 1px solid black;">Date</th>
-                            <th colspan="6" style="border: 1px solid black; font-size: 12px;">GPI 8 (Direct)</th>
+                            <th colspan="8" style="border: 1px solid black; font-size: 12px;">GPI 8 (Direct)</th>
                             <th rowspan="2" style="width: 12.5%; border: 1px solid black; font-size: 12px;">TOTAL</th>
 
                             <th rowspan="2" style="width: 12.5%; border: 1px solid black; font-size: 12px;">TOTAL MANPOWER</th>
@@ -155,6 +155,10 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <th style="border: 1px solid black;">Admin/QA</th>
                             <th style="border: 1px solid black;">Prod Support</th>
                             <th style="border: 1px solid black;">Parts Inspection</th>
+                            <th style="border: 1px solid black;">Warehouse</th>
+                            <th style="border: 1px solid black;">Others</th>
+
+
                         </tr>
                     </thead>
                     <tbody>';
@@ -169,6 +173,9 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                     $totalQAdmin = 0.00;
                     $totalProdsupport = 0.00;
                     $totalPI = 0.00;
+                    $totalWarehouse = 0.00;
+                    $totalOthers = 0.00;
+
 
 
                     $amountMoulding = 0.00;
@@ -176,7 +183,9 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                     $amountFabrication = 0.00;
                     $amountQAdmin = 0.00;
                     $amountProdsupport = 0.00;
-                    $amountPI = 0.00;
+                    $amountWarehouse = 0.00;
+                    $amountOthers = 0.00;
+
 
 
                     for($d = 0; $d <= $y; $d++){
@@ -188,6 +197,8 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                         $countMoulding = mysqli_num_rows($resultMoulding);
                         $amountMoulding = $countMoulding * 35.00;
                         $totalMoulding += $amountMoulding;
+
+                        
                         
                         $queryMaintenance = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND section = 'Maintenance' AND gpi8=1 AND tran_date = '$qDate' ";
                         $resultMaintenance = mysqli_query($con, $queryMaintenance);
@@ -219,7 +230,20 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                         $amountPI = $countPI * 35.00;
                         $totalPI += $amountPI;
 
-                        $totalPayment = $amountMoulding + $amountMaintenance + $amountFabrication + $amountQAdmin + $amountProdsupport + $amountPI;
+                        $queryWarehouse = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND section = 'Warehouse' AND gpi8=1 AND tran_date = '$qDate' ";
+                        $resultWarehouse = mysqli_query($con, $queryWarehouse);
+                        $countWarehouse = mysqli_num_rows($resultWarehouse);
+                        $amountWarehouse = $countWarehouse * 35.00;
+                        $totalWarehouse += $amountWarehouse;
+
+                        $queryOthers = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE `gpi8` = '1' AND (`department` != 'Parts Inspection' AND `department` != 'QA') AND `section` = '' AND tran_date = '$qDate' ";
+                        $resultOthers = mysqli_query($con, $queryOthers);
+                        $countOthers = mysqli_num_rows($resultOthers);
+                        $amountOthers = $countOthers * 35.00;
+                        $totalOthers += $amountOthers;
+
+
+                        $totalPayment =$amountOthers+ $amountWarehouse + $amountMoulding + $amountMaintenance + $amountFabrication + $amountQAdmin + $amountProdsupport + $amountPI;
 
                         $totalManpower += $totalPayment;
 
@@ -232,6 +256,9 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountQAdmin, 2, '.', ',').'</td>
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountProdsupport, 2, '.', ',').'</td>
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountPI, 2, '.', ',').'</td>
+                            <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountWarehouse, 2, '.', ',').'</td>
+                            <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountOthers, 2, '.', ',').'</td>
+
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($totalPayment, 2, '.', ',').'</td>
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.($totalPayment/35).'</td>
 
@@ -250,6 +277,10 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
+                            <td style="border: 1px solid black; line-height: 23px;">-</td>
+                            <td style="border: 1px solid black; line-height: 23px;">-</td>
+
+                            
 
                         </tr>
 
@@ -261,6 +292,9 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalQAdmin, 2, '.', ',').'</td>
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalProdsupport, 2, '.', ',').'</td>
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalPI, 2, '.', ',').'</td>
+                            <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalWarehouse, 2, '.', ',').'</td>
+                            <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalOthers, 2, '.', ',').'</td>
+
                            
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalManpower, 2, '.', ',').'</td>
                              <td style="border: 1px solid black; line-height: 23px;">'.($totalManpower/35).'</td>
@@ -274,7 +308,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                     <thead>
                         <tr style="font-size: 11px; border: 1px solid black; font-size: 12px;">
                             <th rowspan="2" style="width: 12.5%; border: 1px solid black;">Date</th>
-                            <th colspan="6" style="border: 1px solid black; font-size: 12px;">GPI 8 (Agency)</th>
+                            <th colspan="8" style="border: 1px solid black; font-size: 12px;">GPI 8 (Agency)</th>
                             <th rowspan="2" style="width: 12.5%; border: 1px solid black; font-size: 12px;">TOTAL</th>
                           <th rowspan="2" style="width: 12.5%; border: 1px solid black; font-size: 12px;">TOTAL MANPOWER</th>
                         </tr>
@@ -285,6 +319,10 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <th style="border: 1px solid black;">Admin/QA</th>
                             <th style="border: 1px solid black;">Prod Support</th>
                             <th style="border: 1px solid black;">Parts Inspection</th>
+                            <th style="border: 1px solid black;">Warehouse</th>
+                            <th style="border: 1px solid black;">Others</th>
+
+
                         </tr>
                     </thead>
                     <tbody>';
@@ -299,6 +337,9 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                     $totalQAdmin = 0.00;
                     $totalProdsupport = 0.00;
                     $totalPI = 0.00;
+                    $totalWarehouse = 0.00;
+                    $totalOthers = 0.00;
+
 
 
                     $amountMoulding = 0.00;
@@ -307,6 +348,8 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                     $amountQAdmin = 0.00;
                     $amountProdsupport = 0.00;
                     $amountPI = 0.00;
+                    $amountWarehouse = 0.00;
+                    $amountOthers = 0.00;
 
 
                     for($d = 0; $d <= $y; $d++){
@@ -318,6 +361,13 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                         $countMoulding = mysqli_num_rows($resultMoulding);
                         $amountMoulding = $countMoulding * 35.00;
                         $totalMoulding += $amountMoulding;
+
+                        $queryWarehouse = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND section = 'Warehouse' AND gpi8=1 AND tran_date = '$qDate' ";
+                        $resultWarehouse = mysqli_query($con, $queryWarehouse);
+                        $countWarehouse = mysqli_num_rows($resultWarehouse);
+                        $amountWarehouse = $countWarehouse * 35.00;
+                        $totalWarehouse += $amountWarehouse;
+
                         
                         $queryMaintenance = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND section = 'Maintenance' AND gpi8=1 AND tran_date = '$qDate' ";
                         $resultMaintenance = mysqli_query($con, $queryMaintenance);
@@ -349,7 +399,14 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                         $amountPI = $countPI * 35.00;
                         $totalPI += $amountPI;
 
-                        $totalPayment = $amountMoulding + $amountMaintenance + $amountFabrication + $amountQAdmin + $amountProdsupport + $amountPI;
+                        $queryOthers = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND `gpi8` = '1' AND (`department` != 'Parts Inspection' AND `department` != 'QA') AND `section` = '' AND tran_date = '$qDate' ";
+                        $resultOthers = mysqli_query($con, $queryOthers);
+                        $countOthers = mysqli_num_rows($resultOthers);
+                        $amountOthers = $countOthers * 35.00;
+                        $totalOthers += $amountOthers;
+
+
+                        $totalPayment = $amountOthers + $amountWarehouse + $amountMoulding + $amountMaintenance + $amountFabrication + $amountQAdmin + $amountProdsupport + $amountPI;
 
                         $totalManpower += $totalPayment;
 
@@ -361,6 +418,10 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountQAdmin, 2, '.', ',').'</td>
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountProdsupport, 2, '.', ',').'</td>
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountPI, 2, '.', ',').'</td>
+                            <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountWarehouse, 2, '.', ',').'</td>
+                            <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountOthers, 2, '.', ',').'</td>
+
+
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($totalPayment, 2, '.', ',').'</td>
                           <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.($totalPayment/35).'</td>
                         </tr>';
@@ -377,6 +438,10 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
+                            <td style="border: 1px solid black; line-height: 23px;">-</td>
+                            <td style="border: 1px solid black; line-height: 23px;">-</td>
+
+
 
                         </tr>
 
@@ -388,12 +453,17 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalQAdmin, 2, '.', ',').'</td>
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalProdsupport, 2, '.', ',').'</td>
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalPI, 2, '.', ',').'</td>
+                            <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalWarehouse, 2, '.', ',').'</td>
+                            <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalOthers, 2, '.', ',').'</td>
+
+
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalManpower, 2, '.', ',').'</td>
 
                                                  <td style="border: 1px solid black; line-height: 23px;">'.($totalManpower/35).'</td>
 
                         </tr>
-
+ 
+                      
                         
                         <tr style="font-size: 14px; line-height: 20px">
                             <td></td>
@@ -402,6 +472,9 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td></td>
+                            <td></td>
+
 
                             <td style="font-weight: bold;">GRAND TOTAL</td>
                             <td>'.number_format($grandOverallTotal, 2, '.', ',').'</td>
@@ -409,8 +482,44 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                         </tr>
 
                         </tbody>
-                    </table>
+                    </table>';
 
+
+
+                    // <table style="margin-top: 20px; width: 100%; text-align: center; border-collapse: collapse;">
+                    // <thead>
+                    //     <tr style="font-size: 11px; border: 1px solid black; font-size: 12px;">
+                    //         <th  style="width: 12.5%; border: 1px solid black;">Date</th>
+                    //         <th colspan="7" style="border: 1px solid black; font-size: 12px;">Additional (75.00)</th>
+                    //       <th  style="width: 12.5%; border: 1px solid black; font-size: 12px;">TOTAL MANPOWER</th>
+                    //     </tr>
+                       
+                    // </thead>
+                    // <tbody>
+                    // <tr style="font-size: 12px; border: 1px solid black;">
+                    //         <td style="border: 1px solid black; line-height: 23px;">Inventory Verifier (September 28, 2024)</td>
+                            
+                    //         <td colspan="7" style="border: 1px solid black; line-height: 23px;">6750</td>
+                    //         <td style="border: 1px solid black; line-height: 23px;">90</td>
+                    //     </tr>
+                        
+                    //     <tr style="font-size: 14px; line-height: 20px">
+                    //         <td></td>
+                    //         <td></td>
+                    //         <td></td>
+                    //         <td></td>
+                    //         <td></td>
+                    //         <td></td>
+
+                    //         <td style="font-weight: bold;">OVER ALL TOTAL</td>
+                    //         <td>'.number_format($grandOverallTotal + 6750, 2, '.', ',').'</td>
+                    //         <td>'.($grandOverallTotal/35+90).'</td>
+                    //     </tr>
+
+                    //     </tbody>
+                    // </table>
+                    
+$html .= '              
 
                     <hr style="margin: 5px 0 0 0; padding: 0; border-left: 0px; border-top: 0px;  border-right: 0px;"><hr style="margin-top: 3px; padding: 0; border-left: 0px; border-top: 0px;  border-right: 0px;">
                     

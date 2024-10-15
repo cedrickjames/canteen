@@ -164,7 +164,7 @@
         }
 
 
-                $query_Emp = "SELECT * from emp_list WHERE emp_cardNum = '$crudCard' LIMIT 1";
+                $query_Emp = "SELECT * from emp_list WHERE emp_cardNum = '$crudCard'  OR `emp_idNum` = '$crudIdNum' ";
                 $result_Emp = mysqli_query($con, $query_Emp);
                 if(mysqli_num_rows($result_Emp) > 0){
                     ?>
@@ -186,6 +186,7 @@
                     }
 
                 }else{
+                    
 
                     $ins_Emp = "INSERT INTO `emp_list`(`emp_id`, `emp_idNum`, `emp_name`, `emp_cardNum`, `employer`, `department`, `section`, `gpi8`) VALUES (null ,'$crudIdNum','$crudName','$crudCard','$crudEmp','$department','$section','$optionGpi8')";
                     mysqli_query($con, $ins_Emp);
@@ -498,7 +499,7 @@
                           
                         }
                         ?>
-                        <option  value="">n/a</option>
+                        <option  value="">Others</option>
                            
                         </select>
                     </div>
@@ -517,7 +518,7 @@
                           
                         }
                         ?>
-                        <option  value="">n/a</option>
+                        <option  value="">Others</option>
                            
                         </select>
                     </div>

@@ -59,7 +59,7 @@
             
             
 
-            $queryLgbkSales = "SELECT lgbk_date, lgbk_name FROM `logbooksales` WHERE lgbk_date = '$lgbkDate' AND lgbk_name = '$lgbkName' UNION SELECT tran_date, emp_name FROM `tbl_trans_logs` WHERE tran_date = '$lgbkDate' AND emp_name = '$lgbkName'";
+            $queryLgbkSales = "SELECT * FROM `tbl_trans_logs`  WHERE `tran_date` = '$lgbkDate' AND `emp_id` = '$lgbkEmpId';";
 
             $resultLgbkSales = mysqli_query($con, $queryLgbkSales);
             if(mysqli_num_rows($resultLgbkSales) > 0){
