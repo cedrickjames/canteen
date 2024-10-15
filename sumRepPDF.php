@@ -152,7 +152,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <th style="border: 1px solid black;">Moulding</th>
                             <th style="border: 1px solid black;">Maintenance</th>
                             <th style="border: 1px solid black;">Fabrication</th>
-                            <th style="border: 1px solid black;">Admin/QA</th>
+                            <th style="border: 1px solid black;">Admin/QA/ICT</th>
                             <th style="border: 1px solid black;">Prod Support</th>
                             <th style="border: 1px solid black;">Parts Inspection</th>
                             <th style="border: 1px solid black;">Warehouse</th>
@@ -212,7 +212,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                         $amountFabrication = $countFabrication * 35.00;
                         $totalFabrication += $amountFabrication;
                         
-                        $queryQAdmin = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND (department = 'QA' OR department = 'Administration') AND gpi8=1 AND tran_date = '$qDate'";
+                        $queryQAdmin = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND (department = 'QA' OR department = 'Administration' OR department = 'ICT') AND gpi8=1 AND tran_date = '$qDate'";
                         $resultQAdmin = mysqli_query($con, $queryQAdmin);
                         $countQAdmin = mysqli_num_rows($resultQAdmin);
                         $amountQAdmin = $countQAdmin * 35.00;
@@ -236,7 +236,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                         $amountWarehouse = $countWarehouse * 35.00;
                         $totalWarehouse += $amountWarehouse;
 
-                        $queryOthers = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE `gpi8` = '1' AND (`department` != 'Parts Inspection' AND `department` != 'QA') AND `section` = '' AND tran_date = '$qDate' ";
+                        $queryOthers = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE `gpi8` = '1' AND (`department` != 'Parts Inspection' AND `department` != 'QA' AND `department` != 'ICT') AND `section` = '' AND tran_date = '$qDate' ";
                         $resultOthers = mysqli_query($con, $queryOthers);
                         $countOthers = mysqli_num_rows($resultOthers);
                         $amountOthers = $countOthers * 35.00;
@@ -316,7 +316,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <th style="border: 1px solid black;">Moulding</th>
                             <th style="border: 1px solid black;">Maintenance</th>
                             <th style="border: 1px solid black;">Fabrication</th>
-                            <th style="border: 1px solid black;">Admin/QA</th>
+                            <th style="border: 1px solid black;">Admin/QA/ICT</th>
                             <th style="border: 1px solid black;">Prod Support</th>
                             <th style="border: 1px solid black;">Parts Inspection</th>
                             <th style="border: 1px solid black;">Warehouse</th>
@@ -381,7 +381,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                         $amountFabrication = $countFabrication * 35.00;
                         $totalFabrication += $amountFabrication;
                         
-                        $queryQAdmin = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND (department = 'QA' OR department = 'Administration') AND gpi8=1 AND tran_date = '$qDate' ";
+                        $queryQAdmin = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND (department = 'QA' OR department = 'Administration' OR department = 'ICT') AND gpi8=1 AND tran_date = '$qDate' ";
                         $resultQAdmin = mysqli_query($con, $queryQAdmin);
                         $countQAdmin = mysqli_num_rows($resultQAdmin);
                         $amountQAdmin = $countQAdmin * 35.00;
@@ -399,7 +399,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                         $amountPI = $countPI * 35.00;
                         $totalPI += $amountPI;
 
-                        $queryOthers = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND `gpi8` = '1' AND (`department` != 'Parts Inspection' AND `department` != 'QA') AND `section` = '' AND tran_date = '$qDate' ";
+                        $queryOthers = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND `gpi8` = '1' AND (`department` != 'Parts Inspection' AND `department` != 'QA' AND `department` != 'ICT') AND `section` = '' AND tran_date = '$qDate' ";
                         $resultOthers = mysqli_query($con, $queryOthers);
                         $countOthers = mysqli_num_rows($resultOthers);
                         $amountOthers = $countOthers * 35.00;
