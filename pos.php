@@ -76,16 +76,23 @@
 
                             $tran_insert = "INSERT INTO `tbl_trans_logs`(`transaction_id`, `emp_id`, `emp_name`, `emp_cardNum`, `employer`, `tran_date`, `tran_time`, `department`,`section`,`gpi8`) VALUES (null ,'$empID','$empName','$empCardNum','$empEmployer','$dateNow','$timeNow', '$department','$section','$gpi8')";
                             $success = mysqli_query($con, $tran_insert);
-                            if(!$success){
+                            if($success){
+                                ?>
+                                <h1 class="tapName"><?php echo $empName?></h1>
+                              <h3 class="anim2">Thank you!</h3>
+                          <?php
+                            }
+                            else{
                                 ?> <script language="javascript"> swal ( "Error" ,  "Theres and error!" ,  "error" ).then((value) => { $('#lgbkInputName').focus(); }); </script> <?php
-
+                                ?>
+                                <h1 id="tapName">THERE WAS AN ERROR WITH THE SYSTEM</h1>
+                                <h3 class="anim">CONTACT YOUR SYSTEM ADMINISTRATOR</h3>
+                            <?php 
+                                
                             }
 // echo
                             
-                            ?>
-                                  <h1 class="tapName"><?php echo $empName?></h1>
-                                <h3 class="anim2">Thank you!</h3>
-                            <?php
+                            
                         }
                     }else{
                         ?>

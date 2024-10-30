@@ -358,7 +358,10 @@
             <th>Employee ID</th>
             <th>Name</th>
             <th>Employer</th>
+            <th>Section</th>
             <th>Card Number</th>
+          
+
             <th>Action</th>
 
             </tr>
@@ -375,6 +378,8 @@
                                     <td><?php echo $emp_row['emp_idNum']; ?></td>
                                     <td><?php echo $emp_row['emp_name']; ?></td>
                                     <td><?php echo $emp_row['employer']; ?></td>
+                                    <td><?php echo $emp_row['section']; ?></td>
+
                                     <td><?php echo $emp_row['emp_cardNum']; ?></td>
                                     <td class="actionTab">
                                         <a href="./employees.php?edit=<?php echo $emp_row['emp_id'] ?>" class="btnEdit" onclick="changeFocus()">Edit</a>
