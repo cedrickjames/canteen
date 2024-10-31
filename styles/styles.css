@@ -169,7 +169,6 @@ body .grid-container .item3 .chart #effect-example-2 tbody td:before {
   height: 10px;
   transform: skewX(-45deg);
   transform-origin: top;
-  background-color: lightgrey;
 }
 body .grid-container .item3 .chart #effect-example-2 tbody td:after {
   content: "";
@@ -180,7 +179,6 @@ body .grid-container .item3 .chart #effect-example-2 tbody td:after {
   height: 100%;
   transform: skewY(-45deg);
   transform-origin: top;
-  background-color: lightgrey;
 }
 body .grid-container .item3 .chart .data {
   color: black;

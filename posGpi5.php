@@ -28,8 +28,8 @@
     <link rel="icon" href="./obj/canteen.png">
     <title>Canteen POS</title>
 </head>
-<body style="background-color: #ffe10d;" onload="onloadFunction()">
-    <h1 id="head">CANTEEN (GPI 8)</h1>
+<body style="background-color: #a797cf" onload="onloadFunction()">
+    <h1 id="head">CANTEEN (GPI 5)</h1>
 
     <form method="POST">
         <span>
@@ -74,7 +74,7 @@
                             }
                         }else{
 
-                            $tran_insert = "INSERT INTO `tbl_trans_logs`(`transaction_id`, `emp_id`, `emp_name`, `emp_cardNum`, `employer`, `tran_date`, `tran_time`, `department`,`section`,`gpi8`,`pos`) VALUES (null ,'$empID','$empName','$empCardNum','$empEmployer','$dateNow','$timeNow', '$department','$section','$gpi8','8')";
+                            $tran_insert = "INSERT INTO `tbl_trans_logs`(`transaction_id`, `emp_id`, `emp_name`, `emp_cardNum`, `employer`, `tran_date`, `tran_time`, `department`,`section`,`gpi8`,`pos`) VALUES (null ,'$empID','$empName','$empCardNum','$empEmployer','$dateNow','$timeNow', '$department','$section','$gpi8','5')";
                             $success = mysqli_query($con, $tran_insert);
                             if($success){
                                 ?>
@@ -109,7 +109,7 @@
             <table>
             <?php
                 $dateNow = date("Y-m-d");
-                $queryRT = "SELECT * FROM tbl_trans_logs WHERE tran_date = '$dateNow' AND pos = '8' ORDER BY transaction_id DESC LIMIT 8";
+                $queryRT = "SELECT * FROM tbl_trans_logs WHERE tran_date = '$dateNow' AND pos = '5' ORDER BY transaction_id DESC LIMIT 8";
                 $resultRT = mysqli_query($con,$queryRT);
                 while ($row = mysqli_fetch_assoc($resultRT)){
             ?>  
@@ -129,7 +129,7 @@ $dateNow = date("Y-m-d");
 
 // ========================== GLORY PERCENTAGE ==========================
 
-$query_glory = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND tran_date = '$dateNow' AND pos = '8'";
+$query_glory = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND tran_date = '$dateNow' AND pos = '5'";
 $resultGlory = mysqli_query($con, $query_glory);
 $rowGlory = mysqli_num_rows($resultGlory);
 
@@ -137,14 +137,14 @@ $rowGlory = mysqli_num_rows($resultGlory);
 
 // ========================== MAXIM PERCENTAGE ==========================
 
-$query_maxim = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'MAXIM' AND tran_date = '$dateNow' AND pos = '8'";
+$query_maxim = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'MAXIM' AND tran_date = '$dateNow' AND pos = '5'";
 $resultMaxim = mysqli_query($con, $query_maxim);
 $rowMaxim = mysqli_num_rows($resultMaxim);
 
 
 // ========================== NIPPI PERCENTAGE ==========================
 
-$query_nippi = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'NIPPI' AND tran_date = '$dateNow' AND pos = '8'";
+$query_nippi = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'NIPPI' AND tran_date = '$dateNow' AND pos = '5'";
 $resultNippi = mysqli_query($con, $query_nippi);
 $rowNippi = mysqli_num_rows($resultNippi);
 
@@ -152,7 +152,7 @@ $rowNippi = mysqli_num_rows($resultNippi);
 
 // ========================== POWERLANE PERCENTAGE ==========================
 
-$query_pl = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'POWERLANE' AND tran_date = '$dateNow' AND pos = '8'";
+$query_pl = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'POWERLANE' AND tran_date = '$dateNow' AND pos = '5'";
 $resultPL = mysqli_query($con, $query_pl);
 $rowPL = mysqli_num_rows($resultPL);
 
@@ -160,7 +160,7 @@ $rowPL = mysqli_num_rows($resultPL);
 
 // ========================== SERVICE PROVIDER ==========================
 
-$query_sp = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'SERVICE PROVIDER' AND tran_date = '$dateNow' AND pos = '8'";
+$query_sp = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'SERVICE PROVIDER' AND tran_date = '$dateNow' AND pos = '5'";
 $resultsp = mysqli_query($con, $query_sp);
 $rowsp = mysqli_num_rows($resultsp);
 
@@ -234,7 +234,7 @@ $rowsp = mysqli_num_rows($resultsp);
 
                         // ========================== GLORY PERCENTAGE ==========================
 
-                        $query_glory = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND tran_date = '$dateNow' AND pos = '8'";
+                        $query_glory = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND tran_date = '$dateNow' AND pos = '5'";
                         $resultGlory = mysqli_query($con, $query_glory);
                         $rowGlory = mysqli_num_rows($resultGlory);
 
@@ -242,14 +242,14 @@ $rowsp = mysqli_num_rows($resultsp);
 
                         // ========================== MAXIM PERCENTAGE ==========================
 
-                        $query_maxim = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'MAXIM' AND tran_date = '$dateNow' AND pos = '8'";
+                        $query_maxim = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'MAXIM' AND tran_date = '$dateNow' AND pos = '5'";
                         $resultMaxim = mysqli_query($con, $query_maxim);
                         $rowMaxim = mysqli_num_rows($resultMaxim);
 
 
                         // ========================== NIPPI PERCENTAGE ==========================
 
-                        $query_nippi = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'NIPPI' AND tran_date = '$dateNow' AND pos = '8'";
+                        $query_nippi = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'NIPPI' AND tran_date = '$dateNow' AND pos = '5'";
                         $resultNippi = mysqli_query($con, $query_nippi);
                         $rowNippi = mysqli_num_rows($resultNippi);
 
@@ -257,7 +257,7 @@ $rowsp = mysqli_num_rows($resultsp);
 
                         // ========================== POWERLANE PERCENTAGE ==========================
 
-                        $query_pl = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'POWERLANE' AND tran_date = '$dateNow' AND pos = '8'";
+                        $query_pl = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'POWERLANE' AND tran_date = '$dateNow' AND pos = '5'";
                         $resultPL = mysqli_query($con, $query_pl);
                         $rowPL = mysqli_num_rows($resultPL);
 
@@ -265,7 +265,7 @@ $rowsp = mysqli_num_rows($resultsp);
 
                         // ========================== SERVICE PROVIDER ==========================
 
-                        $query_sp = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'SERVICE PROVIDER' AND tran_date = '$dateNow' AND pos = '8'";
+                        $query_sp = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'SERVICE PROVIDER' AND tran_date = '$dateNow' AND pos = '5'";
                         $resultsp = mysqli_query($con, $query_sp);
                         $rowsp = mysqli_num_rows($resultsp);
 
