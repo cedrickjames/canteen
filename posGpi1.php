@@ -127,6 +127,14 @@
 
 $dateNow = date("Y-m-d");
 
+// ========================== GLORY PERCENTAGE OVERALL ==========================
+
+$query_glory_overAll = "SELECT * FROM `tbl_trans_logs` WHERE tran_date = '$dateNow' AND logbook = '0'";
+$resultGloryOverAll = mysqli_query($con, $query_glory_overAll);
+$rowGloryOverAll = mysqli_num_rows($resultGloryOverAll);
+
+
+
 // ========================== GLORY PERCENTAGE ==========================
 
 $query_glory = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND tran_date = '$dateNow' AND pos = '1'";
@@ -171,7 +179,9 @@ $rowsp = mysqli_num_rows($resultsp);
             <table  style="height: 100%" class="empTable">
                 <thead style="height: 20%">
                     <tr>
-                    <th>TOTAL</th>
+                    <th>Overall</th>
+
+                    <th>TOTAL (GPI1)</th>
                         <th>GPI</th>
                         <th>MAXIM</th>
                         <th>NIPPI</th>
@@ -185,6 +195,9 @@ $rowsp = mysqli_num_rows($resultsp);
                 <tbody style="height: 80%">
                         
                         <tr>
+                        <th style="font-size: 65px;">
+                                <span ><?php echo $rowGloryOverAll; ?></span>
+                            </th>
                         <th style="font-size: 65px;">
                                 <span ><?php echo $rowGlory+$rowsp+$rowMaxim+$rowNippi+$rowPL; ?></span>
                             </th>
