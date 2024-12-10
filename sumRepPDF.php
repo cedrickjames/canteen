@@ -141,7 +141,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                     <table style="margin-top: 20px; width: 100%; text-align: center; border-collapse: collapse;">
                     <thead>
                         <tr style="font-size: 11px; border: 1px solid black; font-size: 12px;">
-                            <th rowspan="2" style="width: 12.5%; border: 1px solid black;">Date</th>
+                            <th rowspan="2" style="width: 20.5%; border: 1px solid black;">Date</th>
                             <th colspan="8" style="border: 1px solid black; font-size: 12px;">GPI 8 (Direct)</th>
                             <th rowspan="2" style="width: 12.5%; border: 1px solid black; font-size: 12px;">TOTAL</th>
 
@@ -236,7 +236,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                         $amountWarehouse = $countWarehouse * 35.00;
                         $totalWarehouse += $amountWarehouse;
 
-                        $queryOthers = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE `gpi8` = '1' AND (`department` != 'Parts Inspection' AND `department` != 'QA' AND `department` != 'ICT') AND `section` = '' AND tran_date = '$qDate' ";
+                        $queryOthers = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND `gpi8` = '1' AND (`department` != 'Parts Inspection' AND `department` != 'QA' AND `department` != 'ICT') AND `section` = '' AND tran_date = '$qDate' ";
                         $resultOthers = mysqli_query($con, $queryOthers);
                         $countOthers = mysqli_num_rows($resultOthers);
                         $amountOthers = $countOthers * 35.00;
@@ -307,7 +307,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                     <table style="margin-top: 20px; width: 100%; text-align: center; border-collapse: collapse;">
                     <thead>
                         <tr style="font-size: 11px; border: 1px solid black; font-size: 12px;">
-                            <th rowspan="2" style="width: 12.5%; border: 1px solid black;">Date</th>
+                            <th rowspan="2" style="width: 20.5%; border: 1px solid black;">Date</th>
                             <th colspan="8" style="border: 1px solid black; font-size: 12px;">GPI 8 (Agency)</th>
                             <th rowspan="2" style="width: 12.5%; border: 1px solid black; font-size: 12px;">TOTAL</th>
                           <th rowspan="2" style="width: 12.5%; border: 1px solid black; font-size: 12px;">TOTAL MANPOWER</th>

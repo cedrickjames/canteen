@@ -27,9 +27,79 @@
     <link rel="stylesheet" href="./styles/styles.css">
     <link rel="icon" href="./obj/canteen.png">
     <title>Logbook Sales</title>
+    <link rel="stylesheet" href="DataTables/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="DataTables/Responsive-2.3.0/css/responsive.dataTables.min.css"/>
+    
     <link href="node_modules/select2/dist/css/select2.min.css" rel="stylesheet" />
     <script src="./sweetalert.min.js"></script>
     <script src="./jquery.min.js"></script>
+    <style>
+        .radio-group {
+            margin: 10px 0;
+        }
+
+        .lgbkDelete {
+  
+  width: 110px;
+  height: 23px;
+  right: 70px;
+
+  letter-spacing: 5px;
+  display: inline;
+  font-family: Arial, "Helvetica", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 1px 1px 0px #E15963;
+  padding-top: 9px;
+  padding-left: 5px;
+  cursor: pointer;
+  border: none;
+  background-color: #E15963;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e0565f), to(#3111));
+  background-image: linear-gradient(top, #e0565f, #3111);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -webkit-box-shadow: inset 0px 1px 0px #ec2a2a, 0px 5px 0px 0px #ac444b, 0px 10px 5px #999;
+          box-shadow: inset 0px 1px 0px #ec2a2a, 0px 5px 0px 0px #ac444b, 0px 10px 5px #999;
+}
+        .lgbkEdit{
+   
+  width: 110px;
+  height: 23px;
+
+  letter-spacing: 5px;
+
+  font-family: Arial, "Helvetica", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 1px 1px 0px #188FF7;
+  padding-top: 9px;
+  padding-left: 5px;
+  cursor: pointer;
+  border: none;
+  background-color: #188FF7;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#1b8ff5), to(#3111));
+  background-image: linear-gradient(top, #1b8ff5, #3111);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #1765aa, 0px 10px 5px #999;
+          box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #1765aa, 0px 10px 5px #999;
+        }
+
+    </style>
+
 </head>
 
 <body id="logbookBody" onload="navFuntion()">
@@ -80,7 +150,7 @@
                 }
                 ?> <script>swal ( "Oops" ,  "Employee is already in logs!" ,  "error" ).then((value) => { $('#lgbkInputName').focus(); });</script> <?php
             }else{
-                // $insLgbkEmp = "INSERT INTO `logbooksales`(`logbook_ID`,  `emp_id`, `lgbk_date`, `lgbk_name`, `lgbk_employer`, `department`, `section`, `gpi8`) VALUES (null, '$lgbkEmpId', '$lgbkDate', '$lgbkName', '$lgbkEmp', '$lgbkEmpDept','$lgbkEmpSection', '$lgbkGPI8')";
+                // $insLgbkEmp = "INSERT INTO `logbooksales`(`logbook_ID`,  `emp_id`, `tran_date`, `lgbk_name`, `lgbk_employer`, `department`, `section`, `gpi8`) VALUES (null, '$lgbkEmpId', '$lgbkDate', '$lgbkName', '$lgbkEmp', '$lgbkEmpDept','$lgbkEmpSection', '$lgbkGPI8')";
                 // $inserttbl = mysqli_query($con, $insLgbkEmp);
                 
                 $tran_insert = "INSERT INTO `tbl_trans_logs`(`transaction_id`, `emp_id`, `emp_name`, `emp_cardNum`, `employer`, `tran_date`, `department`,`section`,`gpi8`,`logbook`) VALUES (null ,'$lgbkEmpId','$lgbkName','$lgbkCard','$lgbkEmp','$lgbkDate', '$lgbkEmpDept','$lgbkEmpSection','$lgbkGPI8','1')";
@@ -118,13 +188,21 @@
             $lgbkEditID = $_GET['lgbkEdit'];
             $_SESSION['lgbkEditID'] = $lgbkEditID;
 
-            $queryLgbkEdit = "SELECT * FROM `logbooksales` WHERE logbook_ID = '$lgbkEditID' LIMIT 1";
+            $queryLgbkEdit = "SELECT * FROM `tbl_trans_logs` WHERE transaction_id = '$lgbkEditID' LIMIT 1";
             $resultLgbkEdit = mysqli_query($con, $queryLgbkEdit);
-
+//  echo $queryLgbkEdit;
             while($rowLgbkEdit = mysqli_fetch_assoc($resultLgbkEdit)){
-                $lgbkEditDate = $rowLgbkEdit['lgbk_date'];
-                $lgbkEditName = strtoupper($rowLgbkEdit['lgbk_name']);
-                $lgbkEditEmp = strtoupper($rowLgbkEdit['lgbk_employer']);
+                $lgbkEditDate = $rowLgbkEdit['tran_date'];
+                $lgbkemp_id = $rowLgbkEdit['emp_id'];
+                $emp_cardNum = $rowLgbkEdit['emp_cardNum'];
+                $department = $rowLgbkEdit['department'];
+                $section = $rowLgbkEdit['section'];
+
+
+
+
+                $lgbkEditName = strtoupper($rowLgbkEdit['emp_name']);
+                $lgbkEditEmp = strtoupper($rowLgbkEdit['employer']);
 
                 if($lgbkEditEmp == "GLORY"){
                     $_SESSION['selEmp'] = 1;
@@ -142,32 +220,38 @@
 
                 $_SESSION['lgbkEditTitle'] = 1;
             }
-            echo $lgbkEditDate;
+            // echo $lgbkEditDate;
+            // echo $lgbkEditEmp;
+            
         }
 
         if(isset($_POST['lgbkEditCon'])){
             $lgbkEditDate = $_POST['lgbkInputDate'];
+            
             $lgbkEditName = strtoupper($_REQUEST['lgbkInputName']);
             $lgbkEditEmp = strtoupper($_REQUEST['lgbkOption']);
 
-            $queryLgbkEdit = "SELECT * FROM `logbooksales` WHERE logbook_ID = '$lgbkEditID' LIMIT 1";
+            $queryLgbkEdit = "SELECT * FROM `tbl_trans_logs` WHERE transaction_id = '$lgbkEditID' LIMIT 1";
             $resultLgbkEdit = mysqli_query($con, $queryLgbkEdit);
-            
+            // echo  $queryLgbkEdit;
             while($rowLgbkEdit = mysqli_fetch_assoc($resultLgbkEdit)){
-                $lgbkEditID = $rowLgbkEdit['logbook_ID'];
+                $lgbkEditID = $rowLgbkEdit['transaction_id'];
+            // echo  $lgbkEditID;
 
-                $checkLgbkValidation = "SELECT * FROM `logbooksales` WHERE lgbk_name = '$lgbkEditName' AND lgbk_date = '$lgbkEditDate' UNION SELECT * FROM tbl_trans_logs WHERE emp_name = '$lgbkEditName' AND trans_date = '$lgbokEditDate'";
+                $checkLgbkValidation = "SELECT * FROM `tbl_trans_logs` WHERE emp_name = '$lgbkEditName' AND tran_date = '$lgbkEditDate'";
+            // echo  $checkLgbkValidation;
+                
                 $queryLgbkValidation = mysqli_query($con, $checkLgbkValidation);
-                $countLgbkValidation = mysqli_num_rows($checkLgbkEdit);
+                $countLgbkValidation = mysqli_num_rows($queryLgbkValidation);
                 if($countLgbkValidation > 0){
                     ?> <script language="javascript">swal ( "Oops" ,  "Employee is already in logs!" ,  "error" );</script> <?php
                 }
 
-                else if(($lgbkEditDate == $rowLgbkEdit['lgbk_date']) && ($lgbkEditName == $rowLgbkEdit['lgbk_name']) && ($lgbkEditEmp == $rowLgbkEdit['lgbk_employer'])){
+                else if(($lgbkEditDate == $rowLgbkEdit['tran_date']) && ($lgbkEditName == $rowLgbkEdit['emp_name']) && ($lgbkEditEmp == $rowLgbkEdit['employer'])){
                     ?> <script language="javascript">swal ( "Oops" ,  "Employee is already in logs!" ,  "error" );</script> <?php
                 }else if($countLgbkValidation == 0){
 
-                    mysqli_query($con, "UPDATE `logbooksales` SET `logbook_ID`= '$lgbkEditID',`lgbk_date`='$lgbkEditDate',`lgbk_name`='$lgbkEditName',`lgbk_employer`='$lgbkEditEmp' WHERE logbook_ID = '$lgbkEditID'");
+                    mysqli_query($con, "UPDATE `tbl_trans_logs` SET `transaction_id`= '$lgbkEditID',`tran_date`='$lgbkEditDate',`emp_name`='$lgbkEditName',`employer`='$lgbkEditEmp' WHERE transaction_id = '$lgbkEditID'");
 
                     unset($_GET['lgbkEdit']);
                     $_SESSION['selEmp'] = "0";
@@ -188,7 +272,7 @@
             $lgbkDel = $_GET['delIdConf'];
             $_SESSION['lgbkDelID'] = $lgbkDel;
 
-            mysqli_query($con, "DELETE FROM `logbooksales` WHERE logbook_ID = '$lgbkDel'");
+            mysqli_query($con, "DELETE FROM `tbl_trans_logs` WHERE transaction_id = '$lgbkDel'");
             header("location: logbookSales.php");
         }
     ?>
@@ -200,15 +284,17 @@
 
     <div class="lbkCon">
         <div class="lbkToolBar">
-            <input type="text" class="lbkSearch" placeholder="Search..." >
-            <button class="lbkAdd" onclick="lbkAdd()">Add</button>
+            <!-- <input type="text" class="lbkSearch" placeholder="Search..." > -->
+            <button class="lbkAdd" style="margin-right: 350px;" onclick="lbkAdd()">Add</button>
         </div>
 
-        <div class="contentCon">
-            <div class="lbkTableCon">
-                <table class="lbkTable">
+        <div class="contentCon" >
+            <div class="">
+                <table  id="lbkTable"  class="display" style="width:100%; margin-left: 60px; margin-right: 60px;; margin-top: 100px">
                     <thead>
                         <tr>
+                        <th>No.</th>
+
                             <th>Date</th>
                             <th>Name</th>
                             <th>Employer</th>
@@ -218,27 +304,26 @@
 
                     <tbody>
                         <?php 
-                            $queryLgbk = "SELECT * FROM `logbooksales` ORDER BY `lgbk_date` DESC, `lgbk_employer` ASC LIMIT 10";
+                            $queryLgbk = "SELECT * FROM `tbl_trans_logs` where logbook = '1' ORDER BY transaction_id DESC";
                             $resultLgbk = mysqli_query($con, $queryLgbk);
-                            if(mysqli_num_rows($resultLgbk) > 0){
+                            $a=1;
+                        
                                 while($lgbkRow = mysqli_fetch_assoc($resultLgbk)){
                                     ?>
                                         <tr>
-                                            <td><?php echo $lgbkRow['lgbk_date']; ?></td>
-                                            <td><?php echo $lgbkRow['lgbk_name']; ?></td>
-                                            <td><?php echo $lgbkRow['lgbk_employer']; ?></td>
+                                        <td class=""> <?php   echo $a;?>  </td>
+                                            <td><?php echo $lgbkRow['tran_date']; ?></td>
+                                            <td><?php echo $lgbkRow['emp_name']; ?></td>
+                                            <td><?php echo $lgbkRow['employer']; ?></td>
                                             <td class="lgbkAction">
-                                                <a href="./logbookSales.php?lgbkEdit=<?php echo $lgbkRow['logbook_ID'] ?>" class="lgbkEdit">Edit</a>
-                                                <a href="#" data-name="<?php echo $lgbkRow['lgbk_name']; ?>" data-id="<?php echo $lgbkRow['logbook_ID'] ?>" class="lgbkDelete">Delete</a>
+                                                <a href="./logbookSales.php?lgbkEdit=<?php echo $lgbkRow['transaction_id'] ?>" class="lgbkEdit">Edit</a>
+                                                <a href="#" data-name="<?php echo $lgbkRow['emp_name']; ?>" data-id="<?php echo $lgbkRow['transaction_id'] ?>" class="lgbkDelete">Delete</a>
                                             </td>
                                         </tr>
                                     <?php
+                                      $a++;
                                 }
-                            }else{
-                                ?>
-                                    <h1 class="noRecord">NO RECORD FOUND!</h1>
-                                <?php
-                            }
+                            
                         ?>
                     </tbody>
                 </table>
@@ -265,31 +350,33 @@
           $result = mysqli_query($con, $sql1);
           while ($emp_row = mysqli_fetch_assoc($result)) {
           ?>
-            <option data-empcard="<?php echo $emp_row['emp_cardNum']; ?>" data-empid="<?php echo $emp_row['emp_idNum']; ?>" data-gpi8="<?php echo $emp_row['gpi8']; ?>"  data-empsection="<?php echo $emp_row['section']; ?>" data-name="<?php echo $emp_row['emp_name']; ?>" data-department="<?php echo $emp_row['department']; ?>" data-emp="<?php echo $emp_row['employer']; ?>" ><?php echo $emp_row['emp_name']; ?></option>
+            <option <?php if ($lgbkEditName == $emp_row['emp_name']){ echo 'selected';} ?>  data-empcard="<?php echo $emp_row['emp_cardNum']; ?>" data-empid="<?php echo $emp_row['emp_idNum']; ?>" data-gpi8="<?php echo $emp_row['gpi8']; ?>"  data-empsection="<?php echo $emp_row['section']; ?>" data-name="<?php echo $emp_row['emp_name']; ?>" data-department="<?php echo $emp_row['department']; ?>" data-emp="<?php echo $emp_row['employer']; ?>" ><?php echo $emp_row['emp_name']; ?></option>
           <?php
 
             //  echo "<option value='$diagnosis' >$diagnosis</option>";
 
           }
           ?>
+          <!-- <option value="ced" selected>ced</option> -->
+
         </select>
                         </td>
                     </tr>
                     <tr>
                         <td>Emp ID</td>
-                        <td><input type="text" name="lgbkEmpId"  id="lgbkEmpId" ></td>
+                        <td><input type="text" name="lgbkEmpId"  id="lgbkEmpId" value="<?php echo $lgbkemp_id; ?>"></td>
                     </tr>
                     <tr>
                         <td>Card Number</td>
-                        <td><input type="text" name="lgbkCard"  id="lgbkCard" ></td>
+                        <td><input type="text" name="lgbkCard"  id="lgbkCard" value="<?php echo $emp_cardNum; ?>" ></td>
                     </tr>
                     <tr>
                         <td>Department</td>
-                        <td><input type="text" name="lgbkDepartment"  id="lgbkDepartment" ></td>
+                        <td><input type="text" name="lgbkDepartment" value="<?php echo $department; ?>"  id="lgbkDepartment" ></td>
                     </tr>
                     <tr>
                         <td>Section</td>
-                        <td><input type="text" name="lgbkSection"  id="lgbkSection" ></td>
+                        <td><input type="text" name="lgbkSection" value="<?php echo $section; ?>"  id="lgbkSection" ></td>
                         <td style="display:none"><input type="text" name="lgbkGPI8"  id="lgbkGPI8" ></td>
 
                     </tr>
@@ -317,8 +404,26 @@
         </div>
     </div>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
+    <script type="text/javascript" src="DataTables/Responsive-2.3.0/js/dataTables.responsive.min.js"></script>
+    
     <script src="node_modules/select2/dist/js/select2.min.js"></script>
     <script>
+
+$(document).ready(function () {
+  
+  $('#lbkTable').DataTable(  {
+  "columnDefs": [
+      { "width": "1%", "targets": 0},
+      {"className": "dt-center", "targets": "_all"}
+  ],
+      responsive: true,
+      
+  }   );
+
+  });
+
+
       $('#lgbkInputName').change(function() {
             var selectedNameEmpId = $(this).find('option:selected').data('empid');
             var selectedCard= $(this).find('option:selected').data('empcard');

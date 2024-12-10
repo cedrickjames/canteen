@@ -116,12 +116,12 @@
 
 
 
-<body id="emp-body" onload="navFuntion()">
+<body id="emp-body"  style="    width: 80%; margin: auto;" onload="navFuntion()">
     <!-- Include Navigation Side Bar -->
     <?php require_once 'nav.php';?>
 
     <!-- Employees Content -->
-    <div class="emp-container">
+    <div class="emp-container" style="">
         <div class="topPage" id="topPage">
             <h1 class="empTitle" id="empTitle">EMPLOYEE LIST</h1>
             <div class="toolBar">
@@ -351,6 +351,7 @@
                 header('location: employees.php');
             }
         ?>
+        
 <table id="employeeList" class="display" style="width:100%; margin-left: 60px; margin-right: 60px;">
         <thead>
             <tr>
