@@ -364,26 +364,26 @@
                     </tr>
                     <tr>
                         <td>Emp ID</td>
-                        <td><input type="text" name="lgbkEmpId"  id="lgbkEmpId" value="<?php echo $lgbkemp_id; ?>"></td>
+                        <td><input type="text" readonly  name="lgbkEmpId"  id="lgbkEmpId" value="<?php echo $lgbkemp_id; ?>"></td>
                     </tr>
                     <tr>
                         <td>Card Number</td>
-                        <td><input type="text" name="lgbkCard"  id="lgbkCard" value="<?php echo $emp_cardNum; ?>" ></td>
+                        <td><input type="text" readonly  name="lgbkCard"  id="lgbkCard" value="<?php echo $emp_cardNum; ?>" ></td>
                     </tr>
                     <tr>
                         <td>Department</td>
-                        <td><input type="text" name="lgbkDepartment" value="<?php echo $department; ?>"  id="lgbkDepartment" ></td>
+                        <td><input type="text" readonly name="lgbkDepartment" value="<?php echo $department; ?>"  id="lgbkDepartment" ></td>
                     </tr>
                     <tr>
                         <td>Section</td>
-                        <td><input type="text" name="lgbkSection" value="<?php echo $section; ?>"  id="lgbkSection" ></td>
+                        <td><input type="text" readonly name="lgbkSection" value="<?php echo $section; ?>"  id="lgbkSection" ></td>
                         <td style="display:none"><input type="text" name="lgbkGPI8"  id="lgbkGPI8" ></td>
 
                     </tr>
                     <tr>
                         <td>Employer</td>
                         <td>
-                            <select id="lgbkOption" name="lgbkOption" change onchange="lgbkUp()">
+                            <select id="lgbkOption"readonly  name="lgbkOption" change onchange="lgbkUp()">
                             <option value="" disabled hidden <?php if(!isset($_SESSION['selEmp']) || $_SESSION['selEmp'] == '0'){ echo 'selected'; }?>>Select your option</option>
                             <option value="GLORY" <?php if($_SESSION['selEmp'] == '1'){ echo 'selected'; }?>>GLORY</option>
                             <option value="MAXIM" <?php if($_SESSION['selEmp'] == '2'){ echo 'selected'; }?>>MAXIM</option>

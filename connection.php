@@ -1,8 +1,8 @@
 <?php
 
-$dbhost = "localhost";
-$dbuser = "root";
-$dbpass = "Gpi242$$$";
+$dbhost = "192.168.5.6";
+$dbuser = "CanteenSystem";
+$dbpass = "dyBkxSm&jJZ4";
 $dbname = "canteen_transactions";
 
 if(!$con = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname)){
