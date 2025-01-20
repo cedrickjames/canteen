@@ -173,7 +173,7 @@
                     $_SESSION['selEmp'] = 0;
                 }
             if($inserttbl){
-                ?> <script language="javascript"> swal ( "Success" ,  "Employee successfully added!" ,  "success" ).then((value) => { $('#lgbkInputName').focus(); }); </script> <?php
+                ?> <script language="javascript"> alert('Employee successfully added!').then((value) => { $('#lgbkInputName').focus(); }); </script> <?php
             }
             else{
                 ?> <script language="javascript"> swal ( "Error" ,  "Theres and error!" ,  "error" ).then((value) => { $('#lgbkInputName').focus(); }); </script> <?php
