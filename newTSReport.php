@@ -171,7 +171,7 @@ $overAlltotalCol = [
              $sqlDynamic = rtrim($sqlDynamic, ', ');
              
              // Complete the SQLDynamic query
-             $sqlDynamic .= " FROM tbl_trans_logs WHERE employer = 'GLORY' GROUP BY emp_name ORDER BY emp_name;";
+             $sqlDynamic .= " FROM tbl_trans_logs WHERE employer = 'GLORY' AND tran_date BETWEEN '$fromDate' AND '$toDate' GROUP BY emp_name ORDER BY emp_name;";
              
              // Now you can use this $sql in your database query
             //  echo $sqlDynamic;
@@ -287,7 +287,7 @@ $overAlltotalCol = [
  $sqlDynamic = rtrim($sqlDynamic, ', ');
  
  // Complete the SQLDynamic query
- $sqlDynamic .= " FROM tbl_trans_logs WHERE employer = 'MAXIM' GROUP BY emp_name ORDER BY emp_name;";
+ $sqlDynamic .= " FROM tbl_trans_logs WHERE employer = 'MAXIM' AND tran_date BETWEEN '$fromDate' AND '$toDate' GROUP BY emp_name ORDER BY emp_name;";
  
  // Now you can use this $sql in your database query
 //  echo $sqlDynamic;
@@ -401,7 +401,7 @@ $overAlltotalCol = [
              $sqlDynamic = rtrim($sqlDynamic, ', ');
              
              // Complete the SQLDynamic query
-             $sqlDynamic .= " FROM tbl_trans_logs WHERE employer = 'POWERLANE' GROUP BY emp_name ORDER BY emp_name;";
+             $sqlDynamic .= " FROM tbl_trans_logs WHERE employer = 'POWERLANE' AND tran_date BETWEEN '$fromDate' AND '$toDate' GROUP BY emp_name ORDER BY emp_name;";
              
              // Now you can use this $sql in your database query
             //  echo $sqlDynamic;
@@ -515,7 +515,7 @@ $overAlltotalCol = [
  $sqlDynamic = rtrim($sqlDynamic, ', ');
  
  // Complete the SQLDynamic query
- $sqlDynamic .= " FROM tbl_trans_logs WHERE employer = 'NIPPI' GROUP BY emp_name ORDER BY emp_name;";
+ $sqlDynamic .= " FROM tbl_trans_logs WHERE employer = 'NIPPI' AND tran_date BETWEEN '$fromDate' AND '$toDate' GROUP BY emp_name ORDER BY emp_name;";
  
  // Now you can use this $sql in your database query
 //  echo $sqlDynamic;
@@ -627,7 +627,7 @@ $overAlltotalCol = [
  $sqlDynamic = rtrim($sqlDynamic, ', ');
  
  // Complete the SQLDynamic query
- $sqlDynamic .= " FROM tbl_trans_logs WHERE employer = 'SERVICE PROVIDER' GROUP BY emp_name ORDER BY emp_name;";
+ $sqlDynamic .= " FROM tbl_trans_logs WHERE employer = 'SERVICE PROVIDER' AND tran_date BETWEEN '$fromDate' AND '$toDate' GROUP BY emp_name ORDER BY emp_name;";
  
  // Now you can use this $sql in your database query
 //  echo $sqlDynamic;
