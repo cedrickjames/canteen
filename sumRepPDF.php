@@ -533,12 +533,12 @@ $html .= '
                         
 
                         <tr>
-                            <td>Felmhar Vivo</td>
+                            <td>Bobby John Solomon</td>
 			    <td>Nathan Nemedez</td>
                         </tr>
                         <tr>
                             <td><em>Sub - Leader</em></td>
-                            <td><em>Senior Supervisor</em></td>
+                            <td><em>Information System Leader</em></td>
                         </tr>
                     </table>
         ';
