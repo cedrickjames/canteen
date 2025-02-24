@@ -2906,7 +2906,7 @@ body .grid-container .item3 .chart .data {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 550px;
+  width: 1100px;
   height: auto;
   background-color: rgb(228, 228, 228);
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
@@ -3011,6 +3011,46 @@ body .grid-container .item3 .chart .data {
 }
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkModalBtn #lgbkAdd, #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkModalBtn #lgbkEdit {
   opacity: 0;
+}
+#logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkModalBtn .lgbkAddBtn {
+  left: 55px;
+  width: 150px;
+  height: 48px;
+  letter-spacing: 10px;
+  font-family: Arial, "Helvetica", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 1px 1px 0px #0342ca;
+  padding-top: 6px;
+  padding-left: 10px;
+  cursor: pointer;
+  border: none;
+  background-color: #0342ca;
+  background-image: linear-gradient(top, #0342ca, rgba(51, 17, 17, 0.0666666667));
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
+}
+#logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkModalBtn .lgbkAddBtn:hover {
+  width: 154px;
+  height: 50px;
+  top: -2px;
+  left: 53px;
+  font-size: 18px;
+}
+#logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkModalBtn .lgbkAddBtn:active {
+  width: 150px;
+  height: 48px;
+  top: 0px;
+  left: 55px;
+  font-size: 16px;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #497a78, 0px 10px 5px #999;
 }
 #logbookBody .lgbkBG .lgbkModal .lgbkForm .lgbkModalBtn .lgbkSaveBtn {
   left: 55px;

@@ -25,7 +25,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/styles.css">
-    <script src="src/cdn_tailwindcss.js"></script>
     <link rel="icon" href="./obj/canteen.png">
     <title>Logbook Sales</title>
     <link rel="stylesheet" href="DataTables/datatables.min.css">
@@ -339,9 +338,7 @@
         <div class="lgbkModal">
             <form method="POST" class="lgbkForm">
                 <h1 class="lgbkFormTitle" id="lgbkFormTitle"><?php if($_SESSION['lgbkEditTitle'] == "1"){ echo "EDIT"; }else{ echo "ADD"; } ?></h1>
-                                <div class="grid grid-cols-2 gap-4 ">
-                                    <div class="col-span-1 border border-indigo-600">
-                                    <table class="lgbkFormTable ">
+                <table class="lgbkFormTable">
                     <tr>
                         <td>Date</td>
                         <td><input type="date" name="lgbkInputDate" data-date="" data-date-format="DD-MM-YYYY" id="lgbkInputDate" value="<?php if($_SESSION['lgbkEditTitle'] == 1){ echo $lgbkEditDate; }else if(($_SESSION['lgbkEditTitle'] == 0) && ($_SESSION['selEmp'] == 0)){ echo $prevDate; }else if(($_SESSION['lgbkEditTitle'] == 0) && ($_SESSION['selEmp'] > 0)){ echo $_SESSION['recentDate']; } ?>"></td>
@@ -402,38 +399,12 @@
                         </td>
                     </tr>
                 </table>
-                                    </div>
-                                    <div class="col-span-1 border border-indigo-600">
-
-                                    <table  id="lbkTableTemp"  class="display" style="width:100%;">
-                    <thead>
-                        <tr>
-                        <th>No.</th>
-
-                            <th>Date</th>
-                            <th>Name</th>
-                            <th>Employer</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody class="h-32 overflow-y-auto">
-                  
-                    </tbody>
-
-                  
-                </table>
-                                    </div>
-
-                                
-                                </div>
-                
                 <div class="lgbkModalBtn">
                     <input type="submit" tabindex="-1" name="lgbkAdd" id="lgbkAdd"  style="display: none" value="Add" disabled>
                     <input type="submit" tabindex="-1" name="lgbkEditCon" id="lgbkEdit"  style="display: none" value="Edit" <?php if($_SESSION['lgbkEditTitle'] == "0"){ echo "disabled"; } ?>>
                     <input type="submit" tabindex="-1" name="lgbkCancel" id="lgbkCancel" value="Cancel" style="display: none">
-                    <input type="button" name="lgbkSaveBtn" class="lgbkAddBtn" id="lgbkSaveBtn" value="Add" onclick="lgbkSav3Btn()">
+                    <input type="button" name="lgbkSaveBtn" class="lgbkSaveBtn" id="lgbkSaveBtn" value="Save" onclick="lgbkSav3Btn()">
                     <input type="button" name="lgbkCloseModal" class="lgbkCloseModal" id="lgbkCloseModal" value="Cancel" onclick="lgbkCloseM0dal()">
-                    <input type="button" class="lgbkSaveBtn" id="submitData" value="SAVE">
                 </div>
             </form>
         </div>
@@ -444,29 +415,6 @@
     
     <script src="node_modules/select2/dist/js/select2.min.js"></script>
     <script>
-$("#submitData").on("click", function() {
-    if (tableDataArray.length === 0) {
-        alert("No data to submit!");
-        return;
-    }
-
-    $.ajax({
-        url: "saveLogBook.php", // Your PHP file
-        type: "POST",
-        data: { tableData: JSON.stringify(tableDataArray) }, // Send the array as JSON
-        success: function(response) {
-            console.log(response);
-            alert(response);
-            location.href='logbookSales.php';
-
-        },
-        error: function(xhr, status, error) {
-            console.error(error);
-        }
-    });
-});
-
-
 
 $(document).ready(function () {
   
@@ -479,23 +427,6 @@ $(document).ready(function () {
       
   }   );
 
-  $('#lbkTableTemp').DataTable(  {
-    
-"pageLength": 3000,
-                      "columnDefs": [
-                        { "width": "1%", "targets": 0, },
-                        {"className": "dt-center", "targets": "_all"}
-                      ],
-                        responsive: true,
-                        scrollCollapse: false,
-    scrollY: '25vh',
-    scrollCollapse: false,
-    ordering: false, // Disable sorting for proper numbering
-    rowCallback: function(row, data, index) {
-        $('td:eq(0)', row).html(index + 1); 
-         }// Auto-numbering first column
-  }   );
-  
   });
 
 
@@ -675,10 +606,6 @@ $('.js-fullname').select2();
             }
         }
 
-        var count=1;
-
-        let tableDataArray = [];
-
         function lgbkSav3Btn(){
             if(nameVal.value == ""){
                 swal ( "Oops" ,  "You have entered an invalid Employee Name!" ,  "error" );
@@ -686,75 +613,13 @@ $('.js-fullname').select2();
                 swal ( "Oops" ,  "You have selected an invalid Employer!" ,  "error" );
             }else{
                 if(document.getElementById("lgbkFormTitle").innerHTML == "ADD"){
-
-
-                    let lgbkInputDate = $("#lgbkInputDate").val();
-    let lgbkInputName = $("#lgbkInputName").val();
-    let lgbkEmp = $("#lgbkOption").val();
-    let lgbkEmpId = $("#lgbkEmpId").val();
-    let lgbkCard = $("#lgbkCard").val();
-    let lgbkEmpDept = $("#lgbkDepartment").val();
-    let lgbkEmpSection = $("#lgbkSection").val();
-    let lgbkGPI8 = $("#lgbkGPI8").val();
-
-    // Store row data in an object
-    let rowData = {
-        date: lgbkInputDate,
-        name: lgbkInputName,
-        employer: lgbkEmp,
-        empId: lgbkEmpId,
-        card: lgbkCard,
-        department: lgbkEmpDept,
-        section: lgbkEmpSection,
-        gpi8: lgbkGPI8
-    };
-
-    // Push the object into the array
-    tableDataArray.push(rowData);
-    
-                    // document.getElementById("lbkAdd").click();
-                    lgbkInputName = $("#lgbkInputName").val();
-                    lgbkInputDate = $("#lgbkInputDate").val();
-                    console.log(lgbkInputDate);
-                    lgbkOption = $("#lgbkOption").val();
-                    let table = $("#lbkTableTemp").DataTable(); // Get DataTable instance
-                    table.row.add([
-        '', // Placeholder for numbering
-        lgbkInputDate,
-        lgbkInputName,
-        lgbkOption,
-        "<button class='remove focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900'>Remove</button>" // Styled Remove button
-    ]).draw(false); // Add row and redraw table
-
-
-updateRowNumbers(); // Update numbering
-console.log(tableDataArray);
-                    // $("#lbkTableTemp tbody").append("<tr><td></td><td>"+lgbkInputDate+"</td><td>"+lgbkInputName+"</td><td>"+lgbkOption+"</td><td><button class='remove' >Remove</button></td></tr>");
+                    document.getElementById("lgbkAdd").click();
                 }else if(document.getElementById("lgbkFormTitle").innerHTML == "EDIT"){
                     document.getElementById("lgbkEdit").click();
                 }
             }
         }
-        function updateRowNumbers() {
-    let table = $("#lbkTableTemp").DataTable();
-    table.rows().every(function(index) {
-        this.cell(index, 0).data(index + 1); // Update first column with row number
-    });
-}
 
-$("#lbkTableTemp tbody").on("click", ".remove", function() {
-    let table = $("#lbkTableTemp").DataTable();
-    let rowIndex = $(this).closest("tr").index();
-
-    // Remove data from the array
-    tableDataArray.splice(rowIndex, 1);
-
-    // Remove the row from the table
-    table.row($(this).parents("tr")).remove().draw();
-
-    updateRowNumbers(); // Re-number rows after removal
-    console.log(tableDataArray); // Debugging: Check updated array
-});
         function lgbkCloseM0dal(){
             document.getElementById("lgbkCancel").click();
         }
