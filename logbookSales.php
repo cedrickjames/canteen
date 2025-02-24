@@ -116,7 +116,7 @@
 
         if(isset($_POST['lgbkAdd'])){
             $lgbkDate = $_REQUEST['lgbkInputDate'];
-            $lgbkName = strtoupper($_REQUEST['lgbkInputName']);
+            $lgbkName = $_REQUEST['lgbkEmpNameTemp'];
             $lgbkEmp = strtoupper($_REQUEST['lgbkOption']);
             $lgbkEmpId = strtoupper($_REQUEST['lgbkEmpId']);
             $lgbkCard = strtoupper($_REQUEST['lgbkCard']);
@@ -194,6 +194,9 @@
             while($rowLgbkEdit = mysqli_fetch_assoc($resultLgbkEdit)){
                 $lgbkEditDate = $rowLgbkEdit['tran_date'];
                 $lgbkemp_id = $rowLgbkEdit['emp_id'];
+                $lgbkemp_nametemp = $rowLgbkEdit['emp_name'];
+
+                
                 $emp_cardNum = $rowLgbkEdit['emp_cardNum'];
                 $department = $rowLgbkEdit['department'];
                 $section = $rowLgbkEdit['section'];
@@ -365,6 +368,9 @@
                     <tr>
                         <td>Emp ID</td>
                         <td><input type="text" readonly  name="lgbkEmpId"  id="lgbkEmpId" value="<?php echo $lgbkemp_id; ?>"></td>
+
+                        <input type="text" readonly style="display: none" name="lgbkEmpNameTemp"  id="lgbkEmpNameTemp" value="<?php echo $lgbkemp_nametemp; ?>">
+                            
                     </tr>
                     <tr>
                         <td>Card Number</td>
@@ -426,6 +432,8 @@ $(document).ready(function () {
 
       $('#lgbkInputName').change(function() {
             var selectedNameEmpId = $(this).find('option:selected').data('empid');
+            var selectedName = $(this).find('option:selected').data('name');
+
             var selectedCard= $(this).find('option:selected').data('empcard');
 
             var selectedNameDepartment = $(this).find('option:selected').data('department');
@@ -435,8 +443,10 @@ $(document).ready(function () {
             
             var employer = $(this).find('option:selected').data('emp');
             
-
+            
             $('#lgbkEmpId').val(selectedNameEmpId);
+            $('#lgbkEmpNameTemp').val(selectedName);
+
             $('#lgbkCard').val(selectedCard);
 
             $('#lgbkDepartment').val(selectedNameDepartment);

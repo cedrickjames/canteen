@@ -669,6 +669,78 @@ $overAlltotalCol = [
 
 
 ?>
+<tr>
+<td> </td>
+                            <?php
+                            foreach ($days as $day) {
+                               ?>  <td> </td> <?php
+                            }
+                            
+                            ?>
+</tr>
+<tr>
+<td> </td>
+                            <?php
+                            foreach ($days as $day) {
+                               ?>  <td> </td> <?php
+                            }
+                            
+                            ?>
+</tr>
+<tr>
+<td> </td>
+                            <?php
+                            foreach ($days as $day) {
+                               ?>  <td> </td> <?php
+                            }
+                            
+                            ?>
+</tr>
+<tr>
+<td> </td>
+                            <?php
+                            foreach ($days as $day) {
+                               ?>  <td> </td> <?php
+                            }
+                            
+                            ?>
+</tr>
+<tr>
+<td> </td>
+                            <?php
+                            foreach ($days as $day) {
+                               ?>  <td> </td> <?php
+                            }
+                            
+                            ?>
+</tr>
+<tr>
+<td> </td>
+                            <?php
+                            foreach ($days as $day) {
+                               ?>  <td> </td> <?php
+                            }
+                            
+                            ?>
+</tr>
+<tr>
+<td> </td>
+                            <?php
+                            foreach ($days as $day) {
+                               ?>  <td> </td> <?php
+                            }
+                            
+                            ?>
+</tr>
+<tr>
+<td> </td>
+                            <?php
+                            foreach ($days as $day) {
+                               ?>  <td> </td> <?php
+                            }
+                            
+                            ?>
+</tr>
 
 <tr style=" font-weight: bold; font-size: 15px;">
                             <td>TOTAL</td>
