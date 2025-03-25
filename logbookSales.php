@@ -735,6 +735,18 @@ console.log(tableDataArray);
                 }
             }
         }
+
+
+        document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        // Your function here
+        // console.log("Enter key pressed");
+        // Call your function
+        lgbkSav3Btn();
+    }
+});
+
+
         function updateRowNumbers() {
     let table = $("#lbkTableTemp").DataTable();
     table.rows().every(function(index) {
