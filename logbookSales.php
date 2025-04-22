@@ -490,7 +490,8 @@ $(document).ready(function () {
                         scrollCollapse: false,
     scrollY: '25vh',
     scrollCollapse: false,
-    ordering: false, // Disable sorting for proper numbering
+    ordering: false, // Disable or enable sorting for proper numbering
+    // order: [[0, 'desc']], 
     rowCallback: function(row, data, index) {
         $('td:eq(0)', row).html(index + 1); 
          }// Auto-numbering first column
@@ -729,6 +730,16 @@ $('.js-fullname').select2();
 
 updateRowNumbers(); // Update numbering
 console.log(tableDataArray);
+
+
+var table1 = $('#lbkTableTemp').DataTable();
+var tableContainer = $('#lbkTableTemp_wrapper .dataTables_scrollBody');
+
+// Scroll to the bottom of the table
+tableContainer.scrollTop(tableContainer.prop("scrollHeight"));
+
+
+
                     // $("#lbkTableTemp tbody").append("<tr><td></td><td>"+lgbkInputDate+"</td><td>"+lgbkInputName+"</td><td>"+lgbkOption+"</td><td><button class='remove' >Remove</button></td></tr>");
                 }else if(document.getElementById("lgbkFormTitle").innerHTML == "EDIT"){
                     document.getElementById("lgbkEdit").click();
