@@ -35,6 +35,18 @@
     <script src="./sweetalert.min.js"></script>
     <script src="./jquery.min.js"></script>
     <style>
+        #sideBar{
+            width: 80px;
+        }
+        #sideBar .contentContainer ul li a img{
+            min-width: 60px;
+        }
+        #sideBar .contentContainer ul li .dDown .repImg{
+            min-width: 60px;
+            height: 60px;
+        }
+    </style>
+    <style>
         .radio-group {
             margin: 10px 0;
         }
@@ -294,6 +306,9 @@
 
         <div class="contentCon" >
             <div class="">
+                
+
+
                 <table  id="lbkTable"  class="display" style="width:100%; margin-left: 60px; margin-right: 60px;; margin-top: 100px">
                     <thead>
                         <tr>
@@ -308,7 +323,18 @@
 
                     <tbody>
                         <?php 
-                            $queryLgbk = "SELECT * FROM `tbl_trans_logs` where logbook = '1' ORDER BY transaction_id DESC";
+
+                        // Get the first date of the current month
+$firstDate = date('Y-m-01');
+
+// Get the last date of the current month
+$lastDate = date('Y-m-t');
+
+// echo "First date of the month: " . $firstDate . "\n";
+// echo "Last date of the month: " . $lastDate . "\n";
+
+
+                            $queryLgbk = "SELECT * FROM `tbl_trans_logs` where logbook = '1' and tran_date between '$firstDate' and '$lastDate' ORDER BY transaction_id DESC";
                             $resultLgbk = mysqli_query($con, $queryLgbk);
                             $a=1;
                         
