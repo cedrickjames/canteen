@@ -1009,6 +1009,8 @@ increment++;
                             <option value="NIPPI">NIPPI</option>
                             <option value="NATCORP">NATCORP</option>
                             <option value="SERVICE PROVIDER">SERVICE PROVIDER</option>
+                            <option value="">N/A</option>
+
                             
                         </select>`
 );
@@ -1045,6 +1047,7 @@ incrementSection++;
                             <option selected disabled>Select Section</option>
                              <option value="1">Yes</option>
                             <option value="0">No</option>
+                            <option value="0">N/A</option>
                         </select>`
 );
 incrementGpi8++;
