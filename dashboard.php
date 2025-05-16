@@ -53,19 +53,19 @@
 
     $nippiPer = $rowNippi / $rowNippiTotal;
 
-    // ========================== POWERLANE PERCENTAGE ==========================
+    // // ========================== POWERLANE PERCENTAGE ==========================
 
-    $query_pl = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'POWERLANE' AND tran_date = '$dateNow'";
-    $resultPL = mysqli_query($con, $query_pl);
-    $rowPL = mysqli_num_rows($resultPL);
+    // $query_pl = "SELECT * FROM `tbl_trans_logs` WHERE employer = 'POWERLANE' AND tran_date = '$dateNow'";
+    // $resultPL = mysqli_query($con, $query_pl);
+    // $rowPL = mysqli_num_rows($resultPL);
 
-    $query_pl_total = "SELECT * FROM `emp_list` WHERE employer = 'POWERLANE'";
-    $resultPLTotal = mysqli_query($con, $query_pl_total);
-    $rowPLTotal = mysqli_num_rows($resultPLTotal);
+    // $query_pl_total = "SELECT * FROM `emp_list` WHERE employer = 'POWERLANE'";
+    // $resultPLTotal = mysqli_query($con, $query_pl_total);
+    // $rowPLTotal = mysqli_num_rows($resultPLTotal);
 
-    $plPer = $rowPL / $rowPLTotal;
+    // $plPer = $rowPL / $rowPLTotal;
 
-    $totalSales = ($rowGlory + $rowSP + $rowMaxim + $rowNippi + $rowPL) / ($rowGloryTotal + $rowSPTotal + $rowMaximTotal + $rowNippiTotal + $rowPLTotal);
+    // $totalSales = ($rowGlory + $rowSP + $rowMaxim + $rowNippi + $rowPL) / ($rowGloryTotal + $rowSPTotal + $rowMaximTotal + $rowNippiTotal + $rowPLTotal);
 
 ?>
 
@@ -353,7 +353,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="dEmp">
+                <!-- <div class="dEmp">
                     <div class="dTitle">POWERLANE</div>
                     <div class="totalPercent">
                         <svg>
@@ -364,7 +364,7 @@
                             <h2><span class="counter" data-target="<?php echo substr(($plPer*100), 0, 4); ?>">0</span><span>%</span></h2>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <?php

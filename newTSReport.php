@@ -458,6 +458,123 @@ $overAlltotalCol = [
                 </tbody>
                 </table>
 
+
+
+                  <div class="page-break"></div>
+                <table style="margin-top: 20px; width: 100%; text-align: center; border-collapse: collapse;">
+<!-- GLORY -->
+
+        <!-- <thead>
+            <tr>
+               <td style="width: 6%; font-weight: bold; font-size: 11px;">Glory Philippines Inc.</td>
+            </thead> -->
+            <thead>
+            <tr>
+            <th colspan="<?php echo count($arrayDate) +1;?>">Glory Philippines Inc.</th></tr>
+            <tr>
+            <th colspan="<?php echo count($arrayDate) +1;?>">Total Sales Report</th></tr>
+            <tr>
+            <th colspan="<?php echo count($arrayDate) +1;?>">For the Period <?php echo date('M-d',strtotime($fromDate));?> to <?php echo date('M-d',strtotime($toDate))?></th></tr>
+            <tr>
+            <th >NATCORP</th></tr>
+    
+                <tr>
+                    <th style="width: 6%; font-weight: bold; font-size: 11px;">Employee</th>
+                <?php foreach ($arrayDate as $dates_glory){ ?>
+                    <th style="width: 4%; font-weight: bold; font-size: 11px;"><?php echo date('M-d',strtotime($dates_glory))?></th> <?php } ?>
+                </tr>
+            </thead>
+            <tbody style="font-size: 10px;">
+
+            <?php
+
+             $totals = [
+                'monday' => 0,
+                'tuesday' => 0,
+                'wednesday' => 0,
+                'thursday' => 0,
+                'friday' => 0,
+                'saturday' => 0,
+                'sunday' => 0,
+            ];
+
+  
+
+
+            
+             $sqlDynamic = "SELECT emp_name, ";
+
+             // Loop through the days and build the CASE statements
+             $num=0;
+             foreach ($days as $day) {
+                 $sqlDynamic .= "MAX(CASE WHEN tran_date = '$datesArray[$num]' THEN '35' ELSE '0' END) AS '$day', ";
+                 $num++;
+             }
+             
+             // Remove the last comma and space
+             $sqlDynamic = rtrim($sqlDynamic, ', ');
+             
+             // Complete the SQLDynamic query
+             $sqlDynamic .= " FROM tbl_trans_logs WHERE employer = 'NATCORP' AND tran_date BETWEEN '$fromDate' AND '$toDate' GROUP BY emp_name ORDER BY emp_name;";
+             
+             // Now you can use this $sql in your database query
+            //  echo $sqlDynamic;
+
+
+
+
+                            $result = mysqli_query($con, $sqlDynamic);
+
+
+
+                            while ($row = mysqli_fetch_assoc($result)) {
+                        
+                                
+                                foreach ($days as $day) {
+                                    $totals[$day] += (int)$row[$day];
+                                    $overAlltotalCol[$day] += (int)$row[$day];
+
+                                }
+                                
+
+
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $row['emp_name']; ?></td>
+                                        <?php
+                                        foreach ($days as $day) {
+                                           ?>  <td><?php echo $row[$day]; ?></td> <?php
+                                        }
+                                        
+                                        ?>
+                                        
+                                    </tr>
+
+<?php
+
+                            }
+
+
+
+            ?>
+
+<tr style=" font-weight: bold; font-size: 15px;">
+                                        <td>TOTAL</td>
+                                        <?php
+                                        foreach ($days as $day) {
+                                           ?>  <td><?php echo $totals[$day]; ?></td> <?php
+                                        }
+                                        
+                                        ?>
+                                    </tr>
+
+        
+                </tbody>
+                </table>
+
+
+
+
                 <div class="page-break"></div>
 
                 
