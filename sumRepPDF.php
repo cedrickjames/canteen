@@ -31,7 +31,7 @@ $html = '   <!DOCTYPE html>
                     <thead>
                         <tr style="font-size: 11px; border: 1px solid black; font-size: 12px;">
                             <th rowspan="2" style="width: 12.5%; border: 1px solid black;">Date</th>
-                            <th colspan="6" style="border: 1px solid black; font-size: 12px;">ACTUAL PAYMENT</th>
+                            <th colspan="7" style="border: 1px solid black; font-size: 12px;">ACTUAL PAYMENT</th>
                             <th rowspan="2" style="width: 12.5%; border: 1px solid black; font-size: 12px;">TOTAL MANPOWER</th>
                         </tr>
                         <tr style="font-size: 12px; border: 1px solid black;">
@@ -39,6 +39,7 @@ $html = '   <!DOCTYPE html>
                             <th style="border: 1px solid black;">MAXIM</th>
                             <th style="border: 1px solid black;">NIPPI</th>
                             <th style="border: 1px solid black;">POWERLANE</th>
+                            <th style="border: 1px solid black;">NATCORP</th>
                             <th style="border: 1px solid black;">SERVICE PROVIDER</th>
                             <th style="border: 1px solid black;">TOTAL PAYMENT</th>
                         </tr>
@@ -53,12 +54,16 @@ $html = '   <!DOCTYPE html>
                     $totalMaxim = 0.00;
                     $totalNippi = 0.00;
                     $totalPL = 0.00;
+                    $totalNATCORP = 0.00;
+
                     $totalSP = 0.00;
 
                     $amountGlory = 0.00;
                     $amountMaxim = 0.00;
                     $amountNippi = 0.00;
                     $amountPL = 0.00;
+                    $amountNATCORP = 0.00;
+
                     $amountSP = 0.00;
 
                     for($d = 0; $d <= $y; $d++){
@@ -88,6 +93,13 @@ $html = '   <!DOCTYPE html>
                         $countPL = mysqli_num_rows($resultPL);
                         $amountPL = $countPL * 35.00;
                         $totalPL += $amountPL;
+
+                        $queryNATCORP = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'NATCORP'  AND gpi8=0 AND tran_date = '$qDate' ";
+                        $resultNATCORP = mysqli_query($con, $queryNATCORP);
+                        $countNATCORP = mysqli_num_rows($resultNATCORP);
+                        $amountNATCORP = $countNATCORP * 35.00;
+                        $totalNATCORP += $amountNATCORP;
+
                         
                         $querySP = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'SERVICE PROVIDER' AND gpi8=0 AND tran_date = '$qDate' ";
                         $resultSP = mysqli_query($con, $querySP);
@@ -95,7 +107,7 @@ $html = '   <!DOCTYPE html>
                         $amountSP = $countSP * 35.00;
                         $totalSP += $amountSP;
 
-                        $totalPayment = $amountGlory + $amountMaxim + $amountNippi + $amountPL + $amountSP;
+                        $totalPayment = $amountGlory + $amountMaxim + $amountNippi + $amountPL + $amountNATCORP+ $amountSP;
 
                         $totalManpower += $totalPayment;
                        
@@ -106,6 +118,8 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountMaxim, 2, '.', ',').'</td>
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountNippi, 2, '.', ',').'</td>
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountPL, 2, '.', ',').'</td>
+                            <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountNATCORP, 2, '.', ',').'</td>
+
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountSP, 2, '.', ',').'</td>
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($totalPayment, 2, '.', ',').'</td>
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.($totalPayment/35).'</td>
@@ -121,6 +135,8 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
+                            <td style="border: 1px solid black; line-height: 23px;">-</td>
+
                         </tr>
 
                         <tr style="font-size: 12px; border: 1px solid black;">
@@ -129,6 +145,8 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalMaxim, 2, '.', ',').'</td>
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalNippi, 2, '.', ',').'</td>
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalPL, 2, '.', ',').'</td>
+                            <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalNATCORP, 2, '.', ',').'</td>
+
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalSP, 2, '.', ',').'</td>
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalManpower, 2, '.', ',').'</td>
                             <td style="border: 1px solid black; line-height: 23px;">'.($totalManpower/35).'</td>
@@ -279,6 +297,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
+                            
 
                             
 
@@ -440,6 +459,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
+                            
 
 
 
@@ -527,17 +547,23 @@ $html .= '
                         <tr>
                             <td>Prepared By:</td>
                             <td>Checked By:</td>
+                            <td>Approved By:</td>
+
                         </tr>
 
                         <tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr>
                         
 
                         <tr>
+                            <td>Mark Ely Aragon</td>
                             <td>Bobby John Solomon</td>
+
 			    <td>Jonathan Nemedez</td>
                         </tr>
                         <tr>
+                            <td><em>Technical Support Staff</em></td>
                             <td><em>Information System Leader</em></td>
+
                             <td><em>Senior Supervisor</em></td>
                         </tr>
                     </table>

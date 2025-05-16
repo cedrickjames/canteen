@@ -158,6 +158,8 @@
                     $_SESSION['selEmp'] = 4;
                 }else if($lgbkEmp == "SERVICE PROVIDER"){
                     $_SESSION['selEmp'] = 5;
+                }else if($lgbkEmp == "NATCORP"){
+                    $_SESSION['selEmp'] = 6;
                 }else{
                     $_SESSION['selEmp'] = 0;
                 }
@@ -182,6 +184,8 @@
                     $_SESSION['selEmp'] = 4;
                 }else if($lgbkEmp == "SERVICE PROVIDER"){
                     $_SESSION['selEmp'] = 5;
+                }else if($lgbkEmp == "NATCORP"){
+                    $_SESSION['selEmp'] = 6;
                 }else{
                     $_SESSION['selEmp'] = 0;
                 }
@@ -230,6 +234,8 @@
                     $_SESSION['selEmp'] = 4;
                 }else if($lgbkEditEmp == "SERVICE PROVIDER"){
                     $_SESSION['selEmp'] = 5;
+                }else if($lgbkEditEmp == "NATCORP"){
+                    $_SESSION['selEmp'] = 6;
                 }else{
                     $_SESSION['selEmp'] = 0;
                 }
@@ -424,6 +430,8 @@ $lastDate = date('Y-m-t');
                             <option value="MAXIM" <?php if($_SESSION['selEmp'] == '2'){ echo 'selected'; }?>>MAXIM</option>
                             <option value="NIPPI" <?php if($_SESSION['selEmp'] == '3'){ echo 'selected'; }?>>NIPPI</option>
                             <option value="POWERLANE" <?php if($_SESSION['selEmp'] == '4'){ echo 'selected'; }?>>POWERLANE</option>
+                            <option value="NATCORP" <?php if($_SESSION['selEmp'] == '6'){ echo 'selected'; }?>>NATCORP</option>
+
                             <option value="SERVICE PROVIDER" <?php if($_SESSION['selEmp'] == '5'){ echo 'selected'; }?>>SERVICE PROVIDER</option>
                         </td>
                     </tr>
@@ -675,6 +683,9 @@ $('.js-fullname').select2();
                 empSel.selectedIndex = 4;
             }else if(Eemp == "SERVICE PROVIDER"){
                 empSel.selectedIndex = 5;
+            }
+            else if(Eemp == "NATCORP"){
+                empSel.selectedIndex = 6;
             }
             suggList.style.visibility = "hidden";
 
