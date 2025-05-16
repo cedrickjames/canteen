@@ -334,7 +334,7 @@ $lastDate = date('Y-m-t');
 // echo "Last date of the month: " . $lastDate . "\n";
 
 
-                            $queryLgbk = "SELECT * FROM `tbl_trans_logs` where logbook = '1' and tran_date between '$firstDate' and '$lastDate' ORDER BY transaction_id DESC";
+                            $queryLgbk = "SELECT * FROM `tbl_trans_logs` where logbook = '1' and tran_date between '$firstDate' and '$lastDate' ORDER BY transaction_id DESC LIMIT 300";
                             $resultLgbk = mysqli_query($con, $queryLgbk);
                             $a=1;
                         
