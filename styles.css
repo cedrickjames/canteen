@@ -1,0 +1,61 @@
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 15s linear infinite; /* Adjust the duration for the desired speed */
+}
+
+.select2 {
+  width: 100% !important;
+  height: 90% !important;
+}
+
+.select2-selection {
+  width: 100% !important;
+  height: 90% !important;
+}
+.selection {
+  width: 100% !important;
+  height: 90% !important;
+  display: block;
+}
+.select2-selection__rendered{
+  width: 100% !important;
+  height: 90% !important;
+}
+#select2-cnsltnMeds-results{
+  display: none;
+}
+.select2-results__options{
+font-size: 10px;
+}
+#select2-ftwMeds-results{
+  display: none;
+}
+#select2-immediateEmail-results{
+  display: none;
+}
+
+#loading-message {
+  display: flex;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: center;
+  font-size: 30px;
+  justify-content: center;
+}
+body.loaded #loading-message {
+  display: none;
+}
+
+.glow-img {
+  filter: drop-shadow(0 0 20px white);
+}
