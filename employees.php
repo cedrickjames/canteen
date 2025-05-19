@@ -545,7 +545,7 @@ function saveToDatabase($con, $data, $count,$format1,$format2,$employerFormat1,$
                     <input type="radio"  name="optionGpi8" style="position:relative; width: 20px;height: 30px; width: 30px; padding-left: 20px;font-size: 15px;
     line-height: 40px;" value="1"> <label style="padding-left: 10px;font-size: 15px;
     line-height: 40px;">Yes</label>
-                    <input type="radio"   name="optionGpi8" style="position:relative; width: 20px;height: 30px; width: 30px; padding-left: 20px;font-size: 15px;
+                    <input type="radio" checked  name="optionGpi8" style="position:relative; width: 20px;height: 30px; width: 30px; padding-left: 20px;font-size: 15px;
     line-height: 40px;" value="0"> <label style="padding-left: 10px;font-size: 15px;
     line-height: 40px;">No</label>
                     </div>
