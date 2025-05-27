@@ -31,14 +31,14 @@ $html = '   <!DOCTYPE html>
                     <thead>
                         <tr style="font-size: 11px; border: 1px solid black; font-size: 12px;">
                             <th rowspan="2" style="width: 12.5%; border: 1px solid black;">Date</th>
-                            <th colspan="7" style="border: 1px solid black; font-size: 12px;">ACTUAL PAYMENT</th>
+                            <th colspan="6" style="border: 1px solid black; font-size: 12px;">ACTUAL PAYMENT</th>
                             <th rowspan="2" style="width: 12.5%; border: 1px solid black; font-size: 12px;">TOTAL MANPOWER</th>
                         </tr>
                         <tr style="font-size: 12px; border: 1px solid black;">
                             <th style="border: 1px solid black;">GPI</th>
                             <th style="border: 1px solid black;">MAXIM</th>
                             <th style="border: 1px solid black;">NIPPI</th>
-                            <th style="border: 1px solid black;">POWERLANE</th>
+                        
                             <th style="border: 1px solid black;">NATCORP</th>
                             <th style="border: 1px solid black;">SERVICE PROVIDER</th>
                             <th style="border: 1px solid black;">TOTAL PAYMENT</th>
@@ -88,11 +88,11 @@ $html = '   <!DOCTYPE html>
                         $amountNippi = $countNippi * 35.00;
                         $totalNippi += $amountNippi;
                         
-                        $queryPL = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'POWERLANE'  AND gpi8=0 AND tran_date = '$qDate' ";
-                        $resultPL = mysqli_query($con, $queryPL);
-                        $countPL = mysqli_num_rows($resultPL);
-                        $amountPL = $countPL * 35.00;
-                        $totalPL += $amountPL;
+                        // $queryPL = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'POWERLANE'  AND gpi8=0 AND tran_date = '$qDate' ";
+                        // $resultPL = mysqli_query($con, $queryPL);
+                        // $countPL = mysqli_num_rows($resultPL);
+                        // $amountPL = $countPL * 35.00;
+                        // $totalPL += $amountPL;
 
                         $queryNATCORP = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'NATCORP'  AND gpi8=0 AND tran_date = '$qDate' ";
                         $resultNATCORP = mysqli_query($con, $queryNATCORP);
@@ -107,7 +107,7 @@ $html = '   <!DOCTYPE html>
                         $amountSP = $countSP * 35.00;
                         $totalSP += $amountSP;
 
-                        $totalPayment = $amountGlory + $amountMaxim + $amountNippi + $amountPL + $amountNATCORP+ $amountSP;
+                        $totalPayment = $amountGlory + $amountMaxim + $amountNippi  + $amountNATCORP+ $amountSP;
 
                         $totalManpower += $totalPayment;
                        
@@ -117,7 +117,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountGlory, 2, '.', ',').'</td>
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountMaxim, 2, '.', ',').'</td>
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountNippi, 2, '.', ',').'</td>
-                            <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountPL, 2, '.', ',').'</td>
+                        
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountNATCORP, 2, '.', ',').'</td>
 
                             <td style="width: 12.5%; border: 1px solid black; line-height: 23px;">'.number_format($amountSP, 2, '.', ',').'</td>
@@ -135,7 +135,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
                             <td style="border: 1px solid black; line-height: 23px;">-</td>
-                            <td style="border: 1px solid black; line-height: 23px;">-</td>
+              
 
                         </tr>
 
@@ -144,7 +144,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalGlory, 2, '.', ',').'</td>
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalMaxim, 2, '.', ',').'</td>
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalNippi, 2, '.', ',').'</td>
-                            <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalPL, 2, '.', ',').'</td>
+                          
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalNATCORP, 2, '.', ',').'</td>
 
                             <td style="border: 1px solid black; line-height: 23px;">'.number_format($totalSP, 2, '.', ',').'</td>
@@ -418,7 +418,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                         $amountPI = $countPI * 35.00;
                         $totalPI += $amountPI;
 
-                        $queryOthers = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND `gpi8` = '1' AND (`department` != 'Parts Inspection' AND `department` != 'QA' AND `department` != 'ICT') AND `section` = '' AND tran_date = '$qDate' ";
+                        $queryOthers = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND `gpi8` = '1' AND (`department` != 'Parts Inspection' AND `department` != 'QA' AND `department` != 'ICT' AND `department` != 'Administration') AND `section` = '' AND tran_date = '$qDate' ";
                         $resultOthers = mysqli_query($con, $queryOthers);
                         $countOthers = mysqli_num_rows($resultOthers);
                         $amountOthers = $countOthers * 35.00;
