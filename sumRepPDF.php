@@ -70,19 +70,19 @@ $html = '   <!DOCTYPE html>
                         $qDate = $_SESSION['period'][$d];
                         $pDate = date_create($qDate);
 
-                        $queryGlory = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND gpi8=0 AND tran_date = '$qDate' ";
+                        $queryGlory = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND gpi8=0 AND tran_date = '$qDate' GROUP BY emp_name, tran_date ";
                         $resultGlory = mysqli_query($con, $queryGlory);
                         $countGlory = mysqli_num_rows($resultGlory);
                         $amountGlory = $countGlory * 35.00;
                         $totalGlory += $amountGlory;
                         
-                        $queryMaxim = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'MAXIM' AND gpi8=0 AND tran_date = '$qDate' ";
+                        $queryMaxim = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'MAXIM' AND gpi8=0 AND tran_date = '$qDate' GROUP BY emp_name, tran_date";
                         $resultMaxim = mysqli_query($con, $queryMaxim);
                         $countMaxim = mysqli_num_rows($resultMaxim);
                         $amountMaxim = $countMaxim * 35.00;
                         $totalMaxim += $amountMaxim;
                         
-                        $queryNippi = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'NIPPI' AND gpi8=0 AND tran_date = '$qDate' ";
+                        $queryNippi = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'NIPPI' AND gpi8=0 AND tran_date = '$qDate' GROUP BY emp_name, tran_date";
                         $resultNippi = mysqli_query($con, $queryNippi);
                         $countNippi = mysqli_num_rows($resultNippi);
                         $amountNippi = $countNippi * 35.00;
@@ -94,14 +94,14 @@ $html = '   <!DOCTYPE html>
                         // $amountPL = $countPL * 35.00;
                         // $totalPL += $amountPL;
 
-                        $queryNATCORP = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'NATCORP'  AND gpi8=0 AND tran_date = '$qDate' ";
+                        $queryNATCORP = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'NATCORP'  AND gpi8=0 AND tran_date = '$qDate' GROUP BY emp_name, tran_date";
                         $resultNATCORP = mysqli_query($con, $queryNATCORP);
                         $countNATCORP = mysqli_num_rows($resultNATCORP);
                         $amountNATCORP = $countNATCORP * 35.00;
                         $totalNATCORP += $amountNATCORP;
 
                         
-                        $querySP = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'SERVICE PROVIDER' AND gpi8=0 AND tran_date = '$qDate' ";
+                        $querySP = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'SERVICE PROVIDER' AND gpi8=0 AND tran_date = '$qDate' GROUP BY emp_name, tran_date ";
                         $resultSP = mysqli_query($con, $querySP);
                         $countSP = mysqli_num_rows($resultSP);
                         $amountSP = $countSP * 35.00;
@@ -210,7 +210,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                         $qDate = $_SESSION['period'][$d];
                         $pDate = date_create($qDate);
  
-                        $queryMoulding = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND section = 'Moulding' AND gpi8=1 AND tran_date = '$qDate' ";
+                        $queryMoulding = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND section = 'Moulding' AND gpi8=1 AND tran_date = '$qDate' GROUP BY emp_name, tran_date " ;
                         $resultMoulding = mysqli_query($con, $queryMoulding);
                         $countMoulding = mysqli_num_rows($resultMoulding);
                         $amountMoulding = $countMoulding * 35.00;
@@ -218,43 +218,43 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
 
                         
                         
-                        $queryMaintenance = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND section = 'Maintenance' AND gpi8=1 AND tran_date = '$qDate' ";
+                        $queryMaintenance = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND section = 'Maintenance' AND gpi8=1 AND tran_date = '$qDate' GROUP BY emp_name, tran_date";
                         $resultMaintenance = mysqli_query($con, $queryMaintenance);
                         $countMaintenance = mysqli_num_rows($resultMaintenance);
                         $amountMaintenance = $countMaintenance * 35.00;
                         $totalMaintenance += $amountMaintenance;
                         
-                        $queryFabrication = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND section = 'Fabrication' AND gpi8=1 AND tran_date = '$qDate' ";
+                        $queryFabrication = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND section = 'Fabrication' AND gpi8=1 AND tran_date = '$qDate' GROUP BY emp_name, tran_date";
                         $resultFabrication = mysqli_query($con, $queryFabrication);
                         $countFabrication = mysqli_num_rows($resultFabrication);
                         $amountFabrication = $countFabrication * 35.00;
                         $totalFabrication += $amountFabrication;
                         
-                        $queryQAdmin = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND (department = 'QA' OR department = 'Administration' OR department = 'ICT') AND gpi8=1 AND tran_date = '$qDate'";
+                        $queryQAdmin = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND (department = 'QA' OR department = 'Administration' OR department = 'ICT') AND gpi8=1 AND tran_date = '$qDate' GROUP BY emp_name, tran_date" ;
                         $resultQAdmin = mysqli_query($con, $queryQAdmin);
                         $countQAdmin = mysqli_num_rows($resultQAdmin);
                         $amountQAdmin = $countQAdmin * 35.00;
                         $totalQAdmin += $amountQAdmin;
                         
-                        $queryProdsupport = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND section = 'Production Support' AND gpi8=1 AND tran_date = '$qDate' ";
+                        $queryProdsupport = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND section = 'Production Support' AND gpi8=1 AND tran_date = '$qDate' GROUP BY emp_name, tran_date";
                         $resultProdsupport = mysqli_query($con, $queryProdsupport);
                         $countProdsupport = mysqli_num_rows($resultProdsupport);
                         $amountProdsupport = $countProdsupport * 35.00;
                         $totalProdsupport += $amountProdsupport;
                              
-                        $queryPI = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND department = 'Parts Inspection' AND gpi8=1 AND tran_date = '$qDate' ";
+                        $queryPI = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND department = 'Parts Inspection' AND gpi8=1 AND tran_date = '$qDate' GROUP BY emp_name, tran_date";
                         $resultPI = mysqli_query($con, $queryPI);
                         $countPI = mysqli_num_rows($resultPI);
                         $amountPI = $countPI * 35.00;
                         $totalPI += $amountPI;
 
-                        $queryWarehouse = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND section = 'Warehouse' AND gpi8=1 AND tran_date = '$qDate' ";
+                        $queryWarehouse = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND section = 'Warehouse' AND gpi8=1 AND tran_date = '$qDate' GROUP BY emp_name, tran_date";
                         $resultWarehouse = mysqli_query($con, $queryWarehouse);
                         $countWarehouse = mysqli_num_rows($resultWarehouse);
                         $amountWarehouse = $countWarehouse * 35.00;
                         $totalWarehouse += $amountWarehouse;
 
-                        $queryOthers = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND `gpi8` = '1' AND (`department` != 'Parts Inspection' AND `department` != 'QA' AND `department` != 'ICT') AND `section` = '' AND tran_date = '$qDate' ";
+                        $queryOthers = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY' AND `gpi8` = '1' AND (`department` != 'Parts Inspection' AND `department` != 'QA' AND `department` != 'ICT') AND `section` = '' AND tran_date = '$qDate' GROUP BY emp_name, tran_date";
                         $resultOthers = mysqli_query($con, $queryOthers);
                         $countOthers = mysqli_num_rows($resultOthers);
                         $amountOthers = $countOthers * 35.00;
@@ -375,50 +375,50 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                         $qDate = $_SESSION['period'][$d];
                         $pDate = date_create($qDate);
  
-                        $queryMoulding = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND section = 'Moulding' AND gpi8=1 AND tran_date = '$qDate' ";
+                        $queryMoulding = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND section = 'Moulding' AND gpi8=1 AND tran_date = '$qDate' GROUP BY emp_name, tran_date";
                         $resultMoulding = mysqli_query($con, $queryMoulding);
                         $countMoulding = mysqli_num_rows($resultMoulding);
                         $amountMoulding = $countMoulding * 35.00;
                         $totalMoulding += $amountMoulding;
 
-                        $queryWarehouse = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND section = 'Warehouse' AND gpi8=1 AND tran_date = '$qDate' ";
+                        $queryWarehouse = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND section = 'Warehouse' AND gpi8=1 AND tran_date = '$qDate' GROUP BY emp_name, tran_date";
                         $resultWarehouse = mysqli_query($con, $queryWarehouse);
                         $countWarehouse = mysqli_num_rows($resultWarehouse);
                         $amountWarehouse = $countWarehouse * 35.00;
                         $totalWarehouse += $amountWarehouse;
 
                         
-                        $queryMaintenance = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND section = 'Maintenance' AND gpi8=1 AND tran_date = '$qDate' ";
+                        $queryMaintenance = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND section = 'Maintenance' AND gpi8=1 AND tran_date = '$qDate' GROUP BY emp_name, tran_date";
                         $resultMaintenance = mysqli_query($con, $queryMaintenance);
                         $countMaintenance = mysqli_num_rows($resultMaintenance);
                         $amountMaintenance = $countMaintenance * 35.00;
                         $totalMaintenance += $amountMaintenance;
                         
-                        $queryFabrication = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND section = 'Fabrication' AND gpi8=1 AND tran_date = '$qDate' ";
+                        $queryFabrication = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND section = 'Fabrication' AND gpi8=1 AND tran_date = '$qDate' GROUP BY emp_name, tran_date";
                         $resultFabrication = mysqli_query($con, $queryFabrication);
                         $countFabrication = mysqli_num_rows($resultFabrication);
                         $amountFabrication = $countFabrication * 35.00;
                         $totalFabrication += $amountFabrication;
                         
-                        $queryQAdmin = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND (department = 'QA' OR department = 'Administration' OR department = 'ICT') AND gpi8=1 AND tran_date = '$qDate' ";
+                        $queryQAdmin = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND (department = 'QA' OR department = 'Administration' OR department = 'ICT') AND gpi8=1 AND tran_date = '$qDate' GROUP BY emp_name, tran_date";
                         $resultQAdmin = mysqli_query($con, $queryQAdmin);
                         $countQAdmin = mysqli_num_rows($resultQAdmin);
                         $amountQAdmin = $countQAdmin * 35.00;
                         $totalQAdmin += $amountQAdmin;
                         
-                        $queryProdsupport = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND section = 'Production Support' AND gpi8=1 AND tran_date = '$qDate' ";
+                        $queryProdsupport = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND section = 'Production Support' AND gpi8=1 AND tran_date = '$qDate' GROUP BY emp_name, tran_date";
                         $resultProdsupport = mysqli_query($con, $queryProdsupport);
                         $countProdsupport = mysqli_num_rows($resultProdsupport);
                         $amountProdsupport = $countProdsupport * 35.00;
                         $totalProdsupport += $amountProdsupport;
                              
-                        $queryPI = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND department = 'Parts Inspection' AND gpi8=1 AND tran_date = '$qDate' ";
+                        $queryPI = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND department = 'Parts Inspection' AND gpi8=1 AND tran_date = '$qDate' GROUP BY emp_name, tran_date";
                         $resultPI = mysqli_query($con, $queryPI);
                         $countPI = mysqli_num_rows($resultPI);
                         $amountPI = $countPI * 35.00;
                         $totalPI += $amountPI;
 
-                        $queryOthers = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND `gpi8` = '1' AND (`department` != 'Parts Inspection' AND `department` != 'QA' AND `department` != 'ICT' AND `department` != 'Administration') AND `section` = '' AND tran_date = '$qDate' ";
+                        $queryOthers = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer != 'GLORY' AND `gpi8` = '1' AND (`department` != 'Parts Inspection' AND `department` != 'QA' AND `department` != 'ICT' AND `department` != 'Administration') AND `section` = '' AND tran_date = '$qDate' GROUP BY emp_name, tran_date";
                         $resultOthers = mysqli_query($con, $queryOthers);
                         $countOthers = mysqli_num_rows($resultOthers);
                         $amountOthers = $countOthers * 35.00;
