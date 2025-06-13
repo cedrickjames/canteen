@@ -2,6 +2,17 @@
     session_start();
 
     include("./connection.php");
+
+
+            $monDate = date("Y-m-d", strtotime("monday this week"));
+
+        // Get Date of Mondays for the last 8 Weeks
+        $lastMon = date_create($monDate)->modify("-7 days")->format("Y-m-d");
+        $_SESSION['lastMon'] = $lastMon;
+
+
+         $lastSun = date_create($monDate)->modify("-1 days")->format("Y-m-d");
+        $_SESSION['lastSun'] = $lastSun;
 ?>
 
 <!DOCTYPE html>
