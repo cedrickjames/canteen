@@ -290,7 +290,7 @@ $overAlltotalCol = [
  $sqlDynamic .= " FROM tbl_trans_logs WHERE employer = 'MAXIM' AND tran_date BETWEEN '$fromDate' AND '$toDate' GROUP BY emp_name ORDER BY emp_name;";
  
  // Now you can use this $sql in your database query
- echo $sqlDynamic;
+//  echo $sqlDynamic;
 
 
 
@@ -346,7 +346,6 @@ $overAlltotalCol = [
 
 
 
-                <div class="page-break"></div>
                 
 
 
