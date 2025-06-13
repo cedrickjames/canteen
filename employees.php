@@ -1387,7 +1387,7 @@ var editoptionGpi8 = getSelectedRadioValue('editoptionGpi8');
 // console.log("Selected value: " + selectedValue);
 
 
-console.log( empId, fullName, cardNumber, employer, editoptionGpi8)
+console.log(editDBId, empId, fullName, cardNumber, employer, editoptionGpi8)
 
 
 

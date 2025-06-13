@@ -20,16 +20,16 @@ if($optionGpi8 == 0){
 }
 
 // Check for duplicate values
-$checkDuplicate = "SELECT * FROM `emp_list` WHERE `emp_idNum` = '$empId'";
+$checkDuplicate = "SELECT * FROM `emp_list` WHERE `emp_idNum` = '$empId' AND `emp_id` != '$editDBId'";
 $resultDuplicate = mysqli_query($con, $checkDuplicate);
 
-if(mysqli_num_rows($resultDuplicate) > 1) {
+if(mysqli_num_rows($resultDuplicate) > 0) {
     echo json_encode(["message" => "Duplicate Value"]);
 } else {
 
-    $checkDuplicate1 = "SELECT * FROM `emp_list` WHERE `emp_cardNum` = '$cardNumber'";
+    $checkDuplicate1 = "SELECT * FROM `emp_list` WHERE `emp_cardNum` = '$cardNumber' AND `emp_id` != '$editDBId'";
 $resultDuplicate1 = mysqli_query($con, $checkDuplicate1);
-if(mysqli_num_rows($resultDuplicate1) > 1) {
+if(mysqli_num_rows($resultDuplicate1) > 0) {
     echo json_encode(["message" => "Duplicate RFID"]);
 }
 else{
