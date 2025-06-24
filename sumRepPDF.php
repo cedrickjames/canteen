@@ -248,7 +248,7 @@ $html .= '              <tr style="font-size: 12px; border: 1px solid black;">
                         $amountPI = $countPI * 35.00;
                         $totalPI += $amountPI;
 
-                        $queryWarehouse = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY'  AND section = 'Warehouse' (`department` != 'Parts Inspection' AND `department` != 'QA' AND `department` != 'ICT' AND `department` != 'Administration') AND gpi8=1 AND tran_date = '$qDate' GROUP BY emp_name, tran_date";
+                        $queryWarehouse = "SELECT `tran_date`, `emp_name`, `employer` FROM `tbl_trans_logs` WHERE employer = 'GLORY'  AND section = 'Warehouse' AND (`department` != 'Parts Inspection' AND `department` != 'QA' AND `department` != 'ICT' AND `department` != 'Administration') AND gpi8=1 AND tran_date = '$qDate' GROUP BY emp_name, tran_date";
                         $resultWarehouse = mysqli_query($con, $queryWarehouse);
                         $countWarehouse = mysqli_num_rows($resultWarehouse);
                         $amountWarehouse = $countWarehouse * 35.00;
