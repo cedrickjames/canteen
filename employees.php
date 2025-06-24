@@ -257,6 +257,15 @@ function saveToDatabase($con, $data, $count,$format1,$format2,$employerFormat1,$
             }
             else{
 
+                if($correspondingValue!="PPD" && $correspondingValue!="" ){ //department yung correspondingValue
+                    $sectioncorrespondingValue = "";
+                }
+
+                if($sectioncorrespondingValue=="Warehouse" ){
+                    $correspondingValue = "";
+                }
+
+
                  try {
                     $addEmployeeSql = "INSERT INTO `emp_list`(`emp_id`, `emp_idNum`, `emp_name`, `emp_cardNum`, `employer`, `department`, `section`, `gpi8`) VALUES (null ,'$employeeId','$name','$cardNumber','$employercorrespondingValue','$correspondingValue','$sectioncorrespondingValue','$gpi8correspondingValue')";
                     $resultInfo = mysqli_query($con, $addEmployeeSql);
@@ -577,17 +586,19 @@ function saveToDatabase($con, $data, $count,$format1,$format2,$employerFormat1,$
                         <label for="section" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Section</label>
                         <select id="section" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <option disabled selected value="">Select Section</option>
-                        <?php
-                        $querydept = "SELECT DISTINCT `section` FROM `emp_list` WHERE `section` != ''"; //added LIMIT 10 para di bumagal ang pagencode ni Alien
-                        $resultDept = mysqli_query($con, $querydept);
-                    
-                        while($emp_row = mysqli_fetch_assoc($resultDept)){
-                            ?>
-                            <option  value="<?php echo $emp_row['section']; ?>"><?php echo $emp_row['section']; ?></option>
-                            <?php
-                        
-                        }
-                        ?>
+                        <option data-group="PPD" value="Fabrication">Fabrication</option>
+                        <option data-group="PPD" value="Production Support">Production Support</option>
+                        <option data-group="PPD" value="Moulding">Moulding</option>
+                        <option data-group="PPD" value="Maintenance">Maintenance</option>
+                        <option data-group="" value="Warehouse">Warehouse</option>
+                        <option data-group="" value="Others">Others</option>
+
+
+
+
+
+
+
                         <option  value="">Others</option>
                                         
                         </select>
@@ -617,7 +628,7 @@ function saveToDatabase($con, $data, $count,$format1,$format2,$employerFormat1,$
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                   Add Employee
+                   Edit Employee
                 </h3>
                 <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" onclick="closeModalEditEmployee()">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -712,18 +723,12 @@ function saveToDatabase($con, $data, $count,$format1,$format2,$employerFormat1,$
                         <label for="editsection" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Section</label>
                         <select id="editsection" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <option disabled selected value="">Select Section</option>
-                        <?php
-                        $querydept = "SELECT DISTINCT `section` FROM `emp_list` WHERE `section` != ''"; //added LIMIT 10 para di bumagal ang pagencode ni Alien
-                        $resultDept = mysqli_query($con, $querydept);
-                    
-                        while($emp_row = mysqli_fetch_assoc($resultDept)){
-                            ?>
-                            <option  value="<?php echo $emp_row['section']; ?>"><?php echo $emp_row['section']; ?></option>
-                            <?php
-                        
-                        }
-                        ?>
-                        <option  value="">Others</option>
+                        <option data-group="PPD" value="Fabrication">Fabrication</option>
+                        <option data-group="PPD" value="Production Support">Production Support</option>
+                        <option data-group="PPD" value="Moulding">Moulding</option>
+                        <option data-group="PPD" value="Maintenance">Maintenance</option>
+                        <option data-group="" value="Warehouse">Warehouse</option>
+                        <option data-group="" value="Others">Others</option>
                                         
                         </select>
                     </div>
@@ -903,6 +908,49 @@ function saveToDatabase($con, $data, $count,$format1,$format2,$employerFormat1,$
   <script>
 
 
+$(document).ready(function() {
+  $('#department').on('change', function() {
+    var selectedGroup = $(this).val();
+
+    $('#section option').each(function() {
+      if ($(this).data('group') === selectedGroup) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+
+    // Optionally reset the second select to the first visible option
+    $('#section').val($('#section option:visible:first').val());
+  });
+
+  // Trigger change on page load to initialize
+  $('#department').trigger('change');
+});
+
+
+$(document).ready(function() {
+  $('#editdepartment').on('change', function() {
+    var selectedGroup = $(this).val();
+
+    $('#editsection option').each(function() {
+      if ($(this).data('group') === selectedGroup) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+
+    // Optionally reset the second select to the first visible option
+    $('#editsection').val($('#editsection option:visible:first').val());
+  });
+
+  // Trigger change on page load to initialize
+  $('#editdepartment').trigger('change');
+});
+
+
+
 const deleteEmployee = document.getElementById('deleteEmployee');
 
 // options with default values
@@ -1021,18 +1069,12 @@ incrementEmployer++;
     $('#sectionDiv').append(
   '<div class="flex justify-center border border-gray-300">'+section+'</div>' +   `<select id="section`+incrementSection+`" class="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full px-2.5 py-1.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected disabled>Select Section</option>
-                            <?php
-                        $querydept = "SELECT DISTINCT `section` FROM `emp_list` WHERE `section` != ''"; //added LIMIT 10 para di bumagal ang pagencode ni Alien
-                        $resultDept = mysqli_query($con, $querydept);
-                    
-                        while($emp_row = mysqli_fetch_assoc($resultDept)){
-                            ?>
-                            <option  value="<?php echo $emp_row['section']; ?>"><?php echo $emp_row['section']; ?></option>
-                            <?php
-                        
-                        }
-                        ?>
-                        <option value="">N/A</option>
+                            <option data-group="PPD" value="Fabrication">Fabrication</option>
+                        <option data-group="PPD" value="Production Support">Production Support</option>
+                        <option data-group="PPD" value="Moulding">Moulding</option>
+                        <option data-group="PPD" value="Maintenance">Maintenance</option>
+                        <option data-group="" value="Warehouse">Warehouse</option>
+                        <option data-group="" value="Others">Others</option>
                         </select>`
 );
 incrementSection++;
