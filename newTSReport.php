@@ -27,13 +27,15 @@
         $datesArray[] = $date->format('Y-m-d');
         // echo $date->format('Y-m-d'), '<br>';
         $dayName = strtolower($date->format('l')); // 'l' returns the full day name
-    
+        // echo $dayName;
         // Add the day name to the array
-        if (!in_array($dayName, $days)) {
-            $days[] = $dayName;
-        }
+        $days[] = $dayName;
+        // if (!in_array($dayName, $days)) {
+        //     $days[] = $dayName;
+        // }
+     
     }
-
+//    print_r($days);
 
     // $sqlDynamic = "SELECT emp_name, ";
 
