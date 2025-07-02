@@ -32,6 +32,9 @@
     <?php
 
         if(isset($_POST['sbmtPrint'])){
+            
+            $outputType = $_POST['outputType'];
+
             $fromDate = $_POST['totalFrom'];
             $toDate = $_POST['totalTo'];
             $arrayDate = array();
@@ -47,13 +50,25 @@
             $_SESSION['totalFrom'] = $fromDate;
             $_SESSION['totalTo'] = $toDate;
 
-            ?>
+                if($outputType=="html"){
+ ?>
                 <script type="text/javascript">
                     // window.open('./TSReportPDF.php', '_blank');
                     window.open('./newTSReport.php', '_blank');
 
                 </script>
             <?php
+                }
+                else{
+                     ?>
+                <script type="text/javascript">
+                    // window.open('./TSReportPDF.php', '_blank');
+                    window.open('./newTSReportExcel.php', '_blank');
+
+                </script>
+            <?php
+                }
+           
 
         }
     ?>
@@ -73,7 +88,18 @@
                 <span class="toCon">
                     To: <input type="date" name="totalTo" id="dateTo" onchange="btnClickT()" value="<?php echo $_SESSION['lastSun']; ?>">
                 </span>
+                
+                
             </div>
+            <span class="type" name="">
+                    Type: <select name="outputType" id="">
+                <option value="html">HTML</option>
+                <option value="excel">EXCEL</option>
+
+            </select>
+                </span>
+            
+            
             <input type="button" value="PRINT" class="btnPrint">
             <input type="submit" name="sbmtPrint" id="sbmtPrint" target="_blank" style="opacity: 0">
         </form>

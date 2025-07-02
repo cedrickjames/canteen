@@ -2,11 +2,11 @@
     session_start();
 
 
-// header("Content-Type:   application/vnd.ms-excel; charset=utf-8");
-// header("Content-Disposition: attachment; filename=Total Sales Report ".date('M-d',strtotime($fromDate))." to ".date('M-d',strtotime($toDate)).".xls");  //File name extension was wrong
-// header("Expires: 0");
-// header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-// header("Cache-Control: private", false);
+header("Content-Type:   application/vnd.ms-excel; charset=utf-8");
+header("Content-Disposition: attachment; filename=Total Sales Report ".date('M-d',strtotime($fromDate))." to ".date('M-d',strtotime($toDate)).".xls");  //File name extension was wrong
+header("Expires: 0");
+header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+header("Cache-Control: private", false);
 
     include("./connection.php");
 

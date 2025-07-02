@@ -46,7 +46,7 @@
                 position: absolute;
                 width: 500px;
                 height:50px;
-                top: 50px;
+                top: 100px;
                 left: 50%;
                 transform: translate(-50%, 0);
                 letter-spacing: 10px;
@@ -72,14 +72,14 @@
                 box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
 
                 &:hover{
-                    top: 48px;
+                    top: 98px;
                     width: 504px;
                     height:52px;
                     font-size: 19px;
                 }
     
                 &:active{
-                    top: 52px;
+                    top: 102px;
                     width: 500px;
                     height:50px;
                     font-size: 19px;
