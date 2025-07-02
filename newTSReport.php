@@ -42,6 +42,17 @@
         // }
      
     }
+
+  $overAlltotalCol = [];
+// $totals = [];
+
+foreach ($period as $date) {
+    $formattedDate = $date->format('Y-m-d');
+    $overAlltotalCol[$formattedDate] = 0;
+    // $totals[$formattedDate] = 0;
+}
+
+    
 //    print_r($days);
 
     // $sqlDynamic = "SELECT emp_name, ";
@@ -91,15 +102,15 @@
 // $overAlltotalCol7=0;
 
           
-$overAlltotalCol = [
-    'monday' => 0,
-    'tuesday' => 0,
-    'wednesday' => 0,
-    'thursday' => 0,
-    'friday' => 0,
-    'saturday' => 0,
-    'sunday' => 0,
-];
+// $overAlltotalCol = [
+//     'monday' => 0,
+//     'tuesday' => 0,
+//     'wednesday' => 0,
+//     'thursday' => 0,
+//     'friday' => 0,
+//     'saturday' => 0,
+//     'sunday' => 0,
+// ];
 
 
 ?>
@@ -153,17 +164,23 @@ $overAlltotalCol = [
 
             <?php
 
-             $totals = [
-                'monday' => 0,
-                'tuesday' => 0,
-                'wednesday' => 0,
-                'thursday' => 0,
-                'friday' => 0,
-                'saturday' => 0,
-                'sunday' => 0,
-            ];
+            //  $totals = [
+            //     'monday' => 0,
+            //     'tuesday' => 0,
+            //     'wednesday' => 0,
+            //     'thursday' => 0,
+            //     'friday' => 0,
+            //     'saturday' => 0,
+            //     'sunday' => 0,
+            // ];
 
-  
+  $totals = [];
+
+foreach ($period as $date) {
+    $formattedDate = $date->format('Y-m-d');
+    // $overAlltotalCol[$formattedDate] = 0;
+    $totals[$formattedDate] = 0;
+}
 
 
             
@@ -172,7 +189,7 @@ $overAlltotalCol = [
              // Loop through the days and build the CASE statements
              $num=0;
              foreach ($days as $day) {
-                 $sqlDynamic .= "MAX(CASE WHEN tran_date = '$datesArray[$num]' THEN '35' ELSE '0' END) AS '$day', ";
+                 $sqlDynamic .= "MAX(CASE WHEN tran_date = '$datesArray[$num]' THEN '35' ELSE '0' END) AS '$datesArray[$num]', ";
                  $num++;
              }
              
@@ -180,11 +197,13 @@ $overAlltotalCol = [
              $sqlDynamic = rtrim($sqlDynamic, ', ');
              
              // Complete the SQLDynamic query
-             $sqlDynamic .= " FROM tbl_trans_logs WHERE employer = 'GLORY' AND tran_date BETWEEN '$fromDate' AND '$toDate' GROUP BY emp_name ORDER BY emp_name;";
+             $sqlDynamic .= " FROM tbl_trans_logs WHERE  employer = 'GLORY' AND tran_date BETWEEN '$fromDate' AND '$toDate' GROUP BY emp_name ORDER BY emp_name;";
              
              // Now you can use this $sql in your database query
             //  echo $sqlDynamic;
 
+// print_r($totals);
+// print_r($overAlltotalCol);
 
 
 
@@ -194,8 +213,9 @@ $overAlltotalCol = [
 
                             while ($row = mysqli_fetch_assoc($result)) {
                         
+                            // print_r($overAlltotalCol);
                                 
-                                foreach ($days as $day) {
+                                foreach ($datesArray as $day) {
                                     $totals[$day] += (int)$row[$day];
                                     $overAlltotalCol[$day] += (int)$row[$day];
 
@@ -207,7 +227,8 @@ $overAlltotalCol = [
                                     <tr>
                                         <td><?php echo $row['emp_name']; ?></td>
                                         <?php
-                                        foreach ($days as $day) {
+                                        // print_r($datesArray);
+                                        foreach ($datesArray as $day) {
                                            ?>  <td><?php echo $row[$day]; ?></td> <?php
                                         }
                                         
@@ -226,7 +247,7 @@ $overAlltotalCol = [
 <tr style=" font-weight: bold; font-size: 15px;">
                                         <td>TOTAL</td>
                                         <?php
-                                        foreach ($days as $day) {
+                                        foreach ($datesArray as $day) {
                                            ?>  <td><?php echo $overAlltotalCol[$day]; ?></td> <?php
                                         }
                                         
@@ -269,16 +290,22 @@ $overAlltotalCol = [
 
 <?php
 
- $totals = [
-    'monday' => 0,
-    'tuesday' => 0,
-    'wednesday' => 0,
-    'thursday' => 0,
-    'friday' => 0,
-    'saturday' => 0,
-    'sunday' => 0,
-];
+//  $totals = [
+//     'monday' => 0,
+//     'tuesday' => 0,
+//     'wednesday' => 0,
+//     'thursday' => 0,
+//     'friday' => 0,
+//     'saturday' => 0,
+//     'sunday' => 0,
+// ];
+  $totals = [];
 
+foreach ($period as $date) {
+    $formattedDate = $date->format('Y-m-d');
+    // $overAlltotalCol[$formattedDate] = 0;
+    $totals[$formattedDate] = 0;
+}
 
 
 
@@ -288,7 +315,7 @@ $overAlltotalCol = [
  // Loop through the days and build the CASE statements
  $num=0;
  foreach ($days as $day) {
-     $sqlDynamic .= "MAX(CASE WHEN tran_date = '$datesArray[$num]' THEN '35' ELSE '0' END) AS '$day', ";
+     $sqlDynamic .= "MAX(CASE WHEN tran_date = '$datesArray[$num]' THEN '35' ELSE '0' END) AS '$datesArray[$num]', ";
      $num++;
  }
  
@@ -311,7 +338,7 @@ $overAlltotalCol = [
                 while ($row = mysqli_fetch_assoc($result)) {
             
                     
-                    foreach ($days as $day) {
+                    foreach ($datesArray as $day) {
                         $totals[$day] += (int)$row[$day];
                         $overAlltotalCol[$day] += (int)$row[$day];
 
@@ -323,7 +350,7 @@ $overAlltotalCol = [
                         <tr>
                             <td><?php echo $row['emp_name']; ?></td>
                             <?php
-                            foreach ($days as $day) {
+                            foreach ($datesArray as $day) {
                                ?>  <td><?php echo $row[$day]; ?></td> <?php
                             }
                             
@@ -342,7 +369,7 @@ $overAlltotalCol = [
 <tr style=" font-weight: bold; font-size: 15px;">
                             <td>TOTAL</td>
                             <?php
-                            foreach ($days as $day) {
+                            foreach ($datesArray as $day) {
                                ?>  <td><?php echo $totals[$day]; ?></td> <?php
                             }
                             
@@ -387,15 +414,22 @@ $overAlltotalCol = [
 
             <?php
 
-             $totals = [
-                'monday' => 0,
-                'tuesday' => 0,
-                'wednesday' => 0,
-                'thursday' => 0,
-                'friday' => 0,
-                'saturday' => 0,
-                'sunday' => 0,
-            ];
+            //  $totals = [
+            //     'monday' => 0,
+            //     'tuesday' => 0,
+            //     'wednesday' => 0,
+            //     'thursday' => 0,
+            //     'friday' => 0,
+            //     'saturday' => 0,
+            //     'sunday' => 0,
+            // ];
+  $totals = [];
+
+foreach ($period as $date) {
+    $formattedDate = $date->format('Y-m-d');
+    // $overAlltotalCol[$formattedDate] = 0;
+    $totals[$formattedDate] = 0;
+}
 
   
 
@@ -405,8 +439,8 @@ $overAlltotalCol = [
 
              // Loop through the days and build the CASE statements
              $num=0;
-             foreach ($days as $day) {
-                 $sqlDynamic .= "MAX(CASE WHEN tran_date = '$datesArray[$num]' THEN '35' ELSE '0' END) AS '$day', ";
+             foreach ($datesArray as $day) {
+                 $sqlDynamic .= "MAX(CASE WHEN tran_date = '$datesArray[$num]' THEN '35' ELSE '0' END) AS '$datesArray[$num]', ";
                  $num++;
              }
              
@@ -429,7 +463,7 @@ $overAlltotalCol = [
                             while ($row = mysqli_fetch_assoc($result)) {
                         
                                 
-                                foreach ($days as $day) {
+                                foreach ($datesArray as $day) {
                                     $totals[$day] += (int)$row[$day];
                                     $overAlltotalCol[$day] += (int)$row[$day];
 
@@ -441,7 +475,7 @@ $overAlltotalCol = [
                                     <tr>
                                         <td><?php echo $row['emp_name']; ?></td>
                                         <?php
-                                        foreach ($days as $day) {
+                                        foreach ($datesArray as $day) {
                                            ?>  <td><?php echo $row[$day]; ?></td> <?php
                                         }
                                         
@@ -460,7 +494,7 @@ $overAlltotalCol = [
 <tr style=" font-weight: bold; font-size: 15px;">
                                         <td>TOTAL</td>
                                         <?php
-                                        foreach ($days as $day) {
+                                        foreach ($datesArray as $day) {
                                            ?>  <td><?php echo $totals[$day]; ?></td> <?php
                                         }
                                         
@@ -504,15 +538,22 @@ $overAlltotalCol = [
 
 <?php
 
- $totals = [
-    'monday' => 0,
-    'tuesday' => 0,
-    'wednesday' => 0,
-    'thursday' => 0,
-    'friday' => 0,
-    'saturday' => 0,
-    'sunday' => 0,
-];
+//  $totals = [
+//     'monday' => 0,
+//     'tuesday' => 0,
+//     'wednesday' => 0,
+//     'thursday' => 0,
+//     'friday' => 0,
+//     'saturday' => 0,
+//     'sunday' => 0,
+// ];
+  $totals = [];
+
+foreach ($period as $date) {
+    $formattedDate = $date->format('Y-m-d');
+    // $overAlltotalCol[$formattedDate] = 0;
+    $totals[$formattedDate] = 0;
+}
 
 
 
@@ -522,8 +563,8 @@ $overAlltotalCol = [
 
  // Loop through the days and build the CASE statements
  $num=0;
- foreach ($days as $day) {
-     $sqlDynamic .= "MAX(CASE WHEN tran_date = '$datesArray[$num]' THEN '35' ELSE '0' END) AS '$day', ";
+ foreach ($datesArray as $day) {
+     $sqlDynamic .= "MAX(CASE WHEN tran_date = '$datesArray[$num]' THEN '35' ELSE '0' END) AS '$datesArray[$num]', ";
      $num++;
  }
  
@@ -546,7 +587,7 @@ $overAlltotalCol = [
                 while ($row = mysqli_fetch_assoc($result)) {
             
                     
-                    foreach ($days as $day) {
+                    foreach ($datesArray as $day) {
                         $totals[$day] += (int)$row[$day];
                         $overAlltotalCol[$day] += (int)$row[$day];
 
@@ -558,7 +599,7 @@ $overAlltotalCol = [
                         <tr>
                             <td><?php echo $row['emp_name']; ?></td>
                             <?php
-                            foreach ($days as $day) {
+                            foreach ($datesArray as $day) {
                                ?>  <td><?php echo $row[$day]; ?></td> <?php
                             }
                             
@@ -577,7 +618,7 @@ $overAlltotalCol = [
 <tr style=" font-weight: bold; font-size: 15px;">
                             <td>TOTAL</td>
                             <?php
-                            foreach ($days as $day) {
+                            foreach ($datesArray as $day) {
                                ?>  <td><?php echo $totals[$day]; ?></td> <?php
                             }
                             
@@ -616,17 +657,24 @@ $overAlltotalCol = [
 
 <?php
 
- $totals = [
-    'monday' => 0,
-    'tuesday' => 0,
-    'wednesday' => 0,
-    'thursday' => 0,
-    'friday' => 0,
-    'saturday' => 0,
-    'sunday' => 0,
-];
+//  $totals = [
+//     'monday' => 0,
+//     'tuesday' => 0,
+//     'wednesday' => 0,
+//     'thursday' => 0,
+//     'friday' => 0,
+//     'saturday' => 0,
+//     'sunday' => 0,
+// ];
 
 
+  $totals = [];
+
+foreach ($period as $date) {
+    $formattedDate = $date->format('Y-m-d');
+    // $overAlltotalCol[$formattedDate] = 0;
+    $totals[$formattedDate] = 0;
+}
 
 
 
@@ -634,8 +682,8 @@ $overAlltotalCol = [
 
  // Loop through the days and build the CASE statements
  $num=0;
- foreach ($days as $day) {
-     $sqlDynamic .= "MAX(CASE WHEN tran_date = '$datesArray[$num]' THEN '35' ELSE '0' END) AS '$day', ";
+ foreach ($datesArray as $day) {
+     $sqlDynamic .= "MAX(CASE WHEN tran_date = '$datesArray[$num]' THEN '35' ELSE '0' END) AS '$datesArray[$num]', ";
      $num++;
  }
  
@@ -658,7 +706,7 @@ $overAlltotalCol = [
                 while ($row = mysqli_fetch_assoc($result)) {
             
                     
-                    foreach ($days as $day) {
+                    foreach ($datesArray as $day) {
                         $totals[$day] += (int)$row[$day];
                         $overAlltotalCol[$day] += (int)$row[$day];
 
@@ -670,7 +718,7 @@ $overAlltotalCol = [
                         <tr>
                             <td><?php echo $row['emp_name']; ?></td>
                             <?php
-                            foreach ($days as $day) {
+                            foreach ($datesArray as $day) {
                                ?>  <td><?php echo $row[$day]; ?></td> <?php
                             }
                             
@@ -688,7 +736,7 @@ $overAlltotalCol = [
 <tr>
 <td> </td>
                             <?php
-                            foreach ($days as $day) {
+                            foreach ($datesArray as $day) {
                                ?>  <td> </td> <?php
                             }
                             
@@ -697,7 +745,7 @@ $overAlltotalCol = [
 <tr>
 <td> </td>
                             <?php
-                            foreach ($days as $day) {
+                            foreach ($datesArray as $day) {
                                ?>  <td> </td> <?php
                             }
                             
@@ -706,7 +754,7 @@ $overAlltotalCol = [
 <tr>
 <td> </td>
                             <?php
-                            foreach ($days as $day) {
+                            foreach ($datesArray as $day) {
                                ?>  <td> </td> <?php
                             }
                             
@@ -715,7 +763,7 @@ $overAlltotalCol = [
 <tr>
 <td> </td>
                             <?php
-                            foreach ($days as $day) {
+                            foreach ($datesArray as $day) {
                                ?>  <td> </td> <?php
                             }
                             
@@ -724,7 +772,7 @@ $overAlltotalCol = [
 <tr>
 <td> </td>
                             <?php
-                            foreach ($days as $day) {
+                            foreach ($datesArray as $day) {
                                ?>  <td> </td> <?php
                             }
                             
@@ -733,7 +781,7 @@ $overAlltotalCol = [
 <tr>
 <td> </td>
                             <?php
-                            foreach ($days as $day) {
+                            foreach ($datesArray as $day) {
                                ?>  <td> </td> <?php
                             }
                             
@@ -742,7 +790,7 @@ $overAlltotalCol = [
 <tr>
 <td> </td>
                             <?php
-                            foreach ($days as $day) {
+                            foreach ($datesArray as $day) {
                                ?>  <td> </td> <?php
                             }
                             
@@ -751,7 +799,7 @@ $overAlltotalCol = [
 <tr>
 <td> </td>
                             <?php
-                            foreach ($days as $day) {
+                            foreach ($datesArray as $day) {
                                ?>  <td> </td> <?php
                             }
                             
@@ -761,7 +809,7 @@ $overAlltotalCol = [
 <tr style=" font-weight: bold; font-size: 15px;">
                             <td>TOTAL</td>
                             <?php
-                            foreach ($days as $day) {
+                            foreach ($datesArray as $day) {
                                ?>  <td><?php echo $totals[$day]; ?></td> <?php
                             }
                             
@@ -774,7 +822,7 @@ $overAlltotalCol = [
                 <tr style=" font-weight: bold; font-size: 20px;">
                                         <td>OVERALL</td>
                                         <?php
-                            foreach ($days as $day) {
+                            foreach ($datesArray as $day) {
                                ?>  <td><?php echo $overAlltotalCol[$day]; ?></td> <?php
                             }
                             
@@ -786,7 +834,7 @@ $overAlltotalCol = [
                                         <td>
                                         <?php
                                         $grandTotal = 0;
-                                        foreach ($days as $day) {
+                                        foreach ($datesArray as $day) {
                                             // echo $overAlltotalCol[$day], '<br>'; 
                                             $grandTotal += $overAlltotalCol[$day]; 
                                         }
